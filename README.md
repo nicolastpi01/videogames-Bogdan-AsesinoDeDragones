@@ -27,5 +27,5 @@ clon from this repository https://github.com/photonstorm/phaser-ce/tree/v2.8.6
 
 
 Testear server localmente:
-desde terminal ingresar a la carpeta donde esta hellophaser, ejecutar http-server (levanta el servidor)
+desde terminal ingresar a la carpeta donde esta DrunkenViking-master, ejecutar http-server (levanta el servidor)
 en browser: localhost:8080/index.html
