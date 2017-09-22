@@ -1,7 +1,7 @@
 var boot = {
 
 	preload: function(){
-		game.load.image('title', 'Resources/Bodgan.png');
+		game.load.image('title', 'Resources/Bogdan.png');
 	},
 
 	create: function(){

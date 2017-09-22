@@ -3,7 +3,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'Boss');
 var button;
 var map;
 var layer;
-var bodgan;
+var bogdan;
 var enemy;
 var cursors;
 var spacebar;

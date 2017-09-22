@@ -5,10 +5,10 @@ var play = {
 	create: function(){
 		this.createKeys();
 		this.createMap();
-		this.createBodgan();
+		this.createBogdan();
 		this.createEnemy();
 
-		game.camera.follow(bodgan);
+		game.camera.follow(bogdan);
 	},
 
 	update: function(){
@@ -35,7 +35,7 @@ var play = {
 	},
 
 	createBodgan: function(){
-		bodgan = new Knight(game, 50, 500, 'knight');	  
+		bogdan = new Knight(game, 50, 500, 'knight');	  
 	},
 
 	createEnemy: function(){
@@ -45,13 +45,13 @@ var play = {
 	//-------------------------------------
 
 	checkCollitions: function(){
-		game.physics.arcade.collide(bodgan, layer);
-		//game.physics.arcade.collide(bodgan, enemy);
+		game.physics.arcade.collide(bogdan, layer);
+		//game.physics.arcade.collide(bogdan, enemy);
 		game.physics.arcade.collide(enemy, layer);
 	},
 
 	processInput: function(){
-		bodgan.processInput(cursors, spacebar);
+		bogdan.processInput(cursors, spacebar);
 	}
 
 };
