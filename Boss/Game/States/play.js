@@ -34,7 +34,7 @@ var play = {
   	layer.debugSettings.forceFullRedraw = true;
 	},
 
-	createBodgan: function(){
+	createBogdan: function(){
 		bogdan = new Knight(game, 50, 500, 'knight');	  
 	},
 
