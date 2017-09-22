@@ -14,6 +14,14 @@ var play = {
 	update: function(){
 		this.checkCollitions();
 		this.processInput();
+		if (enemy.body.touching.right || enemy.body.blocked.right) {
+      enemy.scale.set(1);
+      enemy.body.velocity.x = -100;
+    }
+    else if (enemy.body.touching.left || enemy.body.blocked.left) {
+    	enemy.scale.set(-1, 1);
+      enemy.body.velocity.x = 100;
+    }
 	},
 
 	//-----------------------------------------
