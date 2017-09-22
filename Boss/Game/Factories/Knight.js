@@ -6,6 +6,10 @@ Knight = function(game, x, y, sprite){
 
 	game.add.existing(this);
 
+	//-------------------------------------------------------
+
+	this.life = 555;
+
 	this.frame = 2;
 
 	this.scale.setTo(2);
@@ -17,6 +21,8 @@ Knight = function(game, x, y, sprite){
 	this.body.collideWorldBounds = true;
 
 	this.animations.add('walk', [12, 13, 14, 15, 16, 17], 10, true);
+
+	//-------------------------------------------------------
 
 	this.processInput = function(cursors, spacebar){
 		if (cursors.left.isDown){
@@ -35,6 +41,10 @@ Knight = function(game, x, y, sprite){
 	  if (spacebar.isDown && (this.body.onFloor() || this.body.touching.down)){
 	  	this.body.velocity.y = -600;
 	  }
+	};
+
+	this.bounce = function(){
+		this.body.velocity.y = -200;
 	};
 
 };

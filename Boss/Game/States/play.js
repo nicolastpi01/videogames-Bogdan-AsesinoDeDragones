@@ -14,14 +14,8 @@ var play = {
 	update: function(){
 		this.checkCollitions();
 		this.processInput();
-		if (enemy.body.touching.right || enemy.body.blocked.right) {
-      enemy.scale.set(1);
-      enemy.body.velocity.x = -100;
-    }
-    else if (enemy.body.touching.left || enemy.body.blocked.left) {
-    	enemy.scale.set(-1, 1);
-      enemy.body.velocity.x = 100;
-    }
+		this.processEnemyMovement();
+		this.checkLose();
 	},
 
 	//-----------------------------------------
@@ -54,12 +48,32 @@ var play = {
 
 	checkCollitions: function(){
 		game.physics.arcade.collide(bogdan, layer);
-		//game.physics.arcade.collide(bogdan, enemy);
 		game.physics.arcade.collide(enemy, layer);
+		game.physics.arcade.overlap(bogdan, enemy, this.processOverlap);
 	},
 
 	processInput: function(){
 		bogdan.processInput(cursors, spacebar);
+	},
+
+	processEnemyMovement: function(){
+		enemy.processMovement();
+	},
+
+	processOverlap: function(){
+		if (bogdan.body.velocity.y > 0) {
+			bogdan.bounce();
+      enemy.kill();
+    }else{
+    	bogdan.life -= 1;
+    	bogdan.x -= 25;
+    }
+	},
+
+	checkLose: function(){
+		if(bogdan.life <= 0){
+			game.state.start('boot');
+		}
 	}
 
 };
