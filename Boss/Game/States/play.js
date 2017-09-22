@@ -66,7 +66,7 @@ var play = {
       enemy.kill();
     }else{
     	bogdan.life -= 1;
-    	bogdan.x -= 25;
+    	bogdan.backJump();
     }
 	},
 

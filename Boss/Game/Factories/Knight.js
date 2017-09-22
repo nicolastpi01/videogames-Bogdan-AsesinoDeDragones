@@ -8,7 +8,7 @@ Knight = function(game, x, y, sprite){
 
 	//-------------------------------------------------------
 
-	this.life = 555;
+	this.life = 100;
 
 	this.frame = 2;
 
@@ -45,6 +45,15 @@ Knight = function(game, x, y, sprite){
 
 	this.bounce = function(){
 		this.body.velocity.y = -200;
+	};
+
+	this.backJump = function(){
+		if (this.body.touching.right || this.body.blocked.right) {
+      this.x -= 25;
+    }
+    else if (this.body.touching.left || this.body.blocked.left) {
+    	this.x += 25;
+    }
 	};
 
 };
