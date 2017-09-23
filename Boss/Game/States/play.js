@@ -66,12 +66,12 @@ var play = {
       enemy.kill();
     }else{
     	bogdan.life -= 1;
-    	bogdan.backJump();
+    	bogdan.bounceBack();
     }
 	},
 
 	checkLose: function(){
-		if(bogdan.life <= 0){
+		if(bogdan.isDead()){
 			game.state.start('boot');
 		}
 	}
