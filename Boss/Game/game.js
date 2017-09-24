@@ -4,7 +4,7 @@ var button;
 var map;
 var layer;
 var bogdan;
-var enemy;
+var enemies;
 var cursors;
 var spacebar;
 var ctrl;

@@ -6,7 +6,7 @@ var play = {
 		this.createKeys();
 		this.createMap();
 		this.createBogdan();
-		this.createEnemy();
+		this.createEnemies();
 
 		game.camera.follow(bogdan);
 	},
@@ -46,16 +46,22 @@ var play = {
 		bogdan = new Knight(game, 50, 500, 'knight');	  
 	},
 
-	createEnemy: function(){
-		enemy = new Enemy(game, 800, 500, 'enemy');
+	createEnemies: function(){
+		enemies = game.add.group();
+
+		var data = game.cache.getJSON('level_0');
+
+		data.forEach(function(e){
+      enemies.add(new Enemy(game, e.x, e.y, 'enemy'));    
+  	});
 	},
 
 	//-------------------------------------
 
 	checkCollitions: function(){
 		game.physics.arcade.collide(bogdan, layer);
-		game.physics.arcade.collide(enemy, layer);
-		game.physics.arcade.overlap(bogdan, enemy, this.processOverlap);
+		game.physics.arcade.collide(enemies, layer);
+		game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
 	},
 
 	processInput: function(){
@@ -63,13 +69,13 @@ var play = {
 	},
 
 	processEnemyMovement: function(){
-		enemy.processMovement();
+		enemies.forEach(function(e){ e.processMovement();	});
 	},
 
-	processOverlap: function(){
+	processOverlap: function(bodgan, e){
 		if (bogdan.body.velocity.y > 0) {
 			bogdan.bounce();
-      enemy.kill();
+      e.kill();
     }else{
     	bogdan.life -= 1;
     	bogdan.bounceBack();
