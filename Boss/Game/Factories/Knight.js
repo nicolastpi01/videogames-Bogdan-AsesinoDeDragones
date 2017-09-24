@@ -23,6 +23,7 @@ Knight = function(game, x, y, sprite){
 	this.body.collideWorldBounds = true;
 
 	this.animations.add('walk', [12, 13, 14, 15, 16, 17], 10, true);
+	this.animations.add('jump', [16], 10, true);
 	this.animations.add('attack', [42, 43, 44], 10, true);
 
 
@@ -32,12 +33,12 @@ Knight = function(game, x, y, sprite){
 		if (cursors.left.isDown){
 	    this.body.x += -5;
 	    this.scale.setTo(-2, 2);
-	    this.animations.play('walk');
+	    this.playAnimation('walk');
 	  }
 	  else if (cursors.right.isDown){
 	    this.body.x += 5;
 	    this.scale.setTo(2);
-	    this.animations.play('walk');
+	    this.playAnimation('walk');
 	  }else{
 	  	this.animations.stop();
 	  }
@@ -46,6 +47,9 @@ Knight = function(game, x, y, sprite){
 	};
 
 	this.processJump = function(){
+		this.animations.stop();
+		this.animations.play('jump');
+
 		if(!this.isJumping()){
 			this.jump(-600);
 		}else{
@@ -71,7 +75,15 @@ Knight = function(game, x, y, sprite){
 	}
 
 	this.resetDoubleJump = function(){
-		if(this.body.onFloor()){this.canDoubleJump = true;}
+		if(!this.isJumping()){
+			this.canDoubleJump = true;
+		}
+	}
+
+	this.playAnimation = function(animation){
+		if(!this.isJumping()){
+			this.animations.play(animation);
+		}
 	}
 
 	this.bounce = function(){
