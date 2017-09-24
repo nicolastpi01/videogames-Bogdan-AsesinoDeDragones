@@ -7,6 +7,7 @@ var bogdan;
 var enemy;
 var cursors;
 var spacebar;
+var ctrl;
 
 
 game.state.add('boot', boot);

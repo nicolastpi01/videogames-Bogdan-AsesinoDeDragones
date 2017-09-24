@@ -18,11 +18,17 @@ var play = {
 		this.checkLose();
 	},
 
+	render: function(){
+		//game.debug.body(bogdan);
+		//game.debug.body(enemy);
+	},
+
 	//-----------------------------------------
 
 	createKeys: function(){
 		cursors = game.input.keyboard.createCursorKeys();
   	spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  	ctrl = game.input.keyboard.addKey(Phaser.Keyboard.CONTROL);
 	},
 
 	createMap: function(){
@@ -53,7 +59,7 @@ var play = {
 	},
 
 	processInput: function(){
-		bogdan.processInput(cursors, spacebar);
+		bogdan.processInput(cursors, spacebar, ctrl);
 	},
 
 	processEnemyMovement: function(){

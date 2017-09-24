@@ -24,12 +24,12 @@ Knight = function(game, x, y, sprite){
 
 	this.animations.add('walk', [12, 13, 14, 15, 16, 17], 10, true);
 	this.animations.add('jump', [16], 10, true);
-	this.animations.add('attack', [42, 43, 44], 10, true);
+	this.animations.add('attack', [42, 43], 10, true);
 
 
 	//-------------------------------------------------------
 
-	this.processInput = function(cursors, spacebar){
+	this.processInput = function(cursors, spacebar, ctrl){
 		if (cursors.left.isDown){
 	    this.body.x += -5;
 	    this.scale.setTo(-2, 2);
@@ -39,9 +39,14 @@ Knight = function(game, x, y, sprite){
 	    this.body.x += 5;
 	    this.scale.setTo(2);
 	    this.playAnimation('walk');
-	  }else{
+	  }
+	  else if(ctrl.isDown){
+	  	this.animations.play('attack');
+	  }
+	  else{
 	  	this.animations.stop();
 	  }
+
 
 	  spacebar.onDown.add(this.processJump, this);
 	};
