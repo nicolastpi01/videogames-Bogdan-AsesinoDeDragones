@@ -1,25 +1,30 @@
-Enemy = function(game, x, y, sprite) {
+class Enemy extends Phaser.Sprite {
 
-	Phaser.Sprite.call(this, game, x, y, sprite);
+	constructor(game, x, y, sprite){
+		super(game, x, y, sprite);
 
-	game.physics.arcade.enable(this);
+		game.physics.arcade.enable(this);
 
-	game.add.existing(this);
-	
+		game.add.existing(this);
 
-	this.frame = 0;
+		this.init();
+	}
 
-	this.anchor.setTo(0.5);
-	this.scale.set(-1, 1);
+	init(){
+		this.frame = 0;
 
-	this.body.inmovable = true;
+		this.anchor.setTo(0.5);
+		this.scale.set(-1, 1);
 
-	this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 22, true);
-	this.animations.play('walk');
+		this.body.inmovable = true;
 
-	this.body.velocity.x = -100;
+		this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 22, true);
+		this.animations.play('walk');
 
-	this.processMovement = function(){
+		this.body.velocity.x = -100;
+	}
+
+	processMovement(){
 		if (this.body.touching.right || this.body.blocked.right) {
       this.scale.set(-1, 1);
       this.body.velocity.x = -100;
@@ -28,10 +33,6 @@ Enemy = function(game, x, y, sprite) {
     	this.scale.set(1);
       this.body.velocity.x = 100;
     }
-	};
+	}
 
-};
-
-
-Enemy.prototype = Object.create(Phaser.Sprite.prototype);
-Enemy.prototype.constructor = Enemy;
+}
