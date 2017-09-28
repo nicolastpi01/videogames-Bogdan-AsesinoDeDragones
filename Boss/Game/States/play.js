@@ -53,13 +53,13 @@ var play = {
 
 		data.forEach(function(e){
 			switch(e.type){
-				case 0: enemies.add(new Mummy(game, e.x, e.y, 'mummy')); break;
-				case 1: enemies.add(new Zombie(game, e.x, e.y, 'zombie')); break;
-				case 2: enemies.add(new Skeleton(game, e.x, e.y, 'skeleton')); break;
-				case 3: enemies.add(new Dragon(game, e.x, e.y, 'dragon')); break;
-				case 4: enemies.add(new Slime(game, e.x, e.y, 'slime'));
+				case 'mummy'   : enemies.add(new Mummy(game, e.x, e.y, 'mummy'));       break;
+				case 'zombie'  : enemies.add(new Zombie(game, e.x, e.y, 'zombie'));     break;
+				case 'skeleton': enemies.add(new Skeleton(game, e.x, e.y, 'skeleton')); break;
+				case 'dragon'  : enemies.add(new Dragon(game, e.x, e.y, 'dragon'));     break;
+				case 'slime'   : enemies.add(new Slime(game, e.x, e.y, 'slime'));
 			}
-  	});
+  		});
 	},
 
 	//-------------------------------------
