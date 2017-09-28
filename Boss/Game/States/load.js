@@ -11,6 +11,7 @@ var load = {
 		game.load.spritesheet('zombie', 'Resources/zombie_n_skeleton2.png', 288/9, 256/4);
 		game.load.spritesheet('skeleton', 'Resources/zombie_n_skeleton2.png', 288/9, 256/4);
 		game.load.spritesheet('dragon', 'Resources/dragon96x64.png', 96, 64);
+		game.load.spritesheet('slime', 'Resources/slime.png', 320/10, 640/20);
 
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
 	},

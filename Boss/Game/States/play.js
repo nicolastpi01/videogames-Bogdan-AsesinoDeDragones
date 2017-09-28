@@ -27,8 +27,8 @@ var play = {
 
 	createKeys: function(){
 		cursors = game.input.keyboard.createCursorKeys();
-  	spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  	ctrl = game.input.keyboard.addKey(Phaser.Keyboard.CONTROL);
+  		spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  		ctrl = game.input.keyboard.addKey(Phaser.Keyboard.CONTROL);
 	},
 
 	createMap: function(){
@@ -38,8 +38,8 @@ var play = {
 		map.setCollisionBetween(1, 12);
 
 		layer = map.createLayer(0);
-  	layer.resizeWorld();
-  	layer.debugSettings.forceFullRedraw = true;
+  		layer.resizeWorld();
+  		layer.debugSettings.forceFullRedraw = true;
 	},
 
 	createBogdan: function(){
@@ -56,7 +56,8 @@ var play = {
 				case 0: enemies.add(new Mummy(game, e.x, e.y, 'mummy')); break;
 				case 1: enemies.add(new Zombie(game, e.x, e.y, 'zombie')); break;
 				case 2: enemies.add(new Skeleton(game, e.x, e.y, 'skeleton')); break;
-				case 3: enemies.add(new Dragon(game, e.x, e.y, 'dragon'));
+				case 3: enemies.add(new Dragon(game, e.x, e.y, 'dragon')); break;
+				case 4: enemies.add(new Slime(game, e.x, e.y, 'slime'));
 			}
   	});
 	},
@@ -74,17 +75,17 @@ var play = {
 	},
 
 	processEnemyMovement: function(){
-		enemies.forEach(function(e){ e.processMovement();	});
+		enemies.forEach(function(e){ e.processMovement(); });
 	},
 
 	processOverlap: function(bodgan, e){
 		if (bogdan.body.velocity.y > 0) {
 			bogdan.bounce();
-      e.kill();
-    }else{
-    	bogdan.life -= 1;
-    	bogdan.bounceBack();
-    }
+      		e.kill();
+    	}else{
+    		bogdan.life -= 1;
+    		bogdan.bounceBack();
+    	}
 	},
 
 	checkLose: function(){

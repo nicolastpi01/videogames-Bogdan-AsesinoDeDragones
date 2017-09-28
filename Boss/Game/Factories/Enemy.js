@@ -64,18 +64,18 @@ class Zombie extends Enemy{
 		
 		this.animations.play('walk-left');
 
-		this.body.velocity.x = -100;
+		this.body.velocity.x = -50;
 	}
 
 	processMovement(){
 		if (this.body.touching.right || this.body.blocked.right) {
 			this.animations.play('walk-left');
-      this.body.velocity.x = -100;
-    }
-    else if (this.body.touching.left || this.body.blocked.left) {
-    	this.animations.play('walk-right');
-      this.body.velocity.x = 100;
-    }
+      		this.body.velocity.x = -50;
+    	}
+    	else if (this.body.touching.left || this.body.blocked.left) {
+    		this.animations.play('walk-right');
+      		this.body.velocity.x = 50;
+    	}
 	}
 
 }
@@ -93,18 +93,18 @@ class Skeleton extends Enemy{
 		
 		this.animations.play('walk-left');
 
-		this.body.velocity.x = -100;
+		this.body.velocity.x = 100;
 	}
 
 	processMovement(){
 		if (this.body.touching.right || this.body.blocked.right) {
 			this.animations.play('walk-left');
-      this.body.velocity.x = -100;
-    }
-    else if (this.body.touching.left || this.body.blocked.left) {
-    	this.animations.play('walk-right');
-      this.body.velocity.x = 100;
-    }
+      	this.body.velocity.x = -100;
+    	}
+    	else if (this.body.touching.left || this.body.blocked.left) {
+    		this.animations.play('walk-right');
+     		this.body.velocity.x = 100;
+    	}
 	}
 }
 
@@ -129,11 +129,35 @@ class Dragon extends Enemy{
 	processMovement(){
 		if (this.body.touching.right || this.body.blocked.right) {
 			this.animations.play('fly-left');
-      this.body.velocity.x = -100;
-    }
-    else if (this.body.touching.left || this.body.blocked.left) {
-    	this.animations.play('fly-right');
-      this.body.velocity.x = 100;
-    }
+      		this.body.velocity.x = -100;
+    	}
+    	else if (this.body.touching.left || this.body.blocked.left) {
+    		this.animations.play('fly-right');
+      		this.body.velocity.x = 100;
+    	}
+	}
+}
+
+class Slime extends Enemy{
+	constructor(game, x, y, sprite){
+		super(game, x, y, sprite);
+	}
+
+	init(){
+		this.frame = 20;
+
+		this.body.gravity.y = 1000;
+		this.body.maxVelocity.y = 1000;
+		this.body.allowGravity = true;
+
+		this.animations.add('jump', [21, 22, 23, 24, 25, 26, 27, 28, 29], 15, true);
+		
+		this.animations.play('jump');
+	}
+
+	processMovement(){
+		if(this.body.onFloor() || this.body.touching.down){
+			this.body.velocity.y = -450;
+		}
 	}
 }
