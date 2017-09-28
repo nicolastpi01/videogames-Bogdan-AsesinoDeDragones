@@ -27,31 +27,32 @@ class Knight extends Phaser.Sprite {
 
 		this.animations.add('walk', [0, 1, 2, 3], 10, true);
 		this.animations.add('jump', [4], 10, true);
-		this.animations.add('attack', [4, 5, 6, 7], 25, true);
+		this.animations.add('attack', [4, 6, 4], 25, true);
 	}
 
 	//-------------------------------------------------------
 
 	processInput(cursors, spacebar, ctrl){
 		if (cursors.left.isDown){
-	    this.body.x += -5;
-	    this.scale.x = -0.7;
-	    this.playAnimation('walk');
-	  }
-	  else if (cursors.right.isDown){
-	    this.body.x += 5;
-	    this.scale.x = 0.7;
-	    this.playAnimation('walk');
-	  }
-	  else if(ctrl.isDown){
-	  	this.animations.play('attack');
-	  }
-	  else{
-	  	this.animations.stop();
-	  }
+	    	//this.body.x += -5;
+	    	this.body.velocity.x = -250
+	    	this.scale.x = -0.7;
+	    	this.playAnimation('walk');
+	  	}else if (cursors.right.isDown){
+	    	//this.body.x += 5;
+	    	this.body.velocity.x = 250;
+	    	this.scale.x = 0.7;
+	    	this.playAnimation('walk');
+	  	}else {
+	  		this.body.velocity.x = 0;
+	  		this.animations.stop();
+	  	}
 
+	  	spacebar.onDown.add(this.processJump, this);
+	}
 
-	  spacebar.onDown.add(this.processJump, this);
+	processAttak(){
+		this.playAnimation('attack');
 	}
 
 	processJump(){
