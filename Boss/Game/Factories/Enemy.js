@@ -10,6 +10,16 @@ class Enemy extends Phaser.Sprite {
 		this.init();
 	}
 
+	init(){}
+	processMovement(){}
+
+}
+
+class Mummy extends Enemy{
+	constructor(game, x, y, sprite){
+		super(game, x, y, sprite);
+	}
+
 	init(){
 		this.frame = 0;
 
@@ -34,5 +44,4 @@ class Enemy extends Phaser.Sprite {
       this.body.velocity.x = 100;
     }
 	}
-
 }

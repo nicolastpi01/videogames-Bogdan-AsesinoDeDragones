@@ -52,7 +52,7 @@ var play = {
 		var data = game.cache.getJSON('level_0');
 
 		data.forEach(function(e){
-      enemies.add(new Enemy(game, e.x, e.y, 'enemy'));    
+      enemies.add(new Mummy(game, e.x, e.y, 'enemy'));    
   	});
 	},
 
