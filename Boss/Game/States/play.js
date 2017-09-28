@@ -7,6 +7,7 @@ var play = {
 		this.createMap();
 		this.createBogdan();
 		this.createEnemies();
+		this.showLife();
 
 		game.camera.follow(bogdan);
 	},
@@ -79,6 +80,8 @@ var play = {
 	},
 
 	processOverlap: function(bodgan, e){
+		text.setText('Life: ' + bogdan.getLife());
+
 		if (bogdan.body.velocity.y > 0) {
 			bogdan.bounce();
       		e.kill();
@@ -92,6 +95,11 @@ var play = {
 		if(bogdan.isDead()){
 			game.state.start('boot');
 		}
-	}
+	},
+
+	showLife: function(){
+    	text = game.add.text(2, 1, "Life: " + bogdan.getLife(), { font: "32px Courier", fill: "#ffffff" });
+    	text.fixedToCamera = true;
+  	}
 
 };
