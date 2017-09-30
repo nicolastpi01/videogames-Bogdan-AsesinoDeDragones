@@ -8,6 +8,7 @@ var enemies;
 var cursors;
 var spacebar;
 var ctrl;
+var text;
 
 
 game.state.add('boot', boot);

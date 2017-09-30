@@ -5,7 +5,6 @@ var boot = {
 	},
 
 	create: function(){
-		//game.stage.backgroundColor = '#000000';
 		button = game.add.button(400, 300, 'title', onClick);
 		button.anchor.setTo(0.5);
 	},
