@@ -1,0 +1,50 @@
+Actividades:
+
+Escenario:
+Un pozo y que el personaje muerasprite quieto
+indicador de vidas (tres o cuatro corazones)
+
+Items:
+Item vida (captura una nueva vida)
+
+
+Logicas:
+Golpe encadenado con un mismo botón
+Vida por puntos
+Jugador parado sin hacer nada (nuevo sprite/sprite quieto)
+Salto doble con giro (nuevo sprite)
+Nuevo enemigo, comportamiento distinto al anterior
+
+recompensa (feedback - jugosidad)
+Camara tiembla al golpear
+espada se detiene unos segundos al impactar en enemigos
+Personaje felicita al jugador cuando realiza cierta acción
+
+Pantallas:
+
+pantalla de game Over (botones retry o continue)
+
+Pantalla inicio (boton new Game)
+
+
+Sonidos:
+sonidos cuando...
+Se obtiene una nueva vida (por los medios que sea)
+Pantalla inicio
+Pantalla game Over
+cuando recibis un golpe
+primer nivel
+musica boss
+musica al caminar
+
+
+Sensaciones de la clase pasada:
+Mecánicas - dinámicas - sensaciones
+Abnegado o Desafio (ojo, son contrarias)
+Fantasioso (no hay que hacer mucho, el juego es fantasioso de por sí)
+Impresión: (gráficos y sónido, esto es pulir el nivel de detalle nomas, usar efectos, etc)
+Narrativa (es opcional, vemos si llegamos, habría que agregar dialogos)
+
+
+Editar Particulas (vimos una clase, pero no le prestamos demasiada atención)
+
