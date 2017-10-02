@@ -19,8 +19,7 @@ var play = {
 	},
 
 	render: function(){
-		//game.debug.body(bogdan);
-		//game.debug.body(enemies);
+		game.debug.body(bogdan);
 	},
 
 	//-----------------------------------------
@@ -78,6 +77,8 @@ var play = {
 		if (bogdan.body.velocity.y > 0) {
 			bogdan.bounce();
       		e.kill();
+    	}else if(bodgan.isAttacking){
+    		e.kill();
     	}else{
     		bogdan.life -= 1;
     		bogdan.bounceBack();

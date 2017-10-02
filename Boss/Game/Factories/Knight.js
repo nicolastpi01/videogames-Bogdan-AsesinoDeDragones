@@ -20,6 +20,7 @@ class Knight extends Phaser.Sprite {
 		this.scale.setTo(0.7);
 		this.anchor.setTo(0.5);
 
+		this.body.setSize(31, 64, 5);
 		this.body.gravity.y = 1000;
 		this.body.maxVelocity.y = 1000;
 		this.body.allowGravity = true;
@@ -141,6 +142,10 @@ class Knight extends Phaser.Sprite {
 
 	getLife(){
 		return this.life;
+	}
+
+	isAttacking(){
+		return this.stateMachine.currentState.name == 'attack';
 	}
 }
 
