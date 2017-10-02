@@ -3,7 +3,6 @@ var play = {
 	preload: function(){},
 
 	create: function(){
-		this.createKeys();
 		this.createMap();
 		this.createBogdan();
 		this.createEnemies();
@@ -21,16 +20,10 @@ var play = {
 
 	render: function(){
 		//game.debug.body(bogdan);
-		//game.debug.body(enemy);
+		//game.debug.body(enemies);
 	},
 
 	//-----------------------------------------
-
-	createKeys: function(){
-		cursors = game.input.keyboard.createCursorKeys();
-  		spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  		ctrl = game.input.keyboard.addKey(Phaser.Keyboard.CONTROL);
-	},
 
 	createMap: function(){
 		map = game.add.tilemap('map');
@@ -41,7 +34,7 @@ var play = {
 		layer = map.createLayer(0);
   		layer.resizeWorld();
   		layer.debugSettings.forceFullRedraw = true;
-	},
+	},	
 
 	createBogdan: function(){
 		bogdan = new Knight(game, 50, 500, 'knight');	  

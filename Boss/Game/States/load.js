@@ -20,9 +20,17 @@ var load = {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 300;
 
+		this.createKeys();
+
 		game.state.start('play');
 	},
 
-	update: function(){}
+	update: function(){},
+
+	createKeys: function(){
+		cursors = game.input.keyboard.createCursorKeys();
+  		spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  		ctrl = game.input.keyboard.addKey(Phaser.Keyboard.CONTROL);
+	},
 
 };
