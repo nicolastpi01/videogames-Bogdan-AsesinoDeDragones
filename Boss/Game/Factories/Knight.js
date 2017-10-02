@@ -21,6 +21,7 @@ class Knight extends Phaser.Sprite {
 		this.scale.setTo(0.7);
 		this.anchor.setTo(0.5);
 
+		this.body.setSize(30, 64, 5);
 		this.body.gravity.y = 1000;
 		this.body.maxVelocity.y = 1000;
 		this.body.allowGravity = true;
@@ -143,6 +144,10 @@ class Knight extends Phaser.Sprite {
 	getLife(){
 		return this.life;
 	}
+
+	isAttacking(){
+		return this.stateMachine.currentState.name == 'attack';
+	}
 }
 
 //-------------------------------------
@@ -225,6 +230,7 @@ class Idle extends State {
 
 	handle(knight){
 		knight.body.velocity.x = 0;
+		knight.body.velocity.y = 0;
 	  	knight.animations.stop();
 	  	knight.frame = 0;
 	}

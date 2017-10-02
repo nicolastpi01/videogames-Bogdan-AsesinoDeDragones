@@ -19,8 +19,7 @@ var play = {
 	},
 
 	render: function(){
-		//game.debug.body(bogdan);
-		//game.debug.body(enemies);
+		game.debug.body(bogdan);
 	},
 
 	//-----------------------------------------
