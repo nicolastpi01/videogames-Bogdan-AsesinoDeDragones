@@ -16,3 +16,5 @@ var boot = {
 function onClick() {
 	game.state.start('load');
 }
+
+
