@@ -12,6 +12,7 @@ class Knight extends Phaser.Sprite {
 
 	init(){
 		this.life = 10;
+        
 
 		this.canDoubleJump = true;
 
