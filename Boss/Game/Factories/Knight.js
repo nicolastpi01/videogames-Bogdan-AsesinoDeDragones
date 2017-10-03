@@ -37,17 +37,28 @@ class Knight extends Phaser.Sprite {
 
 	processInput(cursors, spacebar, ctrl){
 		cursors.left.onDown.add(this.changeStateToWalkLeft, this);
-		cursors.left.onUp.add(this.changeStateToIdle, this);
+		//cursors.left.onUp.add(this.changeStateToIdle, this);
 
 		cursors.right.onDown.add(this.changeStateToWalkRigth, this);
-		cursors.right.onUp.add(this.changeStateToIdle, this);
+		//cursors.right.onUp.add(this.changeStateToIdle, this);
 
 		spacebar.onDown.add(this.changeStateToJump, this);
 
 		ctrl.onDown.add(this.changeStateToAttack, this);
-		ctrl.onUp.add(this.changeStateToIdle, this);
+		//ctrl.onUp.add(this.changeStateToIdle, this);
+
+		if(this.cursorsOrCtrlIsUp(cursors, ctrl) && !this.cursorsOrCtrlIsDown(cursors, ctrl)){
+			this.changeStateToIdle();
+		}
 
 		//Arreglar cambio de estado a Idle
+	}
+
+	cursorsOrCtrlIsUp(cursors, ctrl){
+		return cursors.left.isUp || cursors.right.isUp || ctrl.isUp;
+	}
+	cursorsOrCtrlIsDown(cursors, ctrl){
+		return cursors.left.isDown || cursors.right.isDown || ctrl.isDown;
 	}
 	
 	changeStateToWalkLeft(){
@@ -65,43 +76,6 @@ class Knight extends Phaser.Sprite {
 	changeStateToAttack(){
 		this.stateMachine.changeState('attack', this, {});
 	}
-
-	//processInput(cursors, spacebar, ctrl){
-	//	if (cursors.left.isDown){
-	//    	this.body.velocity.x = -250
-	//    	this.scale.x = -0.7;
-	//    	this.playAnimation('walk');
-	//  	}else if (cursors.right.isDown){
-	//    	this.body.velocity.x = 250;
-	//    	this.scale.x = 0.7;
-	//    	this.playAnimation('walk');
-	//  	}else {
-	//  		this.body.velocity.x = 0;
-	//  		this.animations.stop();
-	//  	}
-	//
-	//  	spacebar.onDown.add(this.processJump, this);
-	//}
-
-	//processJump(){
-	//	this.animations.stop();
-	//	this.animations.play('jump');
-
-	//	if(!this.isJumping()){
-	//		this.jump(-600);
-	//	}else{
-	//		this.trySecondJump();
-	//	}
-
-	//	this.resetDoubleJump();
-	//}
-
-	//trySecondJump(){
-	//	if(this.canDoubleJump){
-	//		this.canDoubleJump = false;
-	//		this.jump(-600);
-	//	}
-	//}
 
 	jump(velocity){
 		this.body.velocity.y = velocity;
@@ -229,7 +203,7 @@ class Idle extends State {
 
 	handle(knight){
 		knight.body.velocity.x = 0;
-		knight.body.velocity.y = 0;
+		//knight.body.velocity.y = 0;
 	  	knight.animations.stop();
 	  	knight.frame = 0;
 	}

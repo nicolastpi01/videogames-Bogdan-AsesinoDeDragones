@@ -74,6 +74,8 @@ var play = {
 	processOverlap: function(bodgan, e){
 		text.setText('Life: ' + bogdan.getLife());
 
+		//game.plugins.screenShake.shake(5);
+
 		if (bogdan.body.velocity.y > 0) {
 			bogdan.bounce();
       		e.kill();

@@ -17,9 +17,11 @@ var load = {
 	},
 
 	create: function(){
+		//game.plugins.screenShake = game.plugins.add(Phaser.Plugin.ScreenShake);
+
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 300;
-
+		
 		this.createKeys();
 
 		game.state.start('play');
