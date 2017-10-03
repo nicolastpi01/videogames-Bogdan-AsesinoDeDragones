@@ -11,8 +11,7 @@ class Knight extends Phaser.Sprite {
 	}
 
 	init(){
-		this.life = 10;
-        
+		this.life = 10;        
 
 		this.canDoubleJump = true;
 
@@ -103,12 +102,17 @@ class Knight extends Phaser.Sprite {
 	}
 
 	bounceBack(){
+		var newx = this.x;
+		var newy = this.y -25;
+		
 		if (this.body.touching.right || this.body.blocked.right) {
-			this.x -= 25;
+			newx -= 25;
     	}
     	else if (this.body.touching.left || this.body.blocked.left) {
-    		this.x += 25;
+    		newx += 25;
     	}
+
+    	game.add.tween(this).to( { x: newx, y: newy }, 50, Phaser.Easing.Linear.None, true);
 	}
 
 	isDead(){

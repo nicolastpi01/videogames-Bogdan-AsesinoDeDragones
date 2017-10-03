@@ -88,7 +88,6 @@ var play = {
 	checkLose: function(){
 		if(bogdan.isDead()){
             game.state.start('gameover');
-			//game.state.start('boot');
 		}
 	},
 
