@@ -1,114 +1,246 @@
-Knight = function(game, x, y, sprite){
+class Knight extends Phaser.Sprite {
 
-	Phaser.Sprite.call(this, game, x, y, sprite);
+	constructor(game, x, y, sprite){
+		super(game, x, y, sprite);
 
-	game.physics.arcade.enable(this);
+		game.physics.arcade.enable(this);
 
-	game.add.existing(this);
+		game.add.existing(this);
+
+		this.init();
+	}
+
+	init(){
+		this.life = 10;        
+
+		this.canDoubleJump = true;
+
+		this.frame = 0;
+
+		this.scale.setTo(0.7);
+		this.anchor.setTo(0.5);
+
+		this.body.setSize(30, 64, 5);
+		this.body.gravity.y = 1000;
+		this.body.maxVelocity.y = 1000;
+		this.body.allowGravity = true;
+		this.body.collideWorldBounds = true;
+
+		this.animations.add('walk', [0, 1, 2, 3], 10, true);
+		this.animations.add('jump', [4], 10, true);
+		this.animations.add('attack', [4, 6, 4], 25, true);
+
+		this.stateMachine = new StateMachine();
+	}
 
 	//-------------------------------------------------------
 
-	this.life = 100;
+	processInput(cursors, spacebar, ctrl){
+		cursors.left.onDown.add(this.changeStateToWalkLeft, this);
+		//cursors.left.onUp.add(this.changeStateToIdle, this);
 
-	this.canDoubleJump = true;
+		cursors.right.onDown.add(this.changeStateToWalkRigth, this);
+		//cursors.right.onUp.add(this.changeStateToIdle, this);
 
-	this.frame = 0;
+		spacebar.onDown.add(this.changeStateToJump, this);
 
-	this.scale.setTo(0.7);
-	this.anchor.setTo(0.5);
+		ctrl.onDown.add(this.changeStateToAttack, this);
+		//ctrl.onUp.add(this.changeStateToIdle, this);
 
-	this.body.gravity.y = 1000;
-	this.body.maxVelocity.y = 1000;
-	this.body.allowGravity = true;
-	this.body.collideWorldBounds = true;
-
-	this.animations.add('walk', [0, 1, 2, 3], 10, true);
-	this.animations.add('jump', [4], 10, true);
-	this.animations.add('attack', [4, 5, 6, 7], 25, true);
-
-
-	//-------------------------------------------------------
-
-	this.processInput = function(cursors, spacebar, ctrl){
-		if (cursors.left.isDown){
-	    this.body.x += -5;
-	    this.scale.x = -0.7;
-	    this.playAnimation('walk');
-	  }
-	  else if (cursors.right.isDown){
-	    this.body.x += 5;
-	    this.scale.x = 0.7;
-	    this.playAnimation('walk');
-	  }
-	  else if(ctrl.isDown){
-	  	this.animations.play('attack');
-	  }
-	  else{
-	  	this.animations.stop();
-	  }
-
-
-	  spacebar.onDown.add(this.processJump, this);
-	};
-
-	this.processJump = function(){
-		this.animations.stop();
-		this.animations.play('jump');
-
-		if(!this.isJumping()){
-			this.jump(-600);
-		}else{
-			this.trySecondJump();
+		if(this.cursorsOrCtrlIsUp(cursors, ctrl) && !this.cursorsOrCtrlIsDown(cursors, ctrl)){
+			this.changeStateToIdle();
 		}
 
-		this.resetDoubleJump();
-	};
+		//Arreglar cambio de estado a Idle
+	}
 
-	this.isJumping = function(){
-		return !(this.body.onFloor() || this.body.touching.down);
-	};
+	cursorsOrCtrlIsUp(cursors, ctrl){
+		return cursors.left.isUp || cursors.right.isUp || ctrl.isUp;
+	}
+	cursorsOrCtrlIsDown(cursors, ctrl){
+		return cursors.left.isDown || cursors.right.isDown || ctrl.isDown;
+	}
+	
+	changeStateToWalkLeft(){
+		this.stateMachine.changeState('walk', this, {"x":-250, "scale":-0.7});
+	}
+	changeStateToWalkRigth(){
+		this.stateMachine.changeState('walk', this, {"x":250, "scale":0.7});
+	}
+	changeStateToJump(){
+		this.stateMachine.changeState('jump', this, {"y":-600});
+	}
+	changeStateToIdle(){
+		this.stateMachine.changeState('idle', this, {});	
+	}
+	changeStateToAttack(){
+		this.stateMachine.changeState('attack', this, {});
+	}
 
-	this.jump = function(velocity){
+	jump(velocity){
 		this.body.velocity.y = velocity;
 	}
 
-	this.trySecondJump = function(){
-		if(this.canDoubleJump){
-			this.canDoubleJump = false;
-			this.jump(-600);
-		}
+	isJumping(){
+		return !(this.body.onFloor() || this.body.touching.down);
 	}
 
-	this.resetDoubleJump = function(){
+	resetDoubleJump(){
 		if(!this.isJumping()){
 			this.canDoubleJump = true;
 		}
 	}
 
-	this.playAnimation = function(animation){
+	playAnimation(animation){
 		if(!this.isJumping()){
 			this.animations.play(animation);
 		}
 	}
 
-	this.bounce = function(){
+	bounce(){
 		this.jump(-200);
-	};
+	}
 
-	this.bounceBack = function(){
+	bounceBack(){
+		var newx = this.x;
+		var newy = this.y -25;
+		
 		if (this.body.touching.right || this.body.blocked.right) {
-			this.x -= 25;
-    }
-    else if (this.body.touching.left || this.body.blocked.left) {
-    	this.x += 25;
-    }
-	};
+			newx -= 25;
+    	}
+    	else if (this.body.touching.left || this.body.blocked.left) {
+    		newx += 25;
+    	}
 
-	this.isDead = function(){
+    	game.add.tween(this).to( { x: newx, y: newy }, 50, Phaser.Easing.Linear.None, true);
+	}
+
+	isDead(){
 		return this.life <= 0;
-	};
+	}
 
-};
+	getLife(){
+		return this.life;
+	}
 
-Knight.prototype = Object.create(Phaser.Sprite.prototype);
-Knight.prototype.constructor = Knight;
+	isAttacking(){
+		return this.stateMachine.currentState.name == 'attack';
+	}
+}
+
+//-------------------------------------
+
+class StateMachine {
+	constructor(){
+		this.currentState;
+		this.states = [];
+
+		this.createStates();
+	}
+
+	createStates(){
+		this.states.push(new Idle('idle'));
+		this.states.push(new Walk('walk'));
+		this.states.push(new Jump('jump'));
+		this.states.push(new Attack('attack'));
+
+		this.currentState = this.states.find(this.idle);
+	}
+
+	idle(s){return s.name == 'idle';}
+	walk(s){return s.name == 'walk';}
+	jump(s){return s.name == 'jump';}
+	attack(s){return s.name == 'attack';}
+
+	changeState(event, knight, data){
+		switch(event){
+			case 'idle'  : this.handleIdle(knight); break;
+			case 'walk'  : this.handleWalk(knight, data); break;
+			case 'jump'  : this.handleJump(knight, data); break;
+			case 'attack': this.handleAttack(knight);
+		}
+	}
+
+	handleIdle(knight){
+		this.currentState = this.states.find(this.idle);
+		this.currentState.handle(knight);
+	}
+
+	handleWalk(knight, data){
+		this.currentState = this.states.find(this.walk);
+		this.currentState.handle(knight, data);
+	}
+
+	handleJump(knight, data){
+		if(this.currentState.name != 'jump'){
+			this.currentState = this.states.find(this.jump);
+		}
+
+		if(!knight.isJumping()){
+			this.currentState.handle(knight, data);
+		}else{
+			this.handleSecondJump(knight, data);
+		}
+
+		knight.resetDoubleJump();
+	}
+
+	handleSecondJump(knight, data){
+		if(knight.canDoubleJump){
+			knight.canDoubleJump = false;
+			this.currentState.handle(knight, data);
+		}
+	}
+
+	handleAttack(knight){
+		this.currentState = this.states.find(this.attack);
+		this.currentState.handle(knight);
+	}
+}
+
+class State {
+	constructor(name){ this.name = name; }
+	handle(){}
+}
+
+class Idle extends State {
+	constructor(name){ super(name); }
+
+	handle(knight){
+		knight.body.velocity.x = 0;
+		//knight.body.velocity.y = 0;
+	  	knight.animations.stop();
+	  	knight.frame = 0;
+	}
+}
+
+class Walk extends State {
+	constructor(name){ super(name); }
+
+	handle(knight, data){
+		knight.body.velocity.x = data.x;
+		knight.scale.x = data.scale;
+		knight.animations.play('walk');
+	}
+}
+
+class Jump extends State {
+	constructor(name){ super(name); }
+
+	handle(knight, data){
+		knight.animations.play('jump');
+		knight.body.velocity.y = data.y;
+	}
+}
+
+class Attack extends State {
+	constructor(name){ super(name); }
+
+	handle(knight, data){
+		knight.animations.play('attack');
+	}
+}
+
+
+
+
