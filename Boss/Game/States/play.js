@@ -74,13 +74,19 @@ var play = {
 	processOverlap: function(bodgan, e){
 		text.setText('Life: ' + bogdan.getLife());
 
-		//game.plugins.screenShake.shake(5);
+		var emitter = game.add.emitter(0, 0, 100);
+		emitter.makeParticles('pixel');
+		emitter.gravity = 200;
+		emitter.x = e.x;
+		emitter.y = e.y;
 
 		if (bogdan.body.velocity.y > 0) {
 			bogdan.bounce();
       		e.kill();
+      		emitter.start(true, 2000, null, 10);
     	}else{
     		bogdan.life -= 1;
+    		//game.plugins.screenShake.shake(5);
     		bogdan.bounceBack();
     	}
 	},
