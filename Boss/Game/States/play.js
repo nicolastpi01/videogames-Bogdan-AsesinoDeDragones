@@ -25,11 +25,13 @@ var play = {
 	//-----------------------------------------
 
 	createMap: function(){
-		map = game.add.tilemap('map');
+		//var background =  game.add.tilemap('background');
+		game.add.sprite(80, 0, 'background');
 
+		map = game.add.tilemap('map');
 		map.addTilesetImage('Tiles_32x32');
 		map.setCollisionBetween(1, 12);
-
+		
 		layer = map.createLayer(0);
   		layer.resizeWorld();
   		layer.debugSettings.forceFullRedraw = true;
