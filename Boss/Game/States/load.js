@@ -2,8 +2,8 @@ var load = {
 
 	preload: function(){
 		game.load.tilemap('map', 'Game/Maps/test-map.json', null, Phaser.Tilemap.TILED_JSON);
-
 		game.load.image('Tiles_32x32', 'Resources/Tiles_32x32.png');
+		game.load.image('background','Resources/FondoMountains.png');
 
 		game.load.spritesheet('knight', 'Resources/dragon-knight.png', 256/4, 256/4);
 		game.load.spritesheet('enemy', 'Resources/mummy37x45.png', 37, 45);
