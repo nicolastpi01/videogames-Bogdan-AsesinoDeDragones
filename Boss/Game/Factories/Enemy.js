@@ -41,13 +41,13 @@ class Mummy extends Enemy{
 
 	processMovement(){
 		if (this.body.touching.right || this.body.blocked.right) {
-      this.scale.set(-1, 1);
-      this.body.velocity.x = -100;
-    }
-    else if (this.body.touching.left || this.body.blocked.left) {
-    	this.scale.set(1);
-      this.body.velocity.x = 100;
-    }
+      		this.scale.set(-1, 1);
+      		this.body.velocity.x = -100;
+    	}
+    	else if (this.body.touching.left || this.body.blocked.left) {
+    		this.scale.set(1);
+      		this.body.velocity.x = 100;
+    	}
 	}
 }
 

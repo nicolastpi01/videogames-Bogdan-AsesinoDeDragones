@@ -36,7 +36,7 @@ var play = {
         layer = map.createLayer(0);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
-        pinches = map.createLayer(2);
+        //pinches = map.createLayer(2);
 
         //pinches.debugMap();
 
@@ -81,12 +81,13 @@ var play = {
         game.physics.arcade.collide(bogdan, layer);
         game.physics.arcade.collide(enemies, layer);
         game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
+        game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
     },
 
-    muerte: function(victima, p) {
+    //muerte: function(victima, p) {
         //game.plugins.screenShake.shake(5);
-        victima.kill();
-    },
+        //victima.kill();
+    //},
 
     processInput: function() {
         bogdan.processInput(cursors, spacebar, ctrl);
@@ -94,28 +95,16 @@ var play = {
 
     processEnemyMovement: function() {
         enemies.forEach(function(e) { e.processMovement(); });
-    },
+    },    
 
     processOverlap: function(bodgan, e) {
-        text.setText('Life: ' + bogdan.getLife());
-
-        var emitter = game.add.emitter(0, 0, 100);
-        emitter.makeParticles('pixel');
-        emitter.gravity = 200;
-        emitter.x = e.x;
-        emitter.y = e.y;
-
-        if (bogdan.body.velocity.y > 0) {
-            bogdan.bounce();
-            e.kill();
-            emitter.start(true, 2000, null, 10);
-        } else {
-            bogdan.life -= 1;
-            //game.plugins.screenShake.shake(5);
-            bogdan.bounceBack();
-        }
+        bogdan.processJumpKill(e, text); 
     },
 
+    processHit: function(weapon, e){
+        bogdan.processHit(e);
+    },
+    
     checkLose: function() {
         if (bogdan.isDead()) {
             game.state.start('gameover');

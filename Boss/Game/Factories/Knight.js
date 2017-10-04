@@ -31,27 +31,35 @@ class Knight extends Phaser.Sprite {
 		this.animations.add('attack', [4, 6, 4], 25, true);
 
 		this.stateMachine = new StateMachine();
+
+		this.createWeapon();
+
+	}
+
+	createWeapon(){
+		this.weapon = game.add.weapon(2, 'fire-attack');
+		this.weapon.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
+		this.weapon.bulletKillDistance = 150;
+		//this.weapon.bulletAngleOffset = 0;
+		this.weapon.bulletSpeed = 800;
+		this.weapon.fireRate = 100;
+		this.weapon.trackSprite(this, 0, 0);
+		this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
 	}
 
 	//-------------------------------------------------------
 
 	processInput(cursors, spacebar, ctrl){
 		cursors.left.onDown.add(this.changeStateToWalkLeft, this);
-		//cursors.left.onUp.add(this.changeStateToIdle, this);
-
 		cursors.right.onDown.add(this.changeStateToWalkRigth, this);
-		//cursors.right.onUp.add(this.changeStateToIdle, this);
 
 		spacebar.onDown.add(this.changeStateToJump, this);
 
 		ctrl.onDown.add(this.changeStateToAttack, this);
-		//ctrl.onUp.add(this.changeStateToIdle, this);
 
 		if(this.cursorsOrCtrlIsUp(cursors, ctrl) && !this.cursorsOrCtrlIsDown(cursors, ctrl)){
 			this.changeStateToIdle();
 		}
-
-		//Arreglar cambio de estado a Idle
 	}
 
 	cursorsOrCtrlIsUp(cursors, ctrl){
@@ -63,9 +71,11 @@ class Knight extends Phaser.Sprite {
 	
 	changeStateToWalkLeft(){
 		this.stateMachine.changeState('walk', this, {"x":-250, "scale":-0.7});
+		this.weapon.fireAngle = Phaser.ANGLE_LEFT;
 	}
 	changeStateToWalkRigth(){
 		this.stateMachine.changeState('walk', this, {"x":250, "scale":0.7});
+		this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
 	}
 	changeStateToJump(){
 		this.stateMachine.changeState('jump', this, {"y":-600});
@@ -126,6 +136,37 @@ class Knight extends Phaser.Sprite {
 	isAttacking(){
 		return this.stateMachine.currentState.name == 'attack';
 	}
+
+	processHit(e){
+		var emitter = this.createEmitter(e.x, e.y);
+        e.kill();
+        emitter.start(true, 2000, null, 10);
+	}
+
+	processJumpKill(e, txt){
+		txt.setText('Life: ' + this.life);
+
+		var emitter = this.createEmitter(e.x, e.y);
+        
+        if(this.body.touching.down && e.body.touching.up){
+            this.bounce();
+            e.kill();
+            emitter.start(true, 2000, null, 10);
+        } else {
+            this.life -= 1;
+            //game.plugins.screenShake.shake(5);
+            this.bounceBack();
+        }
+	}
+
+	createEmitter(enemyX, enemyY){
+        var emitter = game.add.emitter(0, 0, 100);
+        emitter.makeParticles('pixel');
+        emitter.gravity = 200;
+        emitter.x = enemyX;
+        emitter.y = enemyY;
+        return emitter;
+    }
 }
 
 //-------------------------------------
@@ -238,6 +279,7 @@ class Attack extends State {
 
 	handle(knight, data){
 		knight.animations.play('attack');
+		knight.weapon.fire();
 	}
 }
 
