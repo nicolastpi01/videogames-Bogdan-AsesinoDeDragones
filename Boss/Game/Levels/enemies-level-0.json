@@ -1,8 +1,8 @@
 [
-	{"x":800, "y":500, "type": "mummy"},
+	{"x":600, "y":500, "type": "mummy"},
 	{"x":750, "y":500, "type": "zombie"},
-	{"x":850, "y":500, "type": "skeleton"},
+	{"x":1200, "y":500, "type": "skeleton"},
 	{"x":800, "y":200, "type": "dragon"},
-	{"x":100, "y":200, "type": "slime"}
+	{"x":150, "y":200, "type": "slime"}
 	
 ]
