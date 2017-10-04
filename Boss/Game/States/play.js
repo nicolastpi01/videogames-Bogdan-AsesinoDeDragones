@@ -1,6 +1,5 @@
 var pinches;
 var play = {
-
     preload: function() {},
 
     create: function() {
@@ -20,21 +19,19 @@ var play = {
     },
 
     render: function() {
-        game.debug.body(bogdan);
+        //game.debug.body(bogdan);
     },
 
     //-----------------------------------------
 
     createMap: function() {
         //var background =  game.add.tilemap('background');
-        game.add.sprite(0, 0, 'background');
+        game.add.sprite(80, 0, 'background');
 
-        //Hacer que se repita el background infinitamente...
         map = game.add.tilemap('map');
         map.addTilesetImage('Tiles_32x32');
-
         //map.add.sprite('background');
-        map.setCollisionBetween(1, 28);
+        map.setCollisionBetween(1, 28); //era 12
 
         layer = map.createLayer(0);
         layer.resizeWorld();
@@ -83,12 +80,13 @@ var play = {
     checkCollitions: function() {
         game.physics.arcade.collide(bogdan, layer);
         game.physics.arcade.collide(enemies, layer);
-        game.physics.arcade.overlap(bogdan, pinches, this.muerte);
-        game.physics.arcade.overlap(enemies, pinches, this.muerte);
         game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
     },
 
-
+    muerte: function(victima, p) {
+        //game.plugins.screenShake.shake(5);
+        victima.kill();
+    },
 
     processInput: function() {
         bogdan.processInput(cursors, spacebar, ctrl);
@@ -98,21 +96,22 @@ var play = {
         enemies.forEach(function(e) { e.processMovement(); });
     },
 
-    muerte: function(victima, p) {
-        //game.plugins.screenShake.shake(5);
-        victima.kill();
-    },
-
     processOverlap: function(bodgan, e) {
         text.setText('Life: ' + bogdan.getLife());
 
-        //game.plugins.screenShake.shake(5);
+        var emitter = game.add.emitter(0, 0, 100);
+        emitter.makeParticles('pixel');
+        emitter.gravity = 200;
+        emitter.x = e.x;
+        emitter.y = e.y;
 
         if (bogdan.body.velocity.y > 0) {
             bogdan.bounce();
             e.kill();
+            emitter.start(true, 2000, null, 10);
         } else {
             bogdan.life -= 1;
+            //game.plugins.screenShake.shake(5);
             bogdan.bounceBack();
         }
     },

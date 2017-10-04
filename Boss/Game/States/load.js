@@ -5,6 +5,8 @@ var load = {
 		game.load.image('Tiles_32x32', 'Resources/Tiles_32x32.png');
 		game.load.image('background','Resources/FondoMountains.png');
 
+		game.load.image('pixel', 'Resources/pixel.png');
+
 		game.load.spritesheet('knight', 'Resources/dragon-knight.png', 256/4, 256/4);
 
 		game.load.spritesheet('mummy', 'Resources/mummy37x45.png', 37, 45);
