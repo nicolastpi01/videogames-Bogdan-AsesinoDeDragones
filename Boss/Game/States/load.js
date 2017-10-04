@@ -14,6 +14,8 @@ var load = {
 		game.load.spritesheet('slime', 'Resources/slime.png', 320/10, 640/20);
 
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
+
+		game.load.image('vida','Resources/corazon.png');
 	},
 
 	create: function(){
