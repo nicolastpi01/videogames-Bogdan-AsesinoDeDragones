@@ -10,6 +10,8 @@ var spacebar;
 var ctrl;
 var text;
 
+var shake;
+
 
 game.state.add('boot', boot);
 game.state.add('load', load);

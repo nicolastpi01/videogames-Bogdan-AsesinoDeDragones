@@ -21,7 +21,8 @@ var load = {
 	},
 
 	create: function(){
-		//game.plugins.screenShake = game.plugins.add(Phaser.Plugin.ScreenShake);
+		shake = new Phaser.Plugin.Shake(game);
+		game.plugins.add(shake);
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 300;
