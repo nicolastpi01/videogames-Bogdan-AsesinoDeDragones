@@ -165,6 +165,7 @@ class Knight extends Phaser.Sprite {
         emitter.gravity = 200;
         emitter.x = enemyX;
         emitter.y = enemyY;
+
         return emitter;
     }
 }

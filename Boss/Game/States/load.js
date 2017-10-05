@@ -5,7 +5,7 @@ var load = {
 		game.load.image('Tiles_32x32', 'Resources/Tiles_32x32.png');
 		game.load.image('background','Resources/FondoMountains.png');
 
-		game.load.image('pixel', 'Resources/pixel.png');
+		game.load.image('pixel', 'Resources/pixel_red.png');
 		game.load.image('vida','Resources/corazon.png');
 		game.load.image('fire-attack', 'Resources/Fire-Attack.png');
 
