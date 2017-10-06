@@ -6,7 +6,7 @@ var load = {
 		game.load.image('background','Resources/FondoMountains.png');
 
 		game.load.image('pixel', 'Resources/pixel_red.png');
-		game.load.image('vida','Resources/corazon.png');
+		game.load.image('heart','Resources/hearth-energy.png');
 		game.load.image('fire-attack', 'Resources/Fire-Attack.png');
 
 		game.load.spritesheet('knight', 'Resources/dragon-knight.png', 256/4, 256/4);

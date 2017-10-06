@@ -11,7 +11,7 @@ class Knight extends Phaser.Sprite {
 	}
 
 	init(){
-		this.life = 10;        
+		this.life = 3;        
 
 		this.canDoubleJump = true;
 
@@ -144,7 +144,7 @@ class Knight extends Phaser.Sprite {
 	}
 
 	processJumpKill(e, txt){
-		txt.setText('Life: ' + this.life);
+		//txt.setText('Life: ' + this.life);
 
 		var emitter = this.createEmitter(e.x, e.y);
         
@@ -156,6 +156,7 @@ class Knight extends Phaser.Sprite {
             this.life -= 1;
             shake.shake(5);
             this.bounceBack();
+            hearts.removeChildAt(hearts.length-1);
         }
 	}
 
@@ -235,7 +236,9 @@ class StateMachine {
 	}
 
 	handleAttack(knight){
-		this.currentState = this.states.find(this.attack);
+		if(this.currentState.name != 'atack'){
+			this.currentState = this.states.find(this.attack);
+		}
 		this.currentState.handle(knight);
 	}
 }

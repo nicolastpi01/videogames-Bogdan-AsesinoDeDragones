@@ -10,6 +10,8 @@ var spacebar;
 var ctrl;
 var text;
 
+var hearts;
+
 var shake;
 
 

@@ -30,12 +30,15 @@ var play = {
 
         map = game.add.tilemap('map');
         map.addTilesetImage('Tiles_32x32');
+        
         //map.add.sprite('background');
+        
         map.setCollisionBetween(1, 28); //era 12
 
         layer = map.createLayer(0);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
+
         //pinches = map.createLayer(2);
 
         //pinches.debugMap();
@@ -112,7 +115,20 @@ var play = {
     },
 
     showLife: function() {
-        text = game.add.text(2, 1, "Life: " + bogdan.getLife(), { font: "32px Courier", fill: "#ffffff" });
-        text.fixedToCamera = true;
+        //text = game.add.text(2, 1, "Life: " + bogdan.getLife(), { font: "32px Courier", fill: "#ffffff" });
+        //text.fixedToCamera = true;
+        //
+        hearts = game.add.group();
+
+        var posX = 10;
+
+        for (i = 0; i < bogdan.getLife(); i++) { 
+            h = game.add.sprite(posX, 10, 'heart');
+            h.scale.setTo(0.07);
+            hearts.add(h);
+            posX += 35;
+        }
+
+        hearts.fixedToCamera = true;
     },
 };
