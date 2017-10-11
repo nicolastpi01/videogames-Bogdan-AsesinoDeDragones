@@ -26,7 +26,7 @@ var play = {
 
     createMap: function() {
         //var background =  game.add.tilemap('background');
-        game.add.sprite(80, 0, 'background');
+        game.add.sprite(0, 0, 'background');
 
         map = game.add.tilemap('map');
         map.addTilesetImage('Tiles_32x32');
@@ -36,7 +36,7 @@ var play = {
         layer = map.createLayer(0);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
-        pinches = map.createLayer(2);
+        pinches = map.collision; //noop components('Muerte');
 
         //pinches.debugMap();
 
@@ -80,6 +80,9 @@ var play = {
     checkCollitions: function() {
         game.physics.arcade.collide(bogdan, layer);
         game.physics.arcade.collide(enemies, layer);
+
+        //pinches.checkCollitions.collide(bogdan, this.muerte);
+        //game.physics.arcade.overlap(bogdan, pinches., this.muerte);
         game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
     },
 
