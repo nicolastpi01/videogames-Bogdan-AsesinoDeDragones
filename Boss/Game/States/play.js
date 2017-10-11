@@ -1,4 +1,3 @@
-var pinches;
 var play = {
     preload: function() {},
 
@@ -30,20 +29,25 @@ var play = {
 
         map = game.add.tilemap('map');
         map.addTilesetImage('Tiles_32x32');
-        //map.add.sprite('background');
         map.setCollisionBetween(1, 28); //era 12
+        map.setCollisionBetween(47, 47);
+        map.setTileIndexCallback(47, this.muerte, this);
 
         layer = map.createLayer(0);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
-        pinches = map.collision; //noop components('Muerte');
-
-        //pinches.debugMap();
 
         //layer_vida = game.sprite('vida').createLayer(0);
         //layer_vida.scale.set(0.4);
         //game.add.sprite(10, 40, layer_vida)
         //.scale.set(0.4, 0.4);
+
+        //pinches = map['collisions']; //['Muerte'];
+        //if (pinches.contains('name'))
+        //   print(pinches['name']);
+        //pinches.addTilesetImage('Tiles_32x32');
+        //pinches.setCollisionBetween(27, 27); //era 12
+        //game.add.sprite(736, 599);
     },
 
     createBogdan: function() {
@@ -82,13 +86,14 @@ var play = {
         game.physics.arcade.collide(enemies, layer);
 
         //pinches.checkCollitions.collide(bogdan, this.muerte);
-        //game.physics.arcade.overlap(bogdan, pinches., this.muerte);
+        game.physics.arcade.overlap(bogdan, pinches, this.muerte);
         game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
+        game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
     },
 
-    muerte: function(victima, p) {
-        //game.plugins.screenShake.shake(5);
-        victima.kill();
+    muerte: function() {
+        console.log('Se esta muriendo!');
+        bogdan.life = 0;
     },
 
     processInput: function() {
@@ -100,23 +105,11 @@ var play = {
     },
 
     processOverlap: function(bodgan, e) {
-        text.setText('Life: ' + bogdan.getLife());
+        bogdan.processJumpKill(e, text);
+    },
 
-        var emitter = game.add.emitter(0, 0, 100);
-        emitter.makeParticles('pixel');
-        emitter.gravity = 200;
-        emitter.x = e.x;
-        emitter.y = e.y;
-
-        if (bogdan.body.velocity.y > 0) {
-            bogdan.bounce();
-            e.kill();
-            emitter.start(true, 2000, null, 10);
-        } else {
-            bogdan.life -= 1;
-            //game.plugins.screenShake.shake(5);
-            bogdan.bounceBack();
-        }
+    processHit: function(weapon, e) {
+        bogdan.processHit(e);
     },
 
     checkLose: function() {
@@ -126,7 +119,20 @@ var play = {
     },
 
     showLife: function() {
-        text = game.add.text(2, 1, "Life: " + bogdan.getLife(), { font: "32px Courier", fill: "#ffffff" });
-        text.fixedToCamera = true;
+        //text = game.add.text(2, 1, "Life: " + bogdan.getLife(), { font: "32px Courier", fill: "#ffffff" });
+        //text.fixedToCamera = true;
+        //
+        hearts = game.add.group();
+
+        var posX = 10;
+
+        for (i = 0; i < bogdan.getLife(); i++) {
+            h = game.add.sprite(posX, 10, 'heart');
+            h.scale.setTo(0.07);
+            hearts.add(h);
+            posX += 35;
+        }
+
+        hearts.fixedToCamera = true;
     },
 };

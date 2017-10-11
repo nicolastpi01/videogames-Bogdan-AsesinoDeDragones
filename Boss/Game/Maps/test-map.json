@@ -4,9 +4,17 @@
          "height":19,
          "image":"..\/..\/Resources\/FondoMountains.png",
          "name":"Monta\u00f1ias",
-         "offsetx":1,
+         "offsetx":-62,
          "offsety":-62,
          "opacity":0.400000005960464,
+         "properties":
+            {
+             "infinito":true
+            },
+         "propertytypes":
+            {
+             "infinito":"bool"
+            },
          "type":"imagelayer",
          "visible":true,
          "width":50,
