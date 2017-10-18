@@ -36,18 +36,6 @@ var play = {
         layer = map.createLayer(0);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
-
-        //layer_vida = game.sprite('vida').createLayer(0);
-        //layer_vida.scale.set(0.4);
-        //game.add.sprite(10, 40, layer_vida)
-        //.scale.set(0.4, 0.4);
-
-        //pinches = map['collisions']; //['Muerte'];
-        //if (pinches.contains('name'))
-        //   print(pinches['name']);
-        //pinches.addTilesetImage('Tiles_32x32');
-        //pinches.setCollisionBetween(27, 27); //era 12
-        //game.add.sprite(736, 599);
     },
 
     createBogdan: function() {
@@ -92,7 +80,7 @@ var play = {
     },
 
     muerte: function() {
-        console.log('Se esta muriendo!');
+        console.log('Se murio!');
         bogdan.life = 0;
     },
 
