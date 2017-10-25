@@ -24,7 +24,6 @@ var play = {
     //-----------------------------------------
 
     createMap: function() {
-        //var background =  game.add.tilemap('background');
         game.add.sprite(0, 0, 'background');
         game.add.sprite(1250, 0, 'background');
 
@@ -33,8 +32,9 @@ var play = {
         map.setCollisionBetween(1, 28); //era 12
         map.setCollisionBetween(47, 47);
         map.setTileIndexCallback(47, this.muerte, this);
-	map.setCollisionBetween(50,50);
-	map.setTileIndexCallback(50, this.proxNivel, this);
+	    map.setCollisionBetween(50,50);
+	    map.setTileIndexCallback(50, this.proxNivel, this);
+	    map.setCollisionBetween(56,63);
 
         layer = map.createLayer(0);
         layer.resizeWorld();
@@ -72,7 +72,10 @@ var play = {
 
     //-------------------------------------
 proxNivel: function(){
-	game.add.text(100,50,"Proximo nivel", { font: "32px Courier", fill: "#ffffff" });
+    text = game.add.text(2, 1, "Prox nivel ", { font: "32px Courier", fill: "#ffffff" });
+    text.fixedToCamera = true;
+    
+	game.state.start('load');
 },
     checkCollitions: function() {
         game.physics.arcade.collide(bogdan, layer);
@@ -112,9 +115,6 @@ proxNivel: function(){
     },
 
     showLife: function() {
-        //text = game.add.text(2, 1, "Life: " + bogdan.getLife(), { font: "32px Courier", fill: "#ffffff" });
-        //text.fixedToCamera = true;
-        //
         hearts = game.add.group();
 
         var posX = 10;
@@ -127,5 +127,26 @@ proxNivel: function(){
         }
 
         hearts.fixedToCamera = true;
+    },
+};
+
+//No funcaaaa
+var level_0 = {
+    createMap: function() {
+        game.add.sprite(0, 0, 'background');
+        game.add.sprite(1250, 0, 'background');
+
+        map = game.add.tilemap('map');
+        map.addTilesetImage('Tiles_32x32');
+        map.setCollisionBetween(1, 28); //era 12
+        map.setCollisionBetween(47, 47);
+        map.setTileIndexCallback(47, this.muerte, this);
+        map.setCollisionBetween(50,50);
+        map.setTileIndexCallback(50, this.proxNivel, this);
+        map.setCollisionBetween(56,63);
+
+        layer = map.createLayer(0);
+        layer.resizeWorld();
+        layer.debugSettings.forceFullRedraw = true;
     },
 };
