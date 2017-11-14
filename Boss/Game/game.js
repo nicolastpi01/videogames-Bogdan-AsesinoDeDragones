@@ -11,6 +11,7 @@ var spacebar;
 var ctrl;
 var text;
 
+var pinches;
 var hearts;
 
 var shake;

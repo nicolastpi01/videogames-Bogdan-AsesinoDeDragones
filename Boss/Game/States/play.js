@@ -1,4 +1,3 @@
-var pinches;
 var play = {
     preload: function() {},
 
@@ -26,28 +25,21 @@ var play = {
     //-----------------------------------------
 
     createMap: function() {
-        //var background =  game.add.tilemap('background');
-        game.add.sprite(80, 0, 'background');
+        game.add.sprite(0, 0, 'background');
+        game.add.sprite(1250, 0, 'background');
 
         map = game.add.tilemap('map');
         map.addTilesetImage('Tiles_32x32');
-        
-        //map.add.sprite('background');
-        
-        map.setCollisionBetween(1, 28); //era 12
+        map.setCollisionBetween(1, 28);
+        map.setCollisionBetween(47, 47);
+        map.setTileIndexCallback(47, this.muerte, this);
+	    map.setCollisionBetween(50,50);
+	    map.setTileIndexCallback(50, this.proxNivel, this);
+	    map.setCollisionBetween(56,63);
 
         layer = map.createLayer(0);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
-
-        //pinches = map.createLayer(2);
-
-        //pinches.debugMap();
-
-        //layer_vida = game.sprite('vida').createLayer(0);
-        //layer_vida.scale.set(0.4);
-        //game.add.sprite(10, 40, layer_vida)
-        //.scale.set(0.4, 0.4);
     },
 
     createBogdan: function() {
@@ -90,20 +82,28 @@ var play = {
     },
 
     //-------------------------------------
+    proxNivel: function(){
+        text = game.add.text(2, 1, "Prox nivel ", { font: "32px Courier", fill: "#ffffff" });
+        text.fixedToCamera = true;
+    
+	   game.state.start('load');
+    },
 
     checkCollitions: function() {
         game.physics.arcade.collide(bogdan, layer);
         game.physics.arcade.collide(enemies, layer);
         game.physics.arcade.collide(lifes, layer);
+        //pinches.checkCollitions.collide(bogdan, this.muerte);
+        game.physics.arcade.overlap(bogdan, pinches, this.muerte);
         game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
         game.physics.arcade.overlap(bogdan, lifes, this.addLife);
         game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
     },
 
-    //muerte: function(victima, p) {
-        //game.plugins.screenShake.shake(5);
-        //victima.kill();
-    //},
+    muerte: function() {
+        console.log('Se murio!');
+        bogdan.life = 0;
+    },
 
     processInput: function() {
         bogdan.processInput(cursors, spacebar, ctrl);
@@ -111,10 +111,10 @@ var play = {
 
     processEnemyMovement: function() {
         enemies.forEach(function(e) { e.processMovement(); });
-    },    
+    },
 
     processOverlap: function(bodgan, e) {
-        bogdan.processJumpKill(e, text); 
+        bogdan.processJumpKill(e, text);
     },
 
     addLife: function(bogdan, l){
@@ -130,7 +130,7 @@ var play = {
     processHit: function(weapon, e){
         bogdan.processHit(e);
     },
-    
+
     checkLose: function() {
         if (bogdan.isDead()) {
             game.state.start('gameover');
@@ -142,7 +142,7 @@ var play = {
 
         var posX = 10;
 
-        for (i = 0; i < bogdan.getLife(); i++) { 
+        for (i = 0; i < bogdan.getLife(); i++) {
             h = game.add.sprite(posX, 10, 'heart');
             h.scale.setTo(0.07);
             hearts.add(h);
@@ -150,5 +150,26 @@ var play = {
         }
 
         hearts.fixedToCamera = true;
+    },
+};
+
+//No funcaaaa
+var level_0 = {
+    createMap: function() {
+        game.add.sprite(0, 0, 'background');
+        game.add.sprite(1250, 0, 'background');
+
+        map = game.add.tilemap('map');
+        map.addTilesetImage('Tiles_32x32');
+        map.setCollisionBetween(1, 28); //era 12
+        map.setCollisionBetween(47, 47);
+        map.setTileIndexCallback(47, this.muerte, this);
+        map.setCollisionBetween(50,50);
+        map.setTileIndexCallback(50, this.proxNivel, this);
+        map.setCollisionBetween(56,63);
+
+        layer = map.createLayer(0);
+        layer.resizeWorld();
+        layer.debugSettings.forceFullRedraw = true;
     },
 };
