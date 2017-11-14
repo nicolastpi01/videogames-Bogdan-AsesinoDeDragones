@@ -6,6 +6,7 @@ var play = {
         this.createMap();
         this.createBogdan();
         this.createEnemies();
+        this.createLifes();
         this.showLife();
 
         game.camera.follow(bogdan);
@@ -78,12 +79,24 @@ var play = {
         });
     },
 
+    createLifes: function(){
+        lifes = game.add.group();
+
+        var data = game.cache.getJSON('lifes');
+
+        data.forEach(function(l) {
+            lifes.add(new Life(game, l.x, l.y, 'life'));
+        });
+    },
+
     //-------------------------------------
 
     checkCollitions: function() {
         game.physics.arcade.collide(bogdan, layer);
         game.physics.arcade.collide(enemies, layer);
+        game.physics.arcade.collide(lifes, layer);
         game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
+        game.physics.arcade.overlap(bogdan, lifes, this.addLife);
         game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
     },
 
@@ -104,6 +117,16 @@ var play = {
         bogdan.processJumpKill(e, text); 
     },
 
+    addLife: function(bogdan, l){
+        l.kill();
+        if(bogdan.life < 3){
+            bogdan.life += 1;
+            var h = game.add.sprite(hearts.getAt(bogdan.life-2).x + 35, 10, 'heart');
+            h.scale.setTo(0.07);
+            hearts.add(h);
+        }
+    },
+
     processHit: function(weapon, e){
         bogdan.processHit(e);
     },
@@ -115,9 +138,6 @@ var play = {
     },
 
     showLife: function() {
-        //text = game.add.text(2, 1, "Life: " + bogdan.getLife(), { font: "32px Courier", fill: "#ffffff" });
-        //text.fixedToCamera = true;
-        //
         hearts = game.add.group();
 
         var posX = 10;

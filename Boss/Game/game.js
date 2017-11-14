@@ -5,6 +5,7 @@ var map;
 var layer;
 var bogdan;
 var enemies;
+var lifes;
 var cursors;
 var spacebar;
 var ctrl;

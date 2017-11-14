@@ -8,6 +8,7 @@ var load = {
 		game.load.image('pixel', 'Resources/pixel_red.png');
 		game.load.image('heart','Resources/hearth-energy.png');
 		game.load.image('fire-attack', 'Resources/Fire-Attack.png');
+		game.load.image('life', 'Resources/icon-life.png');
 
 		game.load.spritesheet('knight', 'Resources/dragon-knight.png', 256/4, 256/4);
 
@@ -18,6 +19,7 @@ var load = {
 		game.load.spritesheet('slime', 'Resources/slime.png', 320/10, 640/20);
 
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
+		game.load.json('lifes', 'Game/Levels/lifes.json');
 	},
 
 	create: function(){
