@@ -98,8 +98,7 @@ var play = {
         game.physics.arcade.collide(enemies, layer);
         game.physics.arcade.collide(enemies, walls);
         game.physics.arcade.collide(lifes, layer);
-        //game.physics.arcade.overlap(bogdan, pinches, this.muerte);
-        game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
+        game.physics.arcade.collide(bogdan, enemies, this.processCollition);
         game.physics.arcade.overlap(bogdan, lifes, this.addLife);
         game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
     },
@@ -117,7 +116,7 @@ var play = {
         enemies.forEach(function(e) { e.processMovement(); });
     },
 
-    processOverlap: function(bodgan, e) {
+    processCollition: function(bodgan, e) {
         bogdan.processJumpKill(e, text);
     },
 
@@ -132,12 +131,13 @@ var play = {
     },
 
     processHit: function(weapon, e){
+        weapon.kill();
         bogdan.processHit(e);
     },
 
     checkLose: function() {
         if (bogdan.isDead()) {
-            game.state.start('gameover');
+            game.state.start('load');
         }
     },
 

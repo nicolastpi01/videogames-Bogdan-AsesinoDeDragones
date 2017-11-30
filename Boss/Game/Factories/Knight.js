@@ -30,7 +30,7 @@ class Knight extends Phaser.Sprite {
 		this.animations.add('jump', [4], 10, true);
 		this.animations.add('attack', [4, 6, 4], 25, true);
 
-		this.stateMachine = new StateMachine();
+		this.stateHandler = new StateHandler();
 
 		this.createWeapon();
 
@@ -70,21 +70,21 @@ class Knight extends Phaser.Sprite {
 	}
 	
 	changeStateToWalkLeft(){
-		this.stateMachine.changeState('walk', this, {"x":-250, "scale":-0.7});
+		this.stateHandler.changeState('walk', this, {"x":-250, "scale":-0.7});
 		this.weapon.fireAngle = Phaser.ANGLE_LEFT;
 	}
 	changeStateToWalkRigth(){
-		this.stateMachine.changeState('walk', this, {"x":250, "scale":0.7});
+		this.stateHandler.changeState('walk', this, {"x":250, "scale":0.7});
 		this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
 	}
 	changeStateToJump(){
-		this.stateMachine.changeState('jump', this, {"y":-600});
+		this.stateHandler.changeState('jump', this, {"y":-600});
 	}
 	changeStateToIdle(){
-		this.stateMachine.changeState('idle', this, {});	
+		this.stateHandler.changeState('idle', this, {});	
 	}
 	changeStateToAttack(){
-		this.stateMachine.changeState('attack', this, {});
+		this.stateHandler.changeState('attack', this, {});
 	}
 
 	jump(velocity){
@@ -134,7 +134,7 @@ class Knight extends Phaser.Sprite {
 	}
 
 	isAttacking(){
-		return this.stateMachine.currentState.name == 'attack';
+		return this.StateHandler.currentState.name == 'attack';
 	}
 
 	processHit(e){
@@ -173,7 +173,7 @@ class Knight extends Phaser.Sprite {
 
 //-------------------------------------
 
-class StateMachine {
+class StateHandler {
 	constructor(){
 		this.currentState;
 		this.states = [];
