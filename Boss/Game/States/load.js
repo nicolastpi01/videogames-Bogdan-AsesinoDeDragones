@@ -2,6 +2,8 @@ var load = {
 
 	preload: function(){
 		game.load.tilemap('map', 'Game/Maps/test-map.json', null, Phaser.Tilemap.TILED_JSON);
+		game.load.tilemap('map0', 'Game/Maps/map0.json', null, Phaser.Tilemap.TILED_JSON);
+		game.load.tilemap('map1', 'Game/Maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
 		game.load.image('Tiles_32x32', 'Resources/Tiles_32x32.png');
 		game.load.image('background','Resources/FondoMountains.png');
 
@@ -9,6 +11,7 @@ var load = {
 		game.load.image('heart','Resources/hearth-energy.png');
 		game.load.image('fire-attack', 'Resources/Fire-Attack.png');
 		game.load.image('life', 'Resources/icon-life.png');
+		game.load.image('wall', 'Resources/block.png');
 
 		game.load.spritesheet('knight', 'Resources/dragon-knight.png', 256/4, 256/4);
 
@@ -20,6 +23,7 @@ var load = {
 
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
 		game.load.json('lifes', 'Game/Levels/lifes.json');
+		game.load.json('walls', 'Game/Levels/walls.json');
 	},
 
 	create: function(){

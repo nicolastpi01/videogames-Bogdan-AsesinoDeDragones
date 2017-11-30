@@ -1,10 +1,11 @@
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'Boss');
+var game = new Phaser.Game(1250, 750, Phaser.CANVAS, 'Boss');
 
 var button;
 var map;
 var layer;
 var bogdan;
 var enemies;
+var walls;
 var lifes;
 var cursors;
 var spacebar;

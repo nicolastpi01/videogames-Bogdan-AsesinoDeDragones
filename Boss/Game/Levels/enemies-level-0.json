@@ -1,8 +1,102 @@
 [
-	{"x":600, "y":500, "type": "mummy"},
-	{"x":950, "y":500, "type": "zombie"},
-	{"x":1200, "y":500, "type": "skeleton"},
-	{"x":800, "y":200, "type": "dragon"},
-	{"x":150, "y":200, "type": "slime"}
+	{"x":576, "y":864, "type": "mummy"},
+
+	{"x":815, "y":608, "type": "slime"},
+	{"x":911, "y":608, "type": "slime"},
+
+	{"x":1088, "y":864, "type": "zombie"},
+	{"x":1632, "y":864, "type": "zombie"},
+
+	{"x":1568, "y":512, "type": "skeleton"},
+	{"x":2112, "y":512, "type": "mummy"},
+
+	{"x":2048, "y":864, "type": "skeleton"},
+
+	{"x":2270, "y":768, "type": "slime"},
+
+	{"x":2496, "y":864, "type": "skeleton"},
+
+	{"x":2880, "y":864, "type": "mummy"},
+	{"x":3136, "y":864, "type": "zombie"},
+
+	{"x":3296, "y":864, "type": "skeleton"},
+	{"x":3488, "y":864, "type": "skeleton"},
+
+	{"x":2688, "y":384, "type": "zombie"},
+
+	{"x":3215, "y":512, "type": "slime"},
+	{"x":3307, "y":480, "type": "slime"},
+	{"x":3407, "y":448, "type": "slime"},
+
+	{"x":3712, "y":160, "type": "zombie"},
+	{"x":4128, "y":160, "type": "skeleton"},
+	{"x":4480, "y":160, "type": "zombie"},
+
+	{"x":4015, "y":627, "type": "slime"},
+	{"x":4239, "y":627, "type": "slime"},
+
+	{"x":3808, "y":864, "type": "mummy"},
+	{"x":4416, "y":864, "type": "mummy"},
+
+	{"x":4610, "y":864, "type": "zombie"},
+	{"x":4770, "y":864, "type": "zombie"},
+
+	{"x":5024, "y":864, "type": "skeleton"},
+	{"x":5230, "y":864, "type": "slime"},
+	{"x":5472, "y":864, "type": "skeleton"},
+
+	{"x":5792, "y":672, "type": "dragon"},
+
+	{"x":6370, "y":768, "type": "slime"},
+
+	{"x":6240, "y":864, "type": "zombie"},
+	{"x":6464, "y":864, "type": "zombie"},
+
+	{"x":6656, "y":864, "type": "skeleton"},
+	{"x":6080, "y":864, "type": "skeleton"},
+
+	{"x":6830, "y":800, "type": "slime"},
+
+	{"x":6976, "y":864, "type": "mummy"},
+
+	{"x":7119, "y":800, "type": "slime"},
+	{"x":7315, "y":800, "type": "slime"},
+
+	{"x":7456, "y":864, "type": "mummy"},
+	{"x":7808, "y":864, "type": "skeleton"},
+
+	{"x":7983, "y":864, "type": "slime"},
+	{"x":8079, "y":800, "type": "slime"},
+	{"x":8175, "y":864, "type": "slime"},
+
+	{"x":8064, "y":680, "type": "dragon"},
+
+	{"x":9312, "y":680, "type": "dragon"},
+
+	{"x":8384, "y":864, "type": "skeleton"},
+	{"x":8640, "y":864, "type": "mummy"},
+	{"x":8928, "y":864, "type": "skeleton"},
+
+	{"x":9344, "y":864, "type": "zombie"},
+
+
+	{"x":4940, "y":288, "type": "slime"},
+	{"x":5088, "y":288, "type": "zombie"},
+	{"x":5260, "y":288, "type": "slime"},
+
+	{"x":5632, "y":288, "type": "mummy"},
+	{"x":6080, "y":288, "type": "mummy"},
+
+	{"x":6590, "y":352, "type": "slime"},
+
+	{"x":7690, "y":192, "type": "slime"},
+	{"x":7968, "y":160, "type": "skeleton"},
+	{"x":8298, "y":192, "type": "slime"},
+
+	{"x":7200, "y":128, "type": "dragon"},
+
+	{"x":8854, "y":288, "type": "dragon"}
+
+
 	
 ]

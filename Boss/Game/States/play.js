@@ -2,8 +2,10 @@ var play = {
     preload: function() {},
 
     create: function() {
-        this.createMap();
+        //this.createMap();
+        this.addMap();
         this.createBogdan();
+        this.createEnemyWalls();
         this.createEnemies();
         this.createLifes();
         this.showLife();
@@ -20,6 +22,8 @@ var play = {
 
     render: function() {
         //game.debug.body(bogdan);
+        //walls.forEach(function(b){game.debug.body(b);});
+        //enemies.forEach(function(b){game.debug.body(b);});
     },
 
     //-----------------------------------------
@@ -43,7 +47,7 @@ var play = {
     },
 
     createBogdan: function() {
-        bogdan = new Knight(game, 50, 500, 'knight');
+        bogdan = new Knight(game, 50, 864, 'knight');
     },
 
     createEnemies: function() {
@@ -92,9 +96,9 @@ var play = {
     checkCollitions: function() {
         game.physics.arcade.collide(bogdan, layer);
         game.physics.arcade.collide(enemies, layer);
+        game.physics.arcade.collide(enemies, walls);
         game.physics.arcade.collide(lifes, layer);
-        //pinches.checkCollitions.collide(bogdan, this.muerte);
-        game.physics.arcade.overlap(bogdan, pinches, this.muerte);
+        //game.physics.arcade.overlap(bogdan, pinches, this.muerte);
         game.physics.arcade.overlap(bogdan, enemies, this.processOverlap);
         game.physics.arcade.overlap(bogdan, lifes, this.addLife);
         game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
@@ -151,25 +155,31 @@ var play = {
 
         hearts.fixedToCamera = true;
     },
-};
 
-//No funcaaaa
-var level_0 = {
-    createMap: function() {
-        game.add.sprite(0, 0, 'background');
-        game.add.sprite(1250, 0, 'background');
-
-        map = game.add.tilemap('map');
+    addMap: function() {
+        map = game.add.tilemap('map1');
         map.addTilesetImage('Tiles_32x32');
-        map.setCollisionBetween(1, 28); //era 12
-        map.setCollisionBetween(47, 47);
-        map.setTileIndexCallback(47, this.muerte, this);
-        map.setCollisionBetween(50,50);
-        map.setTileIndexCallback(50, this.proxNivel, this);
-        map.setCollisionBetween(56,63);
 
-        layer = map.createLayer(0);
+        map.setCollisionBetween(1, 23);
+        map.setCollisionBetween(25, 28);
+        map.setCollisionBetween(30, 37);
+        map.setCollisionBetween(45, 64);
+
+        map.setTileIndexCallback(47, this.muerte, this);
+        map.setTileIndexCallback(51, this.proxNivel, this);
+
+        layer = map.createLayer(0);        
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
     },
+
+    createEnemyWalls: function(){
+        walls = game.add.group();
+
+        var data = game.cache.getJSON('walls');
+
+        data.forEach(function(w) {
+            walls.add(new EnemyWall(game, w.x, w.y, 'wall'));
+        });
+    }
 };
