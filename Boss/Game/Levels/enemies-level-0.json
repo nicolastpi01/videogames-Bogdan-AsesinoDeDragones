@@ -38,7 +38,7 @@
 	{"x":3808, "y":864, "type": "mummy"},
 	{"x":4416, "y":864, "type": "mummy"},
 
-	{"x":4610, "y":864, "type": "zombie"},
+	{"x":4650, "y":864, "type": "zombie"},
 	{"x":4770, "y":864, "type": "zombie"},
 
 	{"x":5024, "y":864, "type": "skeleton"},

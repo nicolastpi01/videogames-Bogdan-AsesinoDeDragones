@@ -37,6 +37,7 @@ class Mummy extends Enemy{
 		this.animations.play('walk');
 
 		this.body.velocity.x = -100;
+		this.body.setSize(25, 42, 7, 2);
 	}
 
 	processMovement(){
@@ -65,6 +66,7 @@ class Zombie extends Enemy{
 		this.animations.play('walk-left');
 
 		this.body.velocity.x = -50;
+		this.body.setSize(20, 33, 5, 29);
 	}
 
 	processMovement(){
@@ -94,6 +96,7 @@ class Skeleton extends Enemy{
 		this.animations.play('walk-left');
 
 		this.body.velocity.x = 100;
+		this.body.setSize(20, 45, 7, 18);
 	}
 
 	processMovement(){
@@ -124,6 +127,7 @@ class Dragon extends Enemy{
 		this.animations.play('fly-left');
 
 		this.body.velocity.x = -100;
+		this.body.setSize(90, 34, 0, 25);
 	}
 
 	processMovement(){
@@ -149,6 +153,8 @@ class Slime extends Enemy{
 		this.body.gravity.y = 1000;
 		this.body.maxVelocity.y = 1000;
 		this.body.allowGravity = true;
+
+		this.body.setSize(15, 15, 8, 16);
 
 		this.animations.add('jump', [21, 22, 23, 24, 25, 26, 27, 28, 29], 15, true);
 		
