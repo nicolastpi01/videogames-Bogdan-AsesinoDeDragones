@@ -160,17 +160,21 @@ var play = {
         map = game.add.tilemap('map1');
         map.addTilesetImage('Tiles_32x32');
 
-        map.setCollisionBetween(1, 23);
-        map.setCollisionBetween(25, 28);
-        map.setCollisionBetween(30, 37);
-        map.setCollisionBetween(45, 64);
+        map.setCollisionBetween(1, 23, true, 1);
+        map.setCollisionBetween(25, 28, true, 1);
+        map.setCollisionBetween(30, 37, true, 1);
+        map.setCollisionBetween(45, 64, true, 1);
 
-        map.setTileIndexCallback(47, this.muerte, this);
-        map.setTileIndexCallback(51, this.proxNivel, this);
+        map.setTileIndexCallback(47, this.muerte, this, 1);
+        map.setTileIndexCallback(51, this.proxNivel, this, 1);
 
-        layer = map.createLayer(0);        
+        map.createLayer(0);
+
+        layer = map.createLayer(1);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
+
+        map.createLayer(2);
     },
 
     createEnemyWalls: function(){
