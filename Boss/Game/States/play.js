@@ -157,6 +157,11 @@ var play = {
     },
 
     addMap: function() {
+        //game.stage.backgroundColor = '#697e96';
+
+        background = game.add.tileSprite(0, 0, 1250, 750, 'background0');
+        background.fixedToCamera = true;
+
         map = game.add.tilemap('map1');
         map.addTilesetImage('Tiles_32x32');
 
@@ -168,13 +173,13 @@ var play = {
         map.setTileIndexCallback(47, this.muerte, this, 1);
         map.setTileIndexCallback(51, this.proxNivel, this, 1);
 
-        map.createLayer(0);
+        //map.createLayer(0);
 
         layer = map.createLayer(1);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
 
-        map.createLayer(2);
+        //map.createLayer(2);
     },
 
     createEnemyWalls: function(){

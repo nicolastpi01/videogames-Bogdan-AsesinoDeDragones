@@ -5,6 +5,7 @@ var load = {
 		game.load.tilemap('map1', 'Game/Maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
 		game.load.image('Tiles_32x32', 'Resources/Tiles_32x32.png');
 		game.load.image('background','Resources/FondoMountains.png');
+		game.load.image('background0','Resources/Background0.png');
 
 		game.load.image('pixel', 'Resources/pixel_red.png');
 		game.load.image('heart','Resources/hearth-energy.png');

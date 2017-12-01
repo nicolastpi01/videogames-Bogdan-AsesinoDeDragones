@@ -17,6 +17,8 @@ var hearts;
 
 var shake;
 
+var background;
+
 
 game.state.add('boot', boot);
 game.state.add('load', load);
