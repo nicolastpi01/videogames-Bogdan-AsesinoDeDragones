@@ -21,6 +21,7 @@ var load = {
 		game.load.spritesheet('dragon', 'Resources/dragon96x64.png', 96, 64);
 		game.load.spritesheet('slime', 'Resources/slime.png', 320/10, 640/20);
 
+        game.load.image('BDragon', 'Resources/granDragon.png', 320/10, 640/20);
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
 		game.load.json('lifes', 'Game/Levels/lifes.json');
 		game.load.json('walls', 'Game/Levels/walls.json');

@@ -73,6 +73,8 @@ var play = {
                     enemies.add(new Slime(game, e.x, e.y, 'slime'));
             }
         });
+        //Linea de testeo de dragon
+        //enemies.add(new BDragon(game, 300,300, 'BDragon'));
     },
 
     createLifes: function(){
