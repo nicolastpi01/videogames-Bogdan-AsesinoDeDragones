@@ -25,6 +25,9 @@ var load = {
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
 		game.load.json('lifes', 'Game/Levels/lifes.json');
 		game.load.json('walls', 'Game/Levels/walls.json');
+
+		game.load.audio('golpeknight', 'Resources/golpe.wav');
+		game.load.audio('pisarknight', 'Resources/pisar.wav');	
 	},
 
 	create: function(){
@@ -35,6 +38,12 @@ var load = {
 		game.physics.arcade.gravity.y = 300;
 		
 		this.createKeys();
+
+        game.golpeknight = game.add.audio('golpeknight');
+        game.golpeknight.allowMultiple = true;
+
+        game.pisarknight = game.add.audio('pisarknight');
+        game.pisarknight.allowMultiple = true;
 
 		game.state.start('play');
 	},

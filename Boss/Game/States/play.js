@@ -119,6 +119,7 @@ var play = {
     },
 
     processCollition: function(bodgan, e) {
+        game.pisarknight.play();
         bogdan.processJumpKill(e, text);
     },
 
@@ -134,6 +135,7 @@ var play = {
 
     processHit: function(weapon, e){
         weapon.kill();
+        game.golpeknight.play();
         bogdan.processHit(e);
     },
 
