@@ -71,10 +71,12 @@ var play = {
                     break;
                 case 'slime':
                     enemies.add(new Slime(game, e.x, e.y, 'slime'));
+                    break;
+                case 'BDragon':
+                    enemies.add(new BDragon(game, e.x, e.y, 'BDragon'));     //Linea de testeo de dragon
+                    break;
             }
         });
-        //Linea de testeo de dragon
-        //enemies.add(new BDragon(game, 300,300, 'BDragon'));
     },
 
     createLifes: function(){

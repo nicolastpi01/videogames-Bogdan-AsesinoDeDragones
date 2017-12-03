@@ -1,6 +1,8 @@
 [
 	{"x":576, "y":864, "type": "mummy"},
 
+    {"x":200, "y":764, "type": "BDragon"},
+    
 	{"x":815, "y":608, "type": "slime"},
 	{"x":911, "y":608, "type": "slime"},
 
