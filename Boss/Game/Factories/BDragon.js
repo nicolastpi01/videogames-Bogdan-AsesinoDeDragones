@@ -15,6 +15,13 @@ class BDragon extends Enemy{
 	}
 
 	processMovement(){
+		//Logre hacerlo funcionar, pero no me gusta el cambio abrupto. Comenzare a tocar el volumen la prox
+		if( this.inCamera ){
+			if(!game.bostezo.isplaying) game.bostezo.resume();
+		}
+		else
+			game.bostezo.pause();
+		
 	if(false){
 		if (this.body.touching.right || this.body.blocked.right) {
       		this.scale.set(-1,1);

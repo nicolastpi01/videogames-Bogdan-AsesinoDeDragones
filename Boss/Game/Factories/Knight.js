@@ -280,6 +280,7 @@ class Attack extends State {
 	handle(knight, data){
 		knight.animations.play('attack');
 		knight.weapon.fire();
+		game.lanzafuego.play();
 	}
 }
 

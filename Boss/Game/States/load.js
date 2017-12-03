@@ -28,7 +28,10 @@ var load = {
 		game.load.json('walls', 'Game/Levels/walls.json');
 
 		game.load.audio('golpeknight', 'Resources/golpe.wav');
-		game.load.audio('pisarknight', 'Resources/pisar.wav');	
+		game.load.audio('pisarknight', 'Resources/pisar.wav');
+		game.load.audio('quemando', 'Resources/quemando.wav');
+		game.load.audio('lanzafuego', 'Resources/lanzafuego.wav');
+		game.load.audio('dragonbostezo', 'Resources/dragonbostezo.mp3');
 	},
 
 	create: function(){
@@ -39,12 +42,7 @@ var load = {
 		game.physics.arcade.gravity.y = 300;
 		
 		this.createKeys();
-
-        game.golpeknight = game.add.audio('golpeknight');
-        game.golpeknight.allowMultiple = true;
-
-        game.pisarknight = game.add.audio('pisarknight');
-        game.pisarknight.allowMultiple = true;
+		this.crearsonidos();
 
 		game.state.start('play');
 	},
@@ -56,5 +54,20 @@ var load = {
   		jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.X);//SPACEBAR
   		attackButton = game.input.keyboard.addKey(Phaser.Keyboard.Z);//CONTROL
 	},
+
+	crearsonidos: function(){
+		game.golpeknight = game.add.audio('golpeknight');
+	    game.golpeknight.allowMultiple = true;
+
+	    game.pisarknight = game.add.audio('pisarknight');
+	    game.pisarknight.allowMultiple = true;
+
+	    game.bostezo = game.add.audio('dragonbostezo');
+	    game.bostezo.allowMultiple = false;
+	   	game.bostezo.loopFull(1.0);
+
+	    game.lanzafuego = game.add.audio('lanzafuego');
+	    game.lanzafuego.allowMultiple = false;
+	}
 
 };

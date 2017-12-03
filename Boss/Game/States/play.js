@@ -108,12 +108,14 @@ var play = {
     },
 
     muerte: function() {
-        console.log('Se murio!');
+        //console.log('Se murio!');
         bogdan.life = 0;
     },
 
     processInput: function() {
         bogdan.processInput(cursors, jumpButton, attackButton);
+        //if(bogdan.isAttacking())
+        //    game.lanzafuego.play();
     },
 
     processEnemyMovement: function() {
