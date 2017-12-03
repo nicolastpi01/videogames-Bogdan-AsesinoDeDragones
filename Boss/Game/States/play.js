@@ -113,7 +113,7 @@ var play = {
     },
 
     processInput: function() {
-        bogdan.processInput(cursors, spacebar, ctrl);
+        bogdan.processInput(cursors, jumpButton, attackButton);
     },
 
     processEnemyMovement: function() {

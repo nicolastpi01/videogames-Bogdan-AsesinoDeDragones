@@ -8,8 +8,8 @@ var enemies;
 var walls;
 var lifes;
 var cursors;
-var spacebar;
-var ctrl;
+var jumpButton;
+var attackButton;
 var text;
 
 var pinches;
@@ -23,7 +23,7 @@ var background;
 game.state.add('boot', boot);
 game.state.add('load', load);
 game.state.add('play', play);
-game.state.add('gameover', gameover);
+//game.state.add('gameover', gameover);
 
 
 game.state.start('boot');

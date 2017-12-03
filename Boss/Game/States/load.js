@@ -52,8 +52,8 @@ var load = {
 
 	createKeys: function(){
 		cursors = game.input.keyboard.createCursorKeys();
-  		spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  		ctrl = game.input.keyboard.addKey(Phaser.Keyboard.CONTROL);
+  		jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.X);//SPACEBAR
+  		attackButton = game.input.keyboard.addKey(Phaser.Keyboard.Z);//CONTROL
 	},
 
 };

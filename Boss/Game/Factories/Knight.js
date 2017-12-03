@@ -53,11 +53,11 @@ class Knight extends Phaser.Sprite {
 		cursors.left.onDown.add(this.changeStateToWalkLeft, this);
 		cursors.right.onDown.add(this.changeStateToWalkRigth, this);
 
-		spacebar.onDown.add(this.changeStateToJump, this);
+		jumpButton.onDown.add(this.changeStateToJump, this);
 
-		ctrl.onDown.add(this.changeStateToAttack, this);
+		attackButton.onDown.add(this.changeStateToAttack, this);
 
-		if(this.cursorsOrCtrlIsUp(cursors, ctrl) && !this.cursorsOrCtrlIsDown(cursors, ctrl)){
+		if(this.cursorsOrCtrlIsUp(cursors, attackButton) && !this.cursorsOrCtrlIsDown(cursors, attackButton)){
 			this.changeStateToIdle();
 		}
 	}
