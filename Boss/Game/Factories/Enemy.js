@@ -33,7 +33,7 @@ class Enemy extends Phaser.Sprite {
 
 	createEmitter(x, y){
         var emitter = game.add.emitter(0, 0, 100);
-        emitter.makeParticles('pixel');
+        emitter.makeParticles('pixel_red');
         emitter.gravity = 200;
         emitter.x = x;
         emitter.y = y;

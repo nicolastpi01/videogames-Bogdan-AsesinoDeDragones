@@ -7,7 +7,8 @@ var load = {
 		game.load.image('background','Resources/FondoMountains.png');
 		game.load.image('background0','Resources/Background0.png');
 
-		game.load.image('pixel', 'Resources/pixel_red.png');
+		game.load.image('pixel_red', 'Resources/pixel_red.png');
+		game.load.image('pixel_blue', 'Resources/pixel_blue.png');
 		game.load.image('heart','Resources/hearth-energy.png');
 		game.load.image('fire-attack', 'Resources/Fire-Attack.png');
 		game.load.image('life', 'Resources/icon-life.png');

@@ -141,7 +141,9 @@ class Knight extends Phaser.Sprite {
 		e.hit();
 	}
 
-	processJumpKill(e, txt){        
+	processJumpKill(e, txt){      
+		var emitter = this.createEmitter(this.x, this.y);
+
         if(this.body.touching.down && e.body.touching.up){
             this.bounce();
             e.hit();
@@ -149,9 +151,20 @@ class Knight extends Phaser.Sprite {
             this.life -= 1;
             shake.shake(5);
             this.bounceBack();
+            emitter.start(true, 2000, null, 10);
             hearts.removeChildAt(hearts.length-1);
         }
 	}
+
+	createEmitter(x, y){
+        var emitter = game.add.emitter(0, 0, 100);
+        emitter.makeParticles('pixel_blue');
+        emitter.gravity = 200;
+        emitter.x = x;
+        emitter.y = y;
+
+        return emitter;
+    }
 }
 
 //-------------------------------------
