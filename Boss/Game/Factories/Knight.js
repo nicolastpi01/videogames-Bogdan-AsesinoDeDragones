@@ -15,7 +15,7 @@ class Knight extends Phaser.Sprite {
 
 		this.canDoubleJump = true;
 
-		this.frame = 0;
+		this.frame = 0; 
 
 		this.scale.setTo(0.7);
 		this.anchor.setTo(0.5);
@@ -28,7 +28,7 @@ class Knight extends Phaser.Sprite {
 
 		this.animations.add('walk', [0, 1, 2, 3], 10, true);
 		this.animations.add('jump', [4], 10, true);
-		this.animations.add('attack', [4, 6, 4], 25, true);
+		this.animations.add('attack', [4, 6, 4], 25, false);
 
 		this.stateHandler = new StateHandler();
 
