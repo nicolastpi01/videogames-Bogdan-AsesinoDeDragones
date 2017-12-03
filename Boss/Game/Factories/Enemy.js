@@ -7,6 +7,7 @@ class Enemy extends Phaser.Sprite {
 
 		game.add.existing(this);
 
+		this.life;
 
 		this.anchor.setTo(0.5);
 		this.scale.set(1);
@@ -17,6 +18,28 @@ class Enemy extends Phaser.Sprite {
 
 		this.init();
 	}
+
+	hit(){
+		var emitter = this.createEmitter(this.x, this.y);
+
+		this.life -= 1;
+		emitter.start(true, 2000, null, 5);
+
+		if(this.life == 0){
+			this.kill();
+			emitter.start(true, 2000, null, 10);
+		}
+	}
+
+	createEmitter(x, y){
+        var emitter = game.add.emitter(0, 0, 100);
+        emitter.makeParticles('pixel');
+        emitter.gravity = 200;
+        emitter.x = x;
+        emitter.y = y;
+
+        return emitter;
+    }
 
 	init(){}
 	processMovement(){}
@@ -29,6 +52,8 @@ class Mummy extends Enemy{
 	}
 
 	init(){
+		this.life = 2;
+
 		this.frame = 0;
 
 		this.scale.set(-1, 1);
@@ -58,6 +83,8 @@ class Zombie extends Enemy{
 	}
 
 	init(){
+		this.life = 2;
+
 		this.frame = 9;
 
 		this.animations.add('walk-left', [9, 10, 11], 10, true);
@@ -88,6 +115,8 @@ class Skeleton extends Enemy{
 	}
 
 	init(){
+		this.life = 1;
+
 		this.frame = 12;
 
 		this.animations.add('walk-left', [12, 13, 14, 15, 16, 17], 10, true);
@@ -117,6 +146,8 @@ class Dragon extends Enemy{
 	}
 
 	init(){
+		this.life = 3;
+
 		this.frame = 12;
 
 		this.body.allowGravity = false;
@@ -148,6 +179,8 @@ class Slime extends Enemy{
 	}
 
 	init(){
+		this.life = 1;
+
 		this.frame = 20;
 
 		this.body.gravity.y = 1000;
