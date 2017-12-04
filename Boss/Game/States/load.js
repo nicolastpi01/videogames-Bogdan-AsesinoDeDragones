@@ -13,6 +13,8 @@ var load = {
 		game.load.image('fire-attack', 'Resources/Fire-Attack.png');
 		game.load.image('life', 'Resources/icon-life.png');
 		game.load.image('wall', 'Resources/block.png');
+		
+		game.load.spritesheet('coin', 'Resources/coin.png', 192/6, 32);
 
 		game.load.spritesheet('knight', 'Resources/dragon-knight.png', 256/4, 256/4);
 
@@ -26,6 +28,7 @@ var load = {
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
 		game.load.json('lifes', 'Game/Levels/lifes.json');
 		game.load.json('walls', 'Game/Levels/walls.json');
+		game.load.json('coins', 'Game/Levels/coins.json');
 
 		game.load.audio('golpeknight', 'Resources/golpe.wav');
 		game.load.audio('pisarknight', 'Resources/pisar.wav');

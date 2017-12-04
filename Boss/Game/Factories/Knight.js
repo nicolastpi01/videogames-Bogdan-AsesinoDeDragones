@@ -17,6 +17,8 @@ class Knight extends Phaser.Sprite {
 
 		this.canDoubleJump = true;
 
+		this.points = 0;
+
 		this.frame = 0; 
 
 		this.scale.setTo(0.7);
@@ -141,6 +143,7 @@ class Knight extends Phaser.Sprite {
 	}
 
 	processHit(e){
+		this.addpts(e.value);
 		e.hit();
 	}
 
@@ -149,9 +152,11 @@ class Knight extends Phaser.Sprite {
 
         if(this.body.touching.down && e.body.touching.up){
             this.bounce();
+            this.addpts(e.value);
             e.hit();
         } else {
             this.life -= 1;
+            this.addpts(-10);
             shake.shake(5);
             this.bounceBack();
             emitter.start(true, 2000, null, 10);
@@ -167,6 +172,11 @@ class Knight extends Phaser.Sprite {
         emitter.y = y;
 
         return emitter;
+    }
+
+    addpts(pts){
+    	this.points += pts;
+    	console.log(this.points);
     }
 }
 

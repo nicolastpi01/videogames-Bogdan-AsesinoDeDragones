@@ -8,6 +8,7 @@ var play = {
         this.createEnemyWalls();
         this.createEnemies();
         this.createLifes();
+        this.createCoins();
         this.showLife();
 
         game.camera.follow(bogdan);
@@ -100,11 +101,13 @@ var play = {
     checkCollitions: function() {
         game.physics.arcade.collide(bogdan, layer);
         game.physics.arcade.collide(enemies, layer);
+        game.physics.arcade.collide(coins, layer);
         game.physics.arcade.collide(enemies, walls);
         game.physics.arcade.collide(lifes, layer);
         game.physics.arcade.collide(bogdan, enemies, this.processCollition);
         game.physics.arcade.overlap(bogdan, lifes, this.addLife);
         game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
+        game.physics.arcade.collide(bogdan, coins, this.coinCollition);
     },
 
     muerte: function() {
@@ -198,5 +201,21 @@ var play = {
         data.forEach(function(w) {
             walls.add(new EnemyWall(game, w.x, w.y, 'wall'));
         });
+    },
+
+    createCoins: function(){
+        coins = game.add.group();
+
+        var data = game.cache.getJSON('coins');
+
+        data.forEach(function(c) {
+            coins.add(new Coin(game, c.x, c.y, 'coin'));
+        });
+    },
+
+    coinCollition: function(h, c){
+        c.kill();
+        bogdan.addpts(100);
     }
+
 };

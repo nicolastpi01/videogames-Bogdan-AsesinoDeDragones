@@ -4,6 +4,7 @@ class BDragon extends Enemy{
 	}
 
 	init(){
+		this.value = 100;
 		this.frame = 0;
 		this.body.allowGravity = true;
 		//this.scale.set(-1, 1);

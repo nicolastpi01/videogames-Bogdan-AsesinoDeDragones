@@ -10,14 +10,13 @@ var lifes;
 var cursors;
 var jumpButton;
 var attackButton;
-var text;
-
-var pinches;
 var hearts;
-
+var coins;
 var shake;
-
 var background;
+
+var text;
+var pinches;
 
 
 game.state.add('boot', boot);
