@@ -7,13 +7,17 @@ class Knight extends Phaser.Sprite {
 
 		game.add.existing(this);
 
+		this.game = game;
+
 		this.init();
 	}
 
 	init(){
-		this.life = 3;        
+		this.life = 3;   
 
 		this.canDoubleJump = true;
+
+		this.points = 0;
 
 		this.frame = 0; 
 
@@ -38,6 +42,7 @@ class Knight extends Phaser.Sprite {
 
 	createWeapon(){
 		this.weapon = game.add.weapon(2, 'fire-attack');
+
 		this.weapon.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
 		this.weapon.bulletKillDistance = 150;
 		//this.weapon.bulletAngleOffset = 0;
@@ -108,7 +113,7 @@ class Knight extends Phaser.Sprite {
 	}
 
 	bounce(){
-		this.jump(-250);
+		this.jump(-300);
 	}
 
 	bounceBack(){
@@ -138,6 +143,7 @@ class Knight extends Phaser.Sprite {
 	}
 
 	processHit(e){
+		this.addpts(e.value);
 		e.hit();
 	}
 
@@ -146,9 +152,11 @@ class Knight extends Phaser.Sprite {
 
         if(this.body.touching.down && e.body.touching.up){
             this.bounce();
+            this.addpts(e.value);
             e.hit();
         } else {
             this.life -= 1;
+            this.addpts(-10);
             shake.shake(5);
             this.bounceBack();
             emitter.start(true, 2000, null, 10);
@@ -164,6 +172,11 @@ class Knight extends Phaser.Sprite {
         emitter.y = y;
 
         return emitter;
+    }
+
+    addpts(pts){
+    	this.points += pts;
+    	console.log(this.points);
     }
 }
 

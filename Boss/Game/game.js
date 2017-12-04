@@ -10,20 +10,19 @@ var lifes;
 var cursors;
 var jumpButton;
 var attackButton;
-var text;
-
-var pinches;
 var hearts;
-
+var coins;
 var shake;
-
 var background;
+
+var text;
+var pinches;
 
 
 game.state.add('boot', boot);
 game.state.add('load', load);
 game.state.add('play', play);
-//game.state.add('gameover', gameover);
+game.state.add('boss', boss);
 
 
 game.state.start('boot');

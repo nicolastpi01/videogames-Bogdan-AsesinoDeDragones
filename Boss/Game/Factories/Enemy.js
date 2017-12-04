@@ -8,6 +8,7 @@ class Enemy extends Phaser.Sprite {
 		game.add.existing(this);
 
 		this.life;
+		this.value;
 
 		this.anchor.setTo(0.5);
 		this.scale.set(1);
@@ -53,6 +54,7 @@ class Mummy extends Enemy{
 
 	init(){
 		this.life = 2;
+		this.value = 30;
 
 		this.frame = 0;
 
@@ -84,6 +86,7 @@ class Zombie extends Enemy{
 
 	init(){
 		this.life = 2;
+		this.value = 35;
 
 		this.frame = 9;
 
@@ -116,6 +119,7 @@ class Skeleton extends Enemy{
 
 	init(){
 		this.life = 1;
+		this.value = 15;
 
 		this.frame = 12;
 
@@ -147,6 +151,7 @@ class Dragon extends Enemy{
 
 	init(){
 		this.life = 3;
+		this.value = 50;
 
 		this.frame = 12;
 
@@ -189,6 +194,7 @@ class Slime extends Enemy{
 
 	init(){
 		this.life = 1;
+		this.value = 5;
 
 		this.frame = 20;
 
