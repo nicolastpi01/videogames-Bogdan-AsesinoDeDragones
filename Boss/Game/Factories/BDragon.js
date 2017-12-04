@@ -5,6 +5,8 @@ class BDragon extends Enemy{
 
 	init(){
 		this.frame = 0;
+		this.life = 10;
+
 		this.body.allowGravity = true;
 		//this.scale.set(-1, 1);
 		this.animations.add('idledragon', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 10, true);
@@ -16,13 +18,13 @@ class BDragon extends Enemy{
 
 	processMovement(){
 		//Logre hacerlo funcionar, pero no me gusta el cambio abrupto. Comenzare a tocar el volumen la prox
-		if( this.inCamera ){
+		if( this.inCamera && this.life>=0){
 			if(!game.bostezo.isplaying) game.bostezo.resume();
 		}
 		else
 			game.bostezo.pause();
 		
-	if(false){
+	if(true){
 		if (this.body.touching.right || this.body.blocked.right) {
       		this.scale.set(-1,1);
       		this.body.velocity.x = -100;

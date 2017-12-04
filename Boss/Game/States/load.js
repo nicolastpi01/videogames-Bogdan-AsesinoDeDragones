@@ -27,11 +27,13 @@ var load = {
 		game.load.json('lifes', 'Game/Levels/lifes.json');
 		game.load.json('walls', 'Game/Levels/walls.json');
 
-		game.load.audio('golpeknight', 'Resources/golpe.wav');
-		game.load.audio('pisarknight', 'Resources/pisar.wav');
-		game.load.audio('quemando', 'Resources/quemando.wav');
-		game.load.audio('lanzafuego', 'Resources/lanzafuego.wav');
-		game.load.audio('dragonbostezo', 'Resources/dragonbostezo.mp3');
+		game.load.audio('golpeknight', 'Resources/audio/golpe.wav');
+		game.load.audio('pisarknight', 'Resources/audio/pisar.wav');
+		game.load.audio('quemando', 'Resources/audio/quemando.wav');
+		game.load.audio('lanzafuego', 'Resources/audio/lanzafuego.wav');
+		game.load.audio('dragonbostezo', 'Resources/audio/dragonbostezo.mp3');
+		game.load.audio('dragonrespirando', 'Resources/audio/dragonrespirando.mp3');
+		game.load.audio('dragondolor', 'Resources/audio/dragondolor.mp3');
 	},
 
 	create: function(){
