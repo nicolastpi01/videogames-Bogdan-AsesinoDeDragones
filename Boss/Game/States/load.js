@@ -68,6 +68,10 @@ var load = {
 	    game.bostezo.allowMultiple = false;
 	   	game.bostezo.loopFull(1.0);
 
+	   	game.dragonrespirando = game.add.audio('dragonrespirando');
+	    game.dragonrespirando.allowMultiple = false;
+	    //Se me ocurrio que en vez de loop, lo haga con criterio de IA. 
+
 	    game.lanzafuego = game.add.audio('lanzafuego');
 	    game.lanzafuego.allowMultiple = false;
 	}

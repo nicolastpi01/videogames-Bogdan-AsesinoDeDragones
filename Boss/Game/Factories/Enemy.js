@@ -162,13 +162,22 @@ class Dragon extends Enemy{
 	}
 
 	processMovement(){
+
+		if( this.inCamera && this.life>=0 && false){
+			if(!game.dragonrespirando.isplaying) game.dragonrespirando.resume();
+		}
+		else
+			game.dragonrespirando.pause();
+
 		if (this.body.touching.right || this.body.blocked.right) {
 			this.animations.play('fly-left');
       		this.body.velocity.x = -100;
+      		game.dragonrespirando.play();
     	}
     	else if (this.body.touching.left || this.body.blocked.left) {
     		this.animations.play('fly-right');
       		this.body.velocity.x = 100;
+      		game.dragonrespirando.play();
     	}
 	}
 }
