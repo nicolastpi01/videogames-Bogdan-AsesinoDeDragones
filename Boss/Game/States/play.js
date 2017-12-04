@@ -94,7 +94,7 @@ var play = {
         text = game.add.text(2, 1, "Prox nivel ", { font: "32px Courier", fill: "#ffffff" });
         text.fixedToCamera = true;
     
-	   game.state.start('load');
+	   game.state.start('boss');
     },
 
     checkCollitions: function() {
@@ -187,7 +187,7 @@ var play = {
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
 
-        //map.createLayer(2);
+        map.createLayer(2);
     },
 
     createEnemyWalls: function(){
