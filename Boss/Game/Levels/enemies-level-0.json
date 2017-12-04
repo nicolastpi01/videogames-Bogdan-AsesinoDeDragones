@@ -7,7 +7,7 @@
 	{"x":911, "y":608, "type": "slime"},
 
 	{"x":1088, "y":864, "type": "zombie"},
-	{"x":1632, "y":864, "type": "zombie"},
+	{"x":1632, "y":864, "type": "monster"},
 
 	{"x":1568, "y":512, "type": "skeleton"},
 	{"x":2112, "y":512, "type": "mummy"},
@@ -22,7 +22,7 @@
 	{"x":3136, "y":864, "type": "zombie"},
 
 	{"x":3296, "y":864, "type": "skeleton"},
-	{"x":3488, "y":864, "type": "skeleton"},
+	{"x":3488, "y":864, "type": "monster"},
 
 	{"x":2688, "y":384, "type": "zombie"},
 
@@ -52,7 +52,7 @@
 	{"x":6370, "y":768, "type": "slime"},
 
 	{"x":6240, "y":864, "type": "zombie"},
-	{"x":6464, "y":864, "type": "zombie"},
+	{"x":6464, "y":864, "type": "monster"},
 
 	{"x":6656, "y":864, "type": "skeleton"},
 	{"x":6080, "y":864, "type": "skeleton"},
@@ -76,7 +76,7 @@
 	{"x":9312, "y":680, "type": "dragon"},
 
 	{"x":8384, "y":864, "type": "skeleton"},
-	{"x":8640, "y":864, "type": "mummy"},
+	{"x":8640, "y":864, "type": "monster"},
 	{"x":8928, "y":864, "type": "skeleton"},
 
 	{"x":9344, "y":864, "type": "zombie"},
