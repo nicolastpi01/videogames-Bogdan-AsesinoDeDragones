@@ -18,6 +18,10 @@ var play = {
     },
 
     update: function() {
+        enemies.forEach(function(l) {
+            if(l.life==0)
+                enemies.remove(l);
+            });
         this.checkCollitions();
         this.processInput();
         this.processEnemyMovement();
