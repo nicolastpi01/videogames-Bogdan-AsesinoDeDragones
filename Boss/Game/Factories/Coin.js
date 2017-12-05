@@ -12,6 +12,8 @@ class Coin extends Phaser.Sprite{
 		this.scale.setTo(0.6);
 		this.anchor.setTo(0.5);
 
+		this.body.setSize(32, 50, 0, 0);
+
 		this.body.gravity.y = 1000;
 		this.body.maxVelocity.y = 1000;
 

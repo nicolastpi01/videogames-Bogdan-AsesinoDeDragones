@@ -176,7 +176,7 @@ class Knight extends Phaser.Sprite {
 
     addpts(pts){
     	this.points += pts;
-    	console.log(this.points);
+    	//console.log(this.points);
     }
 }
 

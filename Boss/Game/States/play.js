@@ -12,6 +12,9 @@ var play = {
         this.showLife();
 
         game.camera.follow(bogdan);
+
+        text = game.add.text(1200, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
+        text.fixedToCamera = true;
     },
 
     update: function() {
@@ -23,8 +26,9 @@ var play = {
 
     render: function() {
         //game.debug.body(bogdan);
-        //walls.forEach(function(b){game.debug.body(b);});
-        //enemies.forEach(function(b){game.debug.body(b);});
+        //walls.forEach(function(w){game.debug.body(w);});
+        //enemies.forEach(function(e){game.debug.body(e);});
+        //coins.forEach(function(c){game.debug.body(c);});
     },
 
     //-----------------------------------------
@@ -95,8 +99,8 @@ var play = {
 
     //-------------------------------------
     proxNivel: function(){
-        text = game.add.text(2, 1, "Prox nivel ", { font: "32px Courier", fill: "#ffffff" });
-        text.fixedToCamera = true;
+        //text = game.add.text(2, 1, "Prox nivel ", { font: "32px Courier", fill: "#ffffff" });
+        //text.fixedToCamera = true;
     
 	   game.state.start('boss');
     },
@@ -212,7 +216,7 @@ var play = {
         var data = game.cache.getJSON('coins');
 
         data.forEach(function(c) {
-            coins.add(new Coin(game, c.x, c.y, 'coin'));
+            coins.add(new Coin(game, c.x*32, c.y*32, 'coin'));
         });
     },
 
