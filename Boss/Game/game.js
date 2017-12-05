@@ -22,7 +22,5 @@ var pinches;
 game.state.add('boot', boot);
 game.state.add('load', load);
 game.state.add('play', play);
-game.state.add('boss', boss);
-
 
 game.state.start('boot');
