@@ -13,7 +13,7 @@ var play = {
 
         game.camera.follow(bogdan);
 
-        text = game.add.text(1200, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
+        text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
         text.fixedToCamera = true;
     },
 
@@ -135,6 +135,7 @@ var play = {
     processCollition: function(bodgan, e) {
         game.pisarknight.play();
         bogdan.processJumpKill(e, text);
+        text.setText(bogdan.points);
     },
 
     addLife: function(bogdan, l){
@@ -151,6 +152,7 @@ var play = {
         weapon.kill();
         game.golpeknight.play();
         bogdan.processHit(e);
+        text.setText(bogdan.points);
     },
 
     checkLose: function() {
@@ -223,6 +225,7 @@ var play = {
     coinCollition: function(h, c){
         c.kill();
         bogdan.addpts(100);
+        text.setText(bogdan.points);
     }
 
 };
