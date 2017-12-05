@@ -77,7 +77,7 @@ var play = {
                     enemies.add(new Slime(game, e.x, e.y, 'slime'));
                     break;
                 case 'BDragon':
-                    enemies.add(new BDragon(game, e.x, e.y, 'BDragon'));     //Linea de testeo de dragon
+                    enemies.add(new BDragon(game, e.x, e.y, 'BDragonV'));     //Linea de testeo de dragon
                     break;
             }
         });
