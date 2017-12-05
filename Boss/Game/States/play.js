@@ -102,7 +102,7 @@ var play = {
         //text = game.add.text(2, 1, "Prox nivel ", { font: "32px Courier", fill: "#ffffff" });
         //text.fixedToCamera = true;
     
-	   game.state.start('boss');
+	   game.state.start('play');
     },
 
     checkCollitions: function() {
