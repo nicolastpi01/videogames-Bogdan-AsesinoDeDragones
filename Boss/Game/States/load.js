@@ -19,6 +19,7 @@ var load = {
 		game.load.spritesheet('knight', 'Resources/dragon-knight.png', 256/4, 256/4);
 
 		game.load.spritesheet('mummy', 'Resources/mummy37x45.png', 37, 45);
+		game.load.spritesheet('monster', 'Resources/monster39x40.png', 39, 40);
 		game.load.spritesheet('zombie', 'Resources/zombie_n_skeleton2.png', 288/9, 256/4);
 		game.load.spritesheet('skeleton', 'Resources/zombie_n_skeleton2.png', 288/9, 256/4);
 		game.load.spritesheet('dragon', 'Resources/dragon96x64.png', 96, 64);

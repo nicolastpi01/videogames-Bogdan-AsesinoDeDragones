@@ -61,6 +61,9 @@ var play = {
                 case 'mummy':
                     enemies.add(new Mummy(game, e.x, e.y, 'mummy'));
                     break;
+                case 'monster':
+                    enemies.add(new Monster(game, e.x, e.y, 'monster'));
+                    break;
                 case 'zombie':
                     enemies.add(new Zombie(game, e.x, e.y, 'zombie'));
                     break;

@@ -215,3 +215,33 @@ class Slime extends Enemy{
 		}
 	}
 }
+
+class Monster extends Enemy{
+	constructor(game, x, y, sprite){
+		super(game, x, y, sprite);
+	}
+
+	init(){
+		this.life = 2;
+		this.value = 25;
+
+		this.frame = 0;
+
+		this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 22, true);
+		this.animations.play('walk');
+
+		this.body.velocity.x = -100;
+	}
+
+	processMovement(){
+		if (this.body.touching.right || this.body.blocked.right) {
+      		this.scale.set(-1, 1);
+      		this.body.velocity.x = -100;
+    	}
+    	else if (this.body.touching.left || this.body.blocked.left) {
+    		this.scale.set(1);
+      		this.body.velocity.x = 100;
+    	}
+	}
+
+}
