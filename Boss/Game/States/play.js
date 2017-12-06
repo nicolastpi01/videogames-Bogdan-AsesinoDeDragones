@@ -18,6 +18,9 @@ var play = {
     },
 
     update: function() {
+        if(dragonvolador.life == 0 ||  dragonidle.life == 0 ){
+            game.bostezo.stop();      
+        }
         enemies.forEach(function(l) {
             if(l.life==0)
                 enemies.remove(l);
@@ -85,7 +88,12 @@ var play = {
                     enemies.add(new Slime(game, e.x, e.y, 'slime'));
                     break;
                 case 'BDragon':
-                    enemies.add(new BDragon(game, e.x, e.y, 'BDragonV'));     //Linea de testeo de dragon
+                    dragonvolador = new BDragonVolador(game, e.x, e.y, 'BDragonV'); //x= 8854
+                    dragonidle = new BDragonIdle(game, e.x, e.y, 'BDragonI');
+                    dragonvolador.visible = false;
+                    dragonidle.visible = true;
+                    enemies.add(dragonvolador);
+                    enemies.add(dragonidle);
                     break;
             }
         });
