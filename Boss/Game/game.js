@@ -1,4 +1,4 @@
-var game = new Phaser.Game(1250, 750, Phaser.AUTO, 'Boss');
+var game = new Phaser.Game(1250, 750, Phaser.CANVAS, 'Boss');
 
 var button;
 var map;

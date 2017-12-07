@@ -6,8 +6,9 @@ var boot = {
 	},
 
 	create: function(){
-		button = game.add.button(game.world.centerX, game.world.centerY, 'title', onClick);
+    	button = game.add.button(game.world.centerX, game.world.centerY, 'title', onClick);
 		button.anchor.setTo(0.5);
+
 
 		back = game.add.sprite(0, 0);
 		back.width = 1250;
