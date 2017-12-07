@@ -19,7 +19,7 @@ var text;
 var pinches;
 
 var saveCPU;
-
+var juicy;
 
 game.state.add('boot', boot);
 game.state.add('load', load);

@@ -196,6 +196,7 @@ class Knight extends Phaser.Sprite {
         } else {
             this.life -= 1;
             this.addpts(-10);
+            game.camera.flash(0xff0000, 50, true);
             shake.shake(5);
             this.bounceBack();
             emitter.start(true, 2000, null, 10);

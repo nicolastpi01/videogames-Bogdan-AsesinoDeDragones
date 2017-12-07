@@ -51,6 +51,13 @@ var load = {
 		saveCPU = new Phaser.Plugin.SaveCPU(game)
 		game.plugins.add(saveCPU);
 
+		//game.plugins.add(Phaser.Plugin.PixelScaler, 1.2);
+
+		//game.plugins.add(Phaser.Plugin.Juicy);
+		//juicy = new Phaser.Plugin.Juicy(game);
+		//game.plugins.add(juicy);
+
+
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 300;
 		

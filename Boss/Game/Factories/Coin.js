@@ -35,6 +35,11 @@ class Coin extends Phaser.Sprite{
 	}
 
 	collide(c, bogdan){
+		//var jf = new Phaser.Plugin.Juicy.ScreenFlash(game, 'white');
+		//jf.flash(2, 1000);
+
+		game.camera.flash(0xffffff, 50, true);
+
 		game.coinSound.play();
 		bogdan.addpts(100);
 		text.setText(bogdan.points);
