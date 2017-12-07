@@ -11,7 +11,8 @@ var play = {
         this.createCoins();
         this.showLife();
 
-        game.camera.follow(bogdan);
+        //game.camera.follow(bogdan);
+        game.camera.follow(bogdan, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 
         text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
         text.fixedToCamera = true;
