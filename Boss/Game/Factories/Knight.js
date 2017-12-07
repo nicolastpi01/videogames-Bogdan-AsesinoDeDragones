@@ -40,6 +40,16 @@ class Knight extends Phaser.Sprite {
 
 	}
 
+	update(){
+		this.processInput(cursors, jumpButton, attackButton);
+
+		game.physics.arcade.collide(this, layer);
+		game.physics.arcade.collide(this, enemies, this.processCollition);
+        game.physics.arcade.overlap(this.weapon.bullets, enemies, this.processHit);
+
+        this.checkLose();
+	}
+
 	createWeapon(){
 		this.weapon = game.add.weapon(2, 'fire-attack');
 
@@ -53,6 +63,33 @@ class Knight extends Phaser.Sprite {
 	}
 
 	//-------------------------------------------------------
+
+	addpts(pts){
+    	this.points += pts;
+    	text.setText(this.points);
+    	//console.log(this.points);
+    }
+
+	processCollition(b, enemy){
+		game.pisarknight.play();
+        b.processJumpKill(enemy);
+        text.setText(b.points);
+	}
+
+	coinCollition(b, coin){
+		coin.kill();
+        b.addpts(100);
+	}
+
+	addLife(){
+		//life.kill();
+        if(this.life < 3){
+            this.life += 1;
+            var h = game.add.sprite(hearts.getAt(this.life-2).x + 35, 10, 'heart');
+            h.scale.setTo(0.07);
+            hearts.add(h);
+        }
+	}
 
 	processInput(cursors, spacebar, ctrl){
 		cursors.left.onDown.add(this.changeStateToWalkLeft, this);
@@ -142,12 +179,14 @@ class Knight extends Phaser.Sprite {
 		return this.StateHandler.currentState.name == 'attack';
 	}
 
-	processHit(e){
-		this.addpts(e.value);
+	processHit(b, e){
+		b.kill();
+		game.golpeknight.play();
+		bogdan.addpts(e.value);
 		e.hit();
 	}
 
-	processJumpKill(e, txt){      
+	processJumpKill(e){      
 		var emitter = this.createEmitter(this.x, this.y);
 
         if(this.body.touching.down && e.body.touching.up){
@@ -174,10 +213,13 @@ class Knight extends Phaser.Sprite {
         return emitter;
     }
 
-    addpts(pts){
-    	this.points += pts;
-    	//console.log(this.points);
+    checkLose(){
+    	if (this.isDead()) {
+            game.state.start('load');
+        }
     }
+
+    
 }
 
 //-------------------------------------

@@ -13,4 +13,14 @@ class Life extends Phaser.Sprite{
 		this.body.inmovable = true;
 		this.body.collideWorldBounds = true;
 	}
+
+	update(){
+		game.physics.arcade.collide(this, layer);
+		game.physics.arcade.overlap(this, bogdan, this.procesOverlap);
+	}
+
+	procesOverlap(l, bogdan){
+		bogdan.addLife();
+		l.kill();
+	}
 }

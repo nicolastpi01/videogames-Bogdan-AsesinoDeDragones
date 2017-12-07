@@ -18,17 +18,18 @@ var play = {
     },
 
     update: function() {
-        if(dragonvolador.life == 0 ||  dragonidle.life == 0 ){
-            game.bostezo.stop();      
-        }
-        enemies.forEach(function(l) {
-            if(l.life==0)
-                enemies.remove(l);
-            });
-        this.checkCollitions();
-        this.processInput();
-        this.processEnemyMovement();
-        this.checkLose();
+        game.bostezo.pause();
+        //if(dragonvolador.life == 0 ||  dragonidle.life == 0 ){
+            //game.bostezo.stop();      
+        //}
+        //enemies.forEach(function(l) {
+            //if(l.life==0)
+                //enemies.remove(l);
+            //});
+        //this.checkCollitions();
+        //this.processInput();
+        //this.processEnemyMovement();
+        //this.checkLose();
     },
 
     render: function() {
@@ -110,68 +111,10 @@ var play = {
     },
 
     //-------------------------------------
-    proxNivel: function(){
-        //text = game.add.text(2, 1, "Prox nivel ", { font: "32px Courier", fill: "#ffffff" });
-        //text.fixedToCamera = true;
     
-	   game.state.start('play');
-    },
+    proxNivel: function(){ game.state.start('play'); },   
 
-    checkCollitions: function() {
-        game.physics.arcade.collide(bogdan, layer);
-        game.physics.arcade.collide(enemies, layer);
-        game.physics.arcade.collide(coins, layer);
-        game.physics.arcade.collide(enemies, walls);
-        game.physics.arcade.collide(lifes, layer);
-        game.physics.arcade.collide(bogdan, enemies, this.processCollition);
-        game.physics.arcade.overlap(bogdan, lifes, this.addLife);
-        game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
-        game.physics.arcade.collide(bogdan, coins, this.coinCollition);
-    },
-
-    muerte: function() {
-        //console.log('Se murio!');
-        bogdan.life = 0;
-    },
-
-    processInput: function() {
-        bogdan.processInput(cursors, jumpButton, attackButton);
-        //if(bogdan.isAttacking())
-        //    game.lanzafuego.play();
-    },
-
-    processEnemyMovement: function() {
-        enemies.forEach(function(e) { e.processMovement(); });
-    },
-
-    processCollition: function(bodgan, e) {
-        game.pisarknight.play();
-        bogdan.processJumpKill(e, text);
-        text.setText(bogdan.points);
-    },
-
-    addLife: function(bogdan, l){
-        l.kill();
-        if(bogdan.life < 3){
-            bogdan.life += 1;
-            var h = game.add.sprite(hearts.getAt(bogdan.life-2).x + 35, 10, 'heart');
-            h.scale.setTo(0.07);
-            hearts.add(h);
-        }
-    },
-
-    processHit: function(weapon, e){
-        weapon.kill();
-        game.golpeknight.play();
-        bogdan.processHit(e);
-        text.setText(bogdan.points);
-    },
-
-    checkLose: function() {
-        if (bogdan.isDead()) {
-            game.state.start('load');
-        }
-    },
+    muerte: function() { bogdan.life = 0; },    
 
     showLife: function() {
         hearts = game.add.group();
@@ -232,12 +175,63 @@ var play = {
         data.forEach(function(c) {
             coins.add(new Coin(game, c.x*32, c.y*32, 'coin'));
         });
-    },
-
-    coinCollition: function(h, c){
-        c.kill();
-        bogdan.addpts(100);
-        text.setText(bogdan.points);
     }
+
+    //checkCollitions: function() {
+        //game.physics.arcade.collide(bogdan, layer);
+        //game.physics.arcade.collide(enemies, layer);
+        //game.physics.arcade.collide(coins, layer);
+        //game.physics.arcade.collide(enemies, walls);
+        //game.physics.arcade.collide(lifes, layer);
+        //game.physics.arcade.collide(bogdan, enemies, this.processCollition);
+        //game.physics.arcade.overlap(bogdan, lifes, this.addLife);
+        //game.physics.arcade.overlap(bogdan.weapon.bullets, enemies, this.processHit);
+        //game.physics.arcade.collide(bogdan, coins, this.coinCollition);
+    //},
+
+    //coinCollition: function(h, c){
+      //  c.kill();
+        //bogdan.addpts(100);
+        //text.setText(bogdan.points);
+    //}
+
+    //addLife: function(bogdan, l){
+        //l.kill();
+        //if(bogdan.life < 3){
+            //bogdan.life += 1;
+            //var h = game.add.sprite(hearts.getAt(bogdan.life-2).x + 35, 10, 'heart');
+            //h.scale.setTo(0.07);
+            //hearts.add(h);
+        //}
+    //},
+
+    //processHit: function(weapon, e){
+        //weapon.kill();
+        //game.golpeknight.play();
+        //bogdan.processHit(e);
+        //text.setText(bogdan.points);
+    //},
+
+    //checkLose: function() {
+        //if (bogdan.isDead()) {
+          //  game.state.start('load');
+        //}
+    //},
+
+     //processInput: function() {
+        //bogdan.processInput(cursors, jumpButton, attackButton);
+        //if(bogdan.isAttacking())
+        //    game.lanzafuego.play();
+    //},
+
+    //processEnemyMovement: function() {
+        //enemies.forEach(function(e) { e.processMovement(); });
+    //},
+
+    //processCollition: function(bodgan, e) {
+        //game.pisarknight.play();
+       // bogdan.processJumpKill(e, text);
+        //text.setText(bogdan.points);
+    //},
 
 };

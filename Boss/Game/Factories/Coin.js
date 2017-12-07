@@ -21,6 +21,23 @@ class Coin extends Phaser.Sprite{
 		this.body.collideWorldBounds = true;
 
 		this.body.velocity.y = -300;
-		this.animations.play('spin');
+		//this.animations.play('spin');
+	}
+
+	update(){
+		game.physics.arcade.collide(this, layer);
+		game.physics.arcade.collide(this, bogdan, this.collide);
+		if(this.inCamera){
+			this.animations.play('spin');
+		}else{
+			this.animations.stop();
+		}
+	}
+
+	collide(c, bogdan){
+		game.coinSound.play();
+		bogdan.addpts(100);
+		text.setText(bogdan.points);
+		c.kill();
 	}
 }

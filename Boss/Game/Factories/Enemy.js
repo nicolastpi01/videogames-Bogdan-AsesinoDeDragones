@@ -20,6 +20,18 @@ class Enemy extends Phaser.Sprite {
 		this.init();
 	}
 
+	update(){
+		game.physics.arcade.collide(this, layer);
+		if(this.inCamera){
+			if(this.body.velocity.x == 0){ this.updateBodyVelocity(); }
+			game.physics.arcade.collide(this, walls);
+			this.processMovement();
+		}else{
+			this.body.velocity.x = 0
+			this.animations.stop();
+		}
+	}
+
 	hit(){
 		var emitter = this.createEmitter(this.x, this.y);
 
@@ -44,6 +56,7 @@ class Enemy extends Phaser.Sprite {
 
 	init(){}
 	processMovement(){}
+	updateBodyVelocity(){}
 
 }
 
@@ -61,9 +74,10 @@ class Mummy extends Enemy{
 		this.scale.set(-1, 1);
 
 		this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 22, true);
-		this.animations.play('walk');
+		//this.animations.play('walk');
 
-		this.body.velocity.x = -100;
+		this.body.velocity.x = 0;
+		//this.body.velocity.x = -100;
 		this.body.setSize(25, 42, 7, 2);
 	}
 
@@ -76,6 +90,17 @@ class Mummy extends Enemy{
     		this.scale.set(1);
       		this.body.velocity.x = 100;
     	}
+	}
+
+	updateBodyVelocity(){
+		if(this.facing>0){
+			this.scale.set(-1, 1);
+			this.body.velocity.x = -100;	
+		}else{
+			this.scale.set(1);	
+			this.body.velocity.x = 100;	
+		}
+		this.animations.play('walk');			
 	}
 }
 
@@ -93,9 +118,10 @@ class Zombie extends Enemy{
 		this.animations.add('walk-left', [9, 10, 11], 10, true);
 		this.animations.add('walk-right', [18, 19, 20], 10, true);
 		
-		this.animations.play('walk-left');
+		//this.animations.play('walk-left');
 
-		this.body.velocity.x = -50;
+		this.body.velocity.x = 0;
+		//this.body.velocity.x = -50;
 		this.body.setSize(20, 33, 5, 29);
 	}
 
@@ -108,6 +134,16 @@ class Zombie extends Enemy{
     		this.animations.play('walk-right');
       		this.body.velocity.x = 50;
     	}
+	}
+
+	updateBodyVelocity(){
+		if(this.facing>0){
+			this.animations.play('walk-left');
+			this.body.velocity.x = -50;
+		}else{
+			this.animations.play('walk-right');
+      		this.body.velocity.x = 50;
+		}		
 	}
 
 }
@@ -126,9 +162,10 @@ class Skeleton extends Enemy{
 		this.animations.add('walk-left', [12, 13, 14, 15, 16, 17], 10, true);
 		this.animations.add('walk-right', [21, 22, 23, 24, 25, 26], 10, true);
 		
-		this.animations.play('walk-left');
+		//this.animations.play('walk-left');
 
-		this.body.velocity.x = 100;
+		this.body.velocity.x = 0;
+		//this.body.velocity.x = -100;
 		this.body.setSize(20, 45, 7, 18);
 	}
 
@@ -141,6 +178,16 @@ class Skeleton extends Enemy{
     		this.animations.play('walk-right');
      		this.body.velocity.x = 100;
     	}
+	}
+
+	updateBodyVelocity(){
+		if(this.facing>0){
+			this.animations.play('walk-left');
+			this.body.velocity.x = -100;
+		}else{
+			this.animations.play('walk-right');
+      		this.body.velocity.x = 100;
+		}
 	}
 }
 
@@ -160,9 +207,10 @@ class Dragon extends Enemy{
 		this.animations.add('fly-left', [11, 10, 9, 8, 7, 6], 15, true);
 		this.animations.add('fly-right', [0, 1, 2, 3, 4, 5], 15, true);
 		
-		this.animations.play('fly-left');
+		//this.animations.play('fly-left');
 
-		this.body.velocity.x = -100;
+		this.body.velocity.x = 0;
+		//this.body.velocity.x = -100;
 		this.body.setSize(90, 34, 0, 25);
 	}
 
@@ -185,6 +233,16 @@ class Dragon extends Enemy{
       		game.dragonrespirando.play();
     	}
 	}
+
+	updateBodyVelocity(){
+		if(this.facing>0){
+			this.animations.play('fly-left');
+			this.body.velocity.x = -100;
+		}else{
+			this.animations.play('fly-right');
+      		this.body.velocity.x = 100;
+		}
+	}
 }
 
 class Slime extends Enemy{
@@ -206,13 +264,19 @@ class Slime extends Enemy{
 
 		this.animations.add('jump', [21, 22, 23, 24, 25, 26, 27, 28, 29], 15, true);
 		
-		this.animations.play('jump');
+		//this.animations.play('jump');
+
+		this.body.velocity.x = 0;
 	}
 
 	processMovement(){
 		if(this.body.onFloor() || this.body.touching.down){
 			this.body.velocity.y = -450;
 		}
+	}
+
+	updateBodyVelocity(){
+		this.animations.play('jump');
 	}
 }
 
@@ -228,9 +292,10 @@ class Monster extends Enemy{
 		this.frame = 0;
 
 		this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 22, true);
-		this.animations.play('walk');
+		//this.animations.play('walk');
 
-		this.body.velocity.x = -100;
+		this.body.velocity.x = 0;
+		//this.body.velocity.x = -100;
 	}
 
 	processMovement(){
@@ -242,6 +307,17 @@ class Monster extends Enemy{
     		this.scale.set(1);
       		this.body.velocity.x = 100;
     	}
+	}
+
+	updateBodyVelocity(){
+		if(this.facing>0){
+			this.scale.set(-1, 1);
+			this.body.velocity.x = -100;	
+		}else{
+			this.scale.set(1);	
+			this.body.velocity.x = 100;	
+		}
+		this.animations.play('walk');	
 	}
 
 }

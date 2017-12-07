@@ -33,6 +33,7 @@ var load = {
 		game.load.json('walls', 'Game/Levels/walls.json');
 		game.load.json('coins', 'Game/Levels/coins.json');
 
+		game.load.audio('coin1', 'Resources/audio/coin1.wav');
 		game.load.audio('golpeknight', 'Resources/audio/golpe.wav');
 		game.load.audio('pisarknight', 'Resources/audio/pisar.wav');
 		game.load.audio('quemando', 'Resources/audio/quemando.wav');
@@ -80,6 +81,9 @@ var load = {
 
 	    game.lanzafuego = game.add.audio('lanzafuego');
 	    game.lanzafuego.allowMultiple = false;
+
+	    game.coinSound = game.add.audio('coin1');
+	    game.coinSound.allowMultiple = true;
 	}
 
 };
