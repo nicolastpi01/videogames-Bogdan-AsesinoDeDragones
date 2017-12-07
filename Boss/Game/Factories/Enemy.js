@@ -9,6 +9,8 @@ class Enemy extends Phaser.Sprite {
 
 		this.life;
 		this.value;
+		
+		this.emitter = this.createEmitter(this.x, this.y);
 
 		this.anchor.setTo(0.5);
 		this.scale.set(1);
@@ -30,17 +32,20 @@ class Enemy extends Phaser.Sprite {
 			this.body.velocity.x = 0
 			this.animations.stop();
 		}
+		game.physics.arcade.collide(this.emitter, layer);
 	}
 
 	hit(){
-		var emitter = this.createEmitter(this.x, this.y);
+		//this.emitter = this.createEmitter(this.x, this.y);
+		this.emitter.x = this.x;
+		this.emitter.y = this.y;
 
 		this.life -= 1;
-		emitter.start(true, 2000, null, 5);
+		this.emitter.start(true, 2000, null, 5);
 
 		if(this.life == 0){
 			this.kill();
-			emitter.start(true, 2000, null, 10);
+			this.emitter.start(true, 2000, null, 10);
 		}
 	}
 

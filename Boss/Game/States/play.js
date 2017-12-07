@@ -125,10 +125,16 @@ var play = {
 
     //-------------------------------------
     
-    proxNivel: function(){ game.state.start('play'); },   
+    proxNivel: function(sprite){
+        if(sprite === bogdan){
+            game.state.start('play');
+        }
+    },   
 
-    muerte: function() { 
-        bogdan.life = 0;
+    muerte: function(sprite) {
+        if(sprite === bogdan){
+            bogdan.life = 0;
+        } 
     },    
 
     showLife: function() {

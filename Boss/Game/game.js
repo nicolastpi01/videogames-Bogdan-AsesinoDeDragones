@@ -19,10 +19,10 @@ var text;
 var pinches;
 
 var saveCPU;
-var juicy;
+//var juicy;
 
-var back;
-var filter;
+//var back;
+//var filter;
 
 game.state.add('boot', boot);
 game.state.add('load', load);
