@@ -18,6 +18,8 @@ var background;
 var text;
 var pinches;
 
+var saveCPU;
+
 
 game.state.add('boot', boot);
 game.state.add('load', load);

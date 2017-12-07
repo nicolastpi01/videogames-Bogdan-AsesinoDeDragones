@@ -215,14 +215,19 @@ class Knight extends Phaser.Sprite {
 
     checkLose(){
     	if (this.isDead()) {
-            game.state.start('load');
+            game.state.start('play');
         }
     }
 
     
 }
 
+
 //-------------------------------------
+
+
+
+
 
 class StateHandler {
 	constructor(){

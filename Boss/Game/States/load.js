@@ -47,6 +47,10 @@ var load = {
 		shake = new Phaser.Plugin.Shake(game);
 		game.plugins.add(shake);
 
+		//game.plugins.add(Phaser.Plugin.SaveCPU);
+		saveCPU = new Phaser.Plugin.SaveCPU(game)
+		game.plugins.add(saveCPU);
+
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 300;
 		

@@ -114,7 +114,9 @@ var play = {
     
     proxNivel: function(){ game.state.start('play'); },   
 
-    muerte: function() { bogdan.life = 0; },    
+    muerte: function() { 
+        bogdan.life = 0;
+    },    
 
     showLife: function() {
         hearts = game.add.group();
