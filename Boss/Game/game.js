@@ -1,4 +1,4 @@
-var game = new Phaser.Game(1250, 750, Phaser.CANVAS, 'Boss');
+var game = new Phaser.Game(1250, 750, Phaser.AUTO, 'Boss');
 
 var button;
 var map;
@@ -20,6 +20,9 @@ var pinches;
 
 var saveCPU;
 var juicy;
+
+var back;
+var filter;
 
 game.state.add('boot', boot);
 game.state.add('load', load);
