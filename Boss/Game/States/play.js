@@ -16,6 +16,9 @@ var play = {
 
         text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
         text.fixedToCamera = true;
+
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+        game.input.onDown.add(this.gofull, this);
     },
 
     update: function() {
@@ -41,6 +44,14 @@ var play = {
     },
 
     //-----------------------------------------
+
+    gofull: function() {
+        if (game.scale.isFullScreen){
+            game.scale.stopFullScreen();
+        }else{
+            game.scale.startFullScreen(false);
+        }
+    },
 
     createMap: function() {
         game.add.sprite(0, 0, 'background');
