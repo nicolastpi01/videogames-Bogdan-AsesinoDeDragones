@@ -2,6 +2,7 @@ var play = {
     preload: function() {},
 
     create: function() {
+        
         //this.createMap();
         this.addMap();
         this.createBogdan();
