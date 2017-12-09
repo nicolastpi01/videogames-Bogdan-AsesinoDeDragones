@@ -19,7 +19,11 @@ class Knight extends Phaser.Sprite {
 
 		this.points = 0;
 
-		this.frame = 0; 
+		this.frame = 0;
+
+		this.invincible = false;
+
+		this.emitter = this.createEmitter(this.x, this.y);
 
 		this.scale.setTo(0.7);
 		this.anchor.setTo(0.5);
@@ -43,9 +47,15 @@ class Knight extends Phaser.Sprite {
 	update(){
 		this.processInput(cursors, jumpButton, attackButton);
 
+
 		game.physics.arcade.collide(this, layer);
-		game.physics.arcade.collide(this, enemies, this.processCollition);
+
+		if(!this.invincible){ game.physics.arcade.collide(this, enemies, this.processCollition); }
+
         game.physics.arcade.overlap(this.weapon.bullets, enemies, this.processHit);
+
+        game.physics.arcade.collide(this.emitter, layer);
+
 
         this.checkLose();
 	}
@@ -187,21 +197,34 @@ class Knight extends Phaser.Sprite {
 	}
 
 	processJumpKill(e){      
-		var emitter = this.createEmitter(this.x, this.y);
-
         if(this.body.touching.down && e.body.touching.up){
             this.bounce();
             this.addpts(e.value);
             e.hit();
         } else {
-            this.life -= 1;
-            this.addpts(-10);
-            game.camera.flash(0xff0000, 50, true);
-            shake.shake(5);
-            this.bounceBack();
-            emitter.start(true, 2000, null, 10);
-            hearts.removeChildAt(hearts.length-1);
+        	this.getHit();
         }
+	}
+
+	getHit(){
+		this.emitter.x = this.x;
+		this.emitter.y = this.y;
+
+		if(!this.invincible){
+			this.life -= 1;
+        	this.addpts(-10);
+        	game.camera.flash(0xff0000, 50, true);
+        	shake.shake(5);
+        	this.bounceBack();
+        	this.emitter.start(true, 2000, null, 10);
+        	hearts.removeChildAt(hearts.length-1);
+        	this.toggleInvincible();
+        	game.time.events.add(2000, this.toggleInvincible, this);
+		}
+	}
+
+	toggleInvincible(){
+		this.invincible = !this.invincible;
 	}
 
 	createEmitter(x, y){

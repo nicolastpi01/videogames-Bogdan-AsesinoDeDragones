@@ -36,7 +36,6 @@ class Enemy extends Phaser.Sprite {
 	}
 
 	hit(){
-		//this.emitter = this.createEmitter(this.x, this.y);
 		this.emitter.x = this.x;
 		this.emitter.y = this.y;
 
