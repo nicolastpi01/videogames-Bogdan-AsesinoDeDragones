@@ -1,10 +1,11 @@
 var play = {
+    
     preload: function() {},
 
     create: function() {
         
         //this.createMap();
-        this.addMap();
+        this.addMap('map1');
         this.createBogdan();
         this.createEnemyWalls();
         this.createEnemies();
@@ -31,10 +32,6 @@ var play = {
             //if(l.life==0)
                 //enemies.remove(l);
             //});
-        //this.checkCollitions();
-        //this.processInput();
-        //this.processEnemyMovement();
-        //this.checkLose();
     },
 
     render: function() {
@@ -73,7 +70,7 @@ var play = {
     },
 
     createBogdan: function() {
-        bogdan = new Knight(game, 50, 864, 'knight');
+        bogdan = new Knight(game, 7000, 864, 'knight');
     },
 
     createEnemies: function() {
@@ -127,7 +124,25 @@ var play = {
     
     proxNivel: function(sprite){
         if(sprite === bogdan){
-            game.state.start('play');
+            enemies.destroy(true);
+            lifes.destroy(true);
+            coins.destroy(true);
+            walls.destroy(true);
+            hearts.destroy(true);
+            map.destroy();
+            this.addMap('bossMap');
+
+            var p = bogdan.points;
+            var l = bogdan.life;
+            bogdan = new Knight(game, 100, 500, 'knight');
+            bogdan.points = p;
+            bogdan.life = l;
+            
+            game.camera.follow(bogdan, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+            text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
+            text.fixedToCamera = true;
+
+            this.showLife();
         }
     },   
 
@@ -152,13 +167,13 @@ var play = {
         hearts.fixedToCamera = true;
     },
 
-    addMap: function() {
+    addMap: function(m) {
         //game.stage.backgroundColor = '#697e96';
 
         background = game.add.tileSprite(0, 0, 1250, 750, 'background0');
         background.fixedToCamera = true;
 
-        map = game.add.tilemap('map1');
+        map = game.add.tilemap(m);
         map.addTilesetImage('Tiles_32x32');
 
         map.setCollisionBetween(1, 23, true, 1);
@@ -169,13 +184,13 @@ var play = {
         map.setTileIndexCallback(47, this.muerte, this, 1);
         map.setTileIndexCallback(51, this.proxNivel, this, 1);
 
-        //map.createLayer(0);
+        map.createLayer(0);
 
         layer = map.createLayer(1);
         layer.resizeWorld();
         layer.debugSettings.forceFullRedraw = true;
 
-        map.createLayer(2);
+        //map.createLayer(2);
     },
 
     createEnemyWalls: function(){
