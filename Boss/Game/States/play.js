@@ -32,6 +32,11 @@ var play = {
             //if(l.life==0)
                 //enemies.remove(l);
             //});
+
+        if(boss != null){
+            game.physics.arcade.collide(bogdan, boss, bogdan.bossCollition);
+            game.physics.arcade.overlap(bogdan.weapon.bullets, boss, this.processHit);
+        }
     },
 
     render: function() {
@@ -39,9 +44,14 @@ var play = {
         //walls.forEach(function(w){game.debug.body(w);});
         //enemies.forEach(function(e){game.debug.body(e);});
         //coins.forEach(function(c){game.debug.body(c);});
+        //if(boss != null){ game.debug.body(boss); }
     },
 
     //-----------------------------------------
+
+    processHit: function(bullet, enemy){
+        bogdan.processBossHit(bullet, enemy);
+    },
 
     gofull: function() {
         if (game.scale.isFullScreen){
@@ -70,7 +80,7 @@ var play = {
     },
 
     createBogdan: function() {
-        bogdan = new Knight(game, 7000, 864, 'knight');
+        bogdan = new Knight(game, 50, 864, 'knight');
     },
 
     createEnemies: function() {
@@ -130,6 +140,7 @@ var play = {
             walls.destroy(true);
             hearts.destroy(true);
             map.destroy();
+
             this.addMap('bossMap');
 
             var p = bogdan.points;
@@ -137,12 +148,16 @@ var play = {
             bogdan = new Knight(game, 100, 500, 'knight');
             bogdan.points = p;
             bogdan.life = l;
+
+            boss = new Boss(game, 1000, 500, 'BDragonI');
             
             game.camera.follow(bogdan, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
             text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
             text.fixedToCamera = true;
 
             this.showLife();
+
+            
         }
     },   
 

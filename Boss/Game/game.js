@@ -15,6 +15,8 @@ var coins;
 var shake;
 var background;
 
+var boss;
+
 var text;
 var pinches;
 

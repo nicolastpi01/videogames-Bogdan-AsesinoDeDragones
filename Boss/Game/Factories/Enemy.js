@@ -325,3 +325,89 @@ class Monster extends Enemy{
 	}
 
 }
+
+class Boss extends Phaser.Sprite{
+
+	constructor(game, x, y, sprite){
+		super(game, x, y, sprite);
+
+		game.physics.arcade.enable(this);
+
+		game.add.existing(this);
+
+
+		this.life = 10;
+		this.value = 100;
+		
+		this.emitter = this.createEmitter(this.x, this.y);
+
+		this.anchor.setTo(0.5);
+		this.scale.set(-2, 2);
+
+		this.body.inmovable = true;
+		this.body.collideWorldBounds = true;
+		this.body.allowGravity = true;
+
+		this.body.setSize(60, 90, 8, 14);
+
+		this.frame = 0;
+
+		this.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 10, true);		
+		this.animations.play('idle');
+
+		this.createWeapon();
+	}
+
+	update(){
+		game.physics.arcade.collide(this, layer);		
+		game.physics.arcade.collide(this.emitter, layer);
+
+		game.physics.arcade.overlap(this.weapon.bullets, bogdan, this.processHit);
+
+		if(this.life == 0){
+			this.kill();
+			this.emitter.start(false, 2000, 5, 100);
+		}else{
+			this.weapon.fireAtSprite(bogdan);
+		}
+	}
+
+	createEmitter(x, y){
+        var emitter = game.add.emitter(0, 0, 100);
+        emitter.makeParticles('pixel_red');
+        emitter.gravity = 200;
+        emitter.x = x;
+        emitter.y = y;
+
+        return emitter;
+    }
+
+    createWeapon(){
+		this.weapon = game.add.weapon(1, 'fire-attack');
+
+		this.weapon.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
+		this.weapon.bulletKillDistance = 1500;
+		this.weapon.bulletSpeed = 800;
+		this.weapon.fireRate = 100;
+		this.weapon.trackSprite(this, -40, -50);
+		this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
+	}
+
+	collide(d, b){
+		console.log('hola');
+	}
+
+	hit(){
+		this.emitter.x = this.x;
+		this.emitter.y = this.y;
+
+		this.life -= 1;
+		this.emitter.start(true, 2000, null, 10);
+	}
+
+	processHit(b, bullet){
+		bullet.kill();
+		b.getHit();
+	}
+
+}

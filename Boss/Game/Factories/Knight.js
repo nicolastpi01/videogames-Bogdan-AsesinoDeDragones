@@ -52,10 +52,9 @@ class Knight extends Phaser.Sprite {
 
 		if(!this.invincible){ game.physics.arcade.collide(this, enemies, this.processCollition); }
 
-        game.physics.arcade.overlap(this.weapon.bullets, enemies, this.processHit);
+        game.physics.arcade.overlap(this.weapon.bullets, enemies, this.processHit);     
 
         game.physics.arcade.collide(this.emitter, layer);
-
 
         this.checkLose();
 	}
@@ -81,6 +80,12 @@ class Knight extends Phaser.Sprite {
     }
 
 	processCollition(b, enemy){
+		game.pisarknight.play();
+        b.processJumpKill(enemy);
+        text.setText(b.points);
+	}
+
+	bossCollition(b, enemy){
 		game.pisarknight.play();
         b.processJumpKill(enemy);
         text.setText(b.points);
@@ -194,6 +199,13 @@ class Knight extends Phaser.Sprite {
 		game.golpeknight.play();
 		bogdan.addpts(e.value);
 		e.hit();
+	}
+
+	processBossHit(b, bullet){
+		bullet.kill();
+		game.golpeknight.play();
+		this.addpts(b.value);
+		b.hit();
 	}
 
 	processJumpKill(e){      
