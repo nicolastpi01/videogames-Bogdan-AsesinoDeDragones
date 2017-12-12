@@ -12,7 +12,6 @@ var play = {
         this.createLifes();
         this.createCoins();
         this.showLife();
-
         //game.camera.follow(bogdan);
         game.camera.follow(bogdan, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 
@@ -21,6 +20,7 @@ var play = {
 
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
         game.input.onDown.add(this.gofull, this);
+        //this.proxNivel(bogdan);
     },
 
     update: function() {
@@ -36,6 +36,10 @@ var play = {
         if(boss != null){
             game.physics.arcade.collide(bogdan, boss, bogdan.bossCollition);
             game.physics.arcade.overlap(bogdan.weapon.bullets, boss, this.processHit);
+            if(boss.life == 0){
+                boss.destroy(true);
+                boss = null;
+            }
         }
     },
 
@@ -108,14 +112,6 @@ var play = {
                 case 'slime':
                     enemies.add(new Slime(game, e.x, e.y, 'slime'));
                     break;
-                case 'BDragon':
-                    dragonvolador = new BDragonVolador(game, e.x, e.y, 'BDragonV'); //x= 8854
-                    dragonidle = new BDragonIdle(game, e.x, e.y, 'BDragonI');
-                    dragonvolador.visible = false;
-                    dragonidle.visible = true;
-                    enemies.add(dragonvolador);
-                    enemies.add(dragonidle);
-                    break;
             }
         });
     },
@@ -150,7 +146,6 @@ var play = {
             bogdan.life = l;
 
             boss = new Boss(game, 1000, 500, 'BDragonI');
-            
             game.camera.follow(bogdan, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
             text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
             text.fixedToCamera = true;

@@ -1,40 +1,37 @@
-var dragonvolador;
-var dragonidle;
 
-class BDragon extends Enemy{
-	constructor(game, x, y, sprite){
-		super(game, x, y, sprite);
-		this.value = 100;
-		this.frame = 0;
-		this.life = 10;
-		this.body.allowGravity = true;
-		this.body.inmovable = false;
+function muertegrandragon(){ 
+            game.bostezo.stop();
+            game.dragonrespirando.stop();
+        var text1 = game.add.text(dragonvolador.x, 750/2, 'Bien hecho bogdan, pero el dragon', { font: "32px Courier", fill: "#000000" });
+        var text2 = game.add.text(dragonvolador.x, 750/2+20, 'esta en otro juego', { font: "32px Courier", fill: "#000000" });
+        text1.fixedToCamera = text2.fixedToCamera= false;
+            enemies.remove(dragonvolador);
+            enemies.remove(dragonidle);
+		dragonvolador = null;
+}
 
-		this.scale.set(1.5);
-		this.body.velocity.x = 0;
 
-		this.contador = 1;
-		this.veces = 3;
-		this.animations.updateIfVisible = false;
-	}
-
-	processMovement(){
+	function processMovement(){
 		//Logre hacerlo funcionar, pero no me gusta el cambio abrupto. Comenzare a tocar el volumen la prox
-		if( this.inCamera && this.life>=0){
-			if(!game.bostezo.isplaying) game.bostezo.resume();
-		}
-		else
-			game.bostezo.pause();
-		
+		if( this.inCamera){
+			
+		if(!game.bostezo.isplaying) game.bostezo.resume();
+
+		if (this.x > bogdan.x)
+    		this.scale.set(-1.5,1.5);
+    	else
+    		this.scale.set(1.5); 
+
 		if(this == dragonidle) 
 			this.update_idle();
 		else 
 			this.volar();
+		}
+		else
+			game.bostezo.pause();
     }
 
-    volar(){}
-
-    update_vuelo(a,b){
+function  update_vuelo(a,b){
     	if(this.animations.frame==2)
     		this.animations.play('dragonvuelo');
     	else if(this.animations.frame==7) {
@@ -51,7 +48,7 @@ class BDragon extends Enemy{
     		this.cambio();
     }
 
-	update_idle(a,b){
+function 	update_idle(a,b){
 		if( this.animations.frame >= 11) this.cambio();
 		else if( this.animations.frame>=3 && this.animations.frame <=6)
     		this.weapon.fire();
@@ -60,9 +57,11 @@ class BDragon extends Enemy{
     			this.weapon.fireAngle = Phaser.ANGLE_LEFT ;
     		else
     			this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
+
+    	game.physics.arcade.collide(bogdan, this.weapon.bullets, function(){bogdan.life -= 1;});
     }
 
-    cambio(){
+function  cambio(){
     	var ahora = dragonvolador.visible ;    	
     	
     	if(ahora){
@@ -70,20 +69,22 @@ class BDragon extends Enemy{
     		dragonvolador.animations.stop();
 
     		dragonidle.x = dragonvolador.x;
-    		dragonidle.x = dragonvolador.y;
+    		dragonidle.y = dragonvolador.y;
     	}
     	else{
     		dragonvolador.animations.play('dragonlevantavuelo');
 			dragonidle.animations.stop();
 
     		dragonvolador.x = dragonidle.x;
-    		dragonvolador.x = dragonidle.y;
+    		dragonvolador.y = dragonidle.y;
     	}
 
     	dragonvolador.visible = !ahora; 
     	dragonidle.visible = ahora;
     }
-}
+
+
+class BDragon{}
 
 class BDragonVolador extends BDragon{
 	init(){
@@ -98,8 +99,8 @@ class BDragonVolador extends BDragon{
 
     volar(){
     	if(this.animations.frame <= 7 && this.animations.frame > 3){
-    		this.body.velocity.x += 18 * this.scale.x;
-    		this.body.velocity.y += 10;
+    		this.x += 18 * this.scale.x;
+    		this.y -= 30;
     	} else if(this.animations.frame >7) this.body.velocity.x *= 0.6; // Frenar
 
     	if ( this.body.touching.right || this.body.blocked.right) {
@@ -138,4 +139,67 @@ class BDragonIdle extends BDragon{
 		    weapon.trackSprite(this, 14, -50);
 		    this.weapon = weapon;
 	}
+}
+
+class EnemyBoss extends Phaser.Sprite {
+
+    constructor(game, x, y, sprite){
+        super(game, x, y, sprite);
+
+        game.physics.arcade.enable(this);
+        this.life;
+        this.value;
+        
+        this.emitter = this.createEmitter(this.x, this.y);
+
+        this.anchor.setTo(0.5);
+        this.scale.set(1);
+
+        this.body.inmovable = true;
+        this.body.collideWorldBounds = true;
+
+
+        this.init();
+    }
+
+    update(){
+        game.physics.arcade.collide(this, layer);
+        if(this.inCamera){
+            if(this.body.velocity.x == 0){ this.updateBodyVelocity(); }
+            game.physics.arcade.collide(this, walls);
+            this.processMovement();
+        }else{
+            this.body.velocity.x = 0
+            this.animations.stop();
+        }
+        game.physics.arcade.collide(this.emitter, layer);
+    }
+
+    hit(){
+        this.emitter.x = this.x;
+        this.emitter.y = this.y;
+
+        this.life -= 1;
+        this.emitter.start(true, 2000, null, 5);
+
+        if(this.life == 0){
+            this.kill();
+            this.emitter.start(true, 2000, null, 10);
+        }
+    }
+
+    createEmitter(x, y){
+        var emitter = game.add.emitter(0, 0, 100);
+        emitter.makeParticles('pixel_red');
+        emitter.gravity = 200;
+        emitter.x = x;
+        emitter.y = y;
+
+        return emitter;
+    }
+
+    init(){}
+    processMovement(){}
+    updateBodyVelocity(){}
+
 }

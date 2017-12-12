@@ -328,13 +328,11 @@ class Monster extends Enemy{
 
 class Boss extends Phaser.Sprite{
 
-	constructor(game, x, y, sprite){
-		super(game, x, y, sprite);
+	constructor(game, x, y, spritename){
+		super(game, x, y, spritename);
 
 		game.physics.arcade.enable(this);
-
 		game.add.existing(this);
-
 
 		this.life = 10;
 		this.value = 100;
@@ -348,9 +346,14 @@ class Boss extends Phaser.Sprite{
 		this.body.collideWorldBounds = true;
 		this.body.allowGravity = true;
 
-		this.body.setSize(60, 90, 8, 14);
 
-		this.frame = 0;
+		//this.contador = 1;
+		//this.veces = 3;
+		this.animations.updateIfVisible = false;
+
+		//this.body.setSize(60, 90, 8, 14);
+
+		//this.frame = 0;
 
 		this.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 10, true);		
 		this.animations.play('idle');
@@ -367,6 +370,7 @@ class Boss extends Phaser.Sprite{
 		if(this.life == 0){
 			this.kill();
 			this.emitter.start(false, 2000, 5, 100);
+			this.destroy(true);
 		}else{
 			this.weapon.fireAtSprite(bogdan);
 		}
