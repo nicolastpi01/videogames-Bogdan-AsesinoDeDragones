@@ -34,8 +34,8 @@ var play = {
             //});
 
         if(boss != null){
-            game.physics.arcade.collide(bogdan, boss, bogdan.bossCollition);
-            game.physics.arcade.overlap(bogdan.weapon.bullets, boss, this.processHit);
+            game.physics.arcade.collide(bogdan, boss.dragon, bogdan.bossCollition);
+            game.physics.arcade.overlap(bogdan.weapon.bullets, boss.dragon, this.processHit);
             if(boss.life == 0){
                 boss.destroy(true);
                 boss = null;
@@ -145,18 +145,18 @@ var play = {
             bogdan.points = p;
             bogdan.life = l;
 
-            boss = new Boss(game, 1000, 500, 'BDragonI');
-            dragonatlas =  game.add.sprite(450, 350, 'BFuckingDragon');
-            dragonatlas.animations.add('idle');
-            dragonatlas.animations.add('volar');
-            dragonatlas.animations.play('idle', 15, true);
+            boss = new Boss2(game, 1000, 500, 'BFuckingDragon');
+            
+//            dragonatlas.animations.add('idle');
+//            dragonatlas.animations.add('volar');
+            boss.dragon.animations.play('muerte');
 
             //dragonatlas.animations.play('volar', 15, true);
             
             game.camera.follow(bogdan, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
             text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
             text.fixedToCamera = true;
-            this.showLife();            
+            this.showLife();
         }
     },   
 

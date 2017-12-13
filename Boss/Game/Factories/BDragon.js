@@ -1,18 +1,112 @@
 
+class Boss2{
+
+    constructor(game, x, y, spritename){
+        var dragonatlas =  game.add.sprite(x, y,spritename );
+            dragonatlas.animations.add('idle', Phaser.Animation.generateFrameNames('idle', 0, 14), 15, true);
+            dragonatlas.animations.add('volar', Phaser.Animation.generateFrameNames('volar', 0,10), 8, true);
+            dragonatlas.animations.add('muerte', Phaser.Animation.generateFrameNames('muerte', 0,7), 4, true);
+        dragonatlas.events.onAnimationLoop.add(update_vuelo,dragonatlas);
+
+        dragonatlas.scale.set(1.5);
+        dragonatlas.animations.updateIfVisible = false;
+        this.dragon = dragonatlas;
+
+        game.add.existing(dragonatlas);
+    
+        this.life = 10;
+        this.value = 100;
+        this.emitter = this.createEmitter(dragonatlas.x, dragonatlas.y);
+
+        game.physics.arcade.enable(dragonatlas);
+        dragonatlas.body.inmovable = false;
+        dragonatlas.body.collideWorldBounds = true;
+        dragonatlas.body.allowGravity = true;
+
+
+        this.createWeapon();
+    }
+
+    update(){
+        game.physics.arcade.collide(this.dragon, layer);       
+        game.physics.arcade.collide(this.emitter, layer);
+        game.physics.arcade.overlap(this.weapon.bullets, bogdan, this.processHit);
+
+        if(this.life == 0){
+            this.dragon.kill();
+            this.emitter.start(false, 2000, 5, 100);
+            muertegrandragon();
+            this.destroy(true);
+        }else{
+            this.weapon.fireAtSprite(bogdan);
+        }
+    }
+
+    createEmitter(x, y){
+        var emitter = game.add.emitter(0, 0, 100);
+        emitter.makeParticles('pixel_red');
+        emitter.gravity = 200;
+        emitter.x = this.dragon.x;
+        emitter.y = this.dragon.y;
+
+        return emitter;
+    }
+
+    createWeapon(){
+        this.weapon = game.add.weapon(1, 'fire-attack');
+
+        this.weapon.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
+        this.weapon.bulletKillDistance = 1500;
+        this.weapon.bulletSpeed = 800;
+        this.weapon.fireRate = 100;
+        this.weapon.trackSprite(this.dragon, -40, -50);
+        this.weapon.bulletAngleVariance = 10;
+        this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
+
+
+        //this.body.setSize(0,0, 80,100);
+            var weapon = game.add.weapon(10, 'fire-attack');
+            //  The bullet will be automatically killed when it leaves the world bounds
+            weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+            //  Because our bullet is drawn facing up, we need to offset its rotation:
+            weapon.bulletAngleOffset = 0;
+            weapon.angle = 90;
+            weapon.bulletSpeed = 600;
+
+            //  Add a variance to the bullet angle by +- this value
+            
+            //  Tell the Weapon to track the 'player' Sprite, offset by 14px horizontally, 0 vertically
+            weapon.trackSprite(this, 14, -50);
+            //this.weapon = weapon;
+    }
+
+    collide(d, b){}
+
+    hit(){
+        this.emitter.x = this.dragon.x;
+        this.emitter.y = this.dragon.y;
+
+        this.life -= 1;
+        this.emitter.start(true, 2000, null, 10);
+    }
+
+    processHit(b, bullet){
+        bullet.kill();
+        b.getHit();
+    }
+
+}
+
 function muertegrandragon(){ 
-            game.bostezo.stop();
-            game.dragonrespirando.stop();
+        game.bostezo.stop();
+        game.dragonrespirando.stop();
         var text1 = game.add.text(dragonvolador.x, 750/2, 'Bien hecho bogdan, pero el dragon', { font: "32px Courier", fill: "#000000" });
         var text2 = game.add.text(dragonvolador.x, 750/2+20, 'esta en otro juego', { font: "32px Courier", fill: "#000000" });
         text1.fixedToCamera = text2.fixedToCamera= false;
-            enemies.remove(dragonvolador);
-            enemies.remove(dragonidle);
-		dragonvolador = null;
 }
 
 
 	function processMovement(){
-		//Logre hacerlo funcionar, pero no me gusta el cambio abrupto. Comenzare a tocar el volumen la prox
 		if( this.inCamera){
 			
 		if(!game.bostezo.isplaying) game.bostezo.resume();
@@ -48,7 +142,7 @@ function  update_vuelo(a,b){
     		this.cambio();
     }
 
-function 	update_idle(a,b){
+function update_idle(a,b){
 		if( this.animations.frame >= 11) this.cambio();
 		else if( this.animations.frame>=3 && this.animations.frame <=6)
     		this.weapon.fire();
@@ -61,43 +155,8 @@ function 	update_idle(a,b){
     	game.physics.arcade.collide(bogdan, this.weapon.bullets, function(){bogdan.life -= 1;});
     }
 
-function  cambio(){
-    	var ahora = dragonvolador.visible ;    	
-    	
-    	if(ahora){
-    		dragonidle.animations.play('idledragon');
-    		dragonvolador.animations.stop();
 
-    		dragonidle.x = dragonvolador.x;
-    		dragonidle.y = dragonvolador.y;
-    	}
-    	else{
-    		dragonvolador.animations.play('dragonlevantavuelo');
-			dragonidle.animations.stop();
-
-    		dragonvolador.x = dragonidle.x;
-    		dragonvolador.y = dragonidle.y;
-    	}
-
-    	dragonvolador.visible = !ahora; 
-    	dragonidle.visible = ahora;
-    }
-
-
-class BDragon{}
-
-class BDragonVolador extends BDragon{
-	init(){
-		//Casi le atine. Hace falta moverlo con una aplicacion mejor que paint
-		this.animations.add('dragonlevantavuelo', [0, 1, 2], 9, true);
-		this.animations.add('dragonvuelo', [3, 4, 5, 6, 7], 18, true);
-		this.animations.add('dragonterminavuelo', [8,9,10], 15, true);
-		this.events.onAnimationLoop.add(this.update_vuelo,this); //Era otra la funcion, ya funciona!
-		//this.animations.play('dragonlevantavuelo');
-		this.body.width = 100;
-    }
-
-    volar(){
+function volar(){
     	if(this.animations.frame <= 7 && this.animations.frame > 3){
     		this.x += 18 * this.scale.x;
     		this.y -= 30;
@@ -115,91 +174,3 @@ class BDragonVolador extends BDragon{
     	}
 
     }
-}
-
-class BDragonIdle extends BDragon{
-	init(){
-		this.animations.add('idledragon', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 10, true);
-		this.animations.play('idledragon');
-		this.body.width = 80;
-		//this.body.setSize(0,0, 80,100);
-			var weapon = game.add.weapon(10, 'fire-attack');
-		    //  The bullet will be automatically killed when it leaves the world bounds
-		    weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-		    //  Because our bullet is drawn facing up, we need to offset its rotation:
-		    weapon.bulletAngleOffset = 0;
-		    weapon.angle = 90;
-		    weapon.bulletSpeed = 600;
-
-		    //  Speed-up the rate of fire, allowing them to shoot 1 bullet every 60ms
-		    weapon.fireRate = 50;
-		    //  Add a variance to the bullet angle by +- this value
-		    weapon.bulletAngleVariance = 10;
-		    //  Tell the Weapon to track the 'player' Sprite, offset by 14px horizontally, 0 vertically
-		    weapon.trackSprite(this, 14, -50);
-		    this.weapon = weapon;
-	}
-}
-
-class EnemyBoss extends Phaser.Sprite {
-
-    constructor(game, x, y, sprite){
-        super(game, x, y, sprite);
-
-        game.physics.arcade.enable(this);
-        this.life;
-        this.value;
-        
-        this.emitter = this.createEmitter(this.x, this.y);
-
-        this.anchor.setTo(0.5);
-        this.scale.set(1);
-
-        this.body.inmovable = true;
-        this.body.collideWorldBounds = true;
-
-
-        this.init();
-    }
-
-    update(){
-        game.physics.arcade.collide(this, layer);
-        if(this.inCamera){
-            if(this.body.velocity.x == 0){ this.updateBodyVelocity(); }
-            game.physics.arcade.collide(this, walls);
-            this.processMovement();
-        }else{
-            this.body.velocity.x = 0
-            this.animations.stop();
-        }
-        game.physics.arcade.collide(this.emitter, layer);
-    }
-
-    hit(){
-        this.emitter.x = this.x;
-        this.emitter.y = this.y;
-
-        this.life -= 1;
-        this.emitter.start(true, 2000, null, 5);
-
-        if(this.life == 0){
-            this.kill();
-            this.emitter.start(true, 2000, null, 10);
-        }
-    }
-
-    createEmitter(x, y){
-        var emitter = game.add.emitter(0, 0, 100);
-        emitter.makeParticles('pixel_red');
-        emitter.gravity = 200;
-        emitter.x = x;
-        emitter.y = y;
-
-        return emitter;
-    }
-
-    init(){}
-    processMovement(){}
-    updateBodyVelocity(){}
-
-}
