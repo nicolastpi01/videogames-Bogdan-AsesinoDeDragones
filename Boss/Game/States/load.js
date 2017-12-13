@@ -28,6 +28,8 @@ var load = {
 
         game.load.spritesheet('BDragonI', 'Resources/granDragonIdle.png',81,108); //Funciona con 80 tambien
         game.load.spritesheet('BDragonV', 'Resources/granDragonVolando.png',183,134);
+        //game.load.atlasJSONHash('BFuckingDragon', 'Resources/granDragon.png','Game/Factories/bigdragon.json');
+    	game.load.atlas('BFuckingDragon', 'Resources/granDragon.png','Game/Factories/bigdragon.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
 		game.load.json('lifes', 'Game/Levels/lifes.json');

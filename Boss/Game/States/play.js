@@ -20,7 +20,7 @@ var play = {
 
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
         game.input.onDown.add(this.gofull, this);
-        //this.proxNivel(bogdan);
+        this.proxNivel(bogdan);
     },
 
     update: function() {
@@ -146,13 +146,17 @@ var play = {
             bogdan.life = l;
 
             boss = new Boss(game, 1000, 500, 'BDragonI');
+            dragonatlas =  game.add.sprite(450, 350, 'BFuckingDragon');
+            dragonatlas.animations.add('idle');
+            dragonatlas.animations.add('volar');
+            dragonatlas.animations.play('idle', 15, true);
+
+            //dragonatlas.animations.play('volar', 15, true);
+            
             game.camera.follow(bogdan, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
             text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });
             text.fixedToCamera = true;
-
-            this.showLife();
-
-            
+            this.showLife();            
         }
     },   
 

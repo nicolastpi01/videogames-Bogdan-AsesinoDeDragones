@@ -1,0 +1,211 @@
+{"frames": [
+{
+	"filename": "idle00",
+	"frame": {"x": 12	,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle01",
+	"frame": {"x":144 ,"y": 14	,"w": 84,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle02",
+	"frame": {"x":226	,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle03",
+	"frame": {"x":304	,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle05",
+	"frame": {"x":385	,"y": 14	,"w": 83,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle06",
+	"frame": {"x":466 ,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle07",
+	"frame": {"x":546	,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle08",
+	"frame": {"x":630	,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle09",
+	"frame": {"x":708 ,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle10",
+	"frame": {"x":788	,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle11",
+	"frame": {"x":867	,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle12",
+	"frame": {"x":950 ,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle13",
+	"frame": {"x":1031  ,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "idle14",
+	"frame": {"x":1113	,"y": 14	,"w": 80,"h": 102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+
+{
+	"filename": "volar00",
+	"frame": {"x":5	,"y": 155	,"w": 115,"h": 96},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar01",
+	"frame": {"x":120	,"y": 136	,"w": 146,"h": 117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar02",
+	"frame": {"x":265	,"y": 136	,"w": 178,"h":96 },
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar03",
+	"frame": {"x":443	,"y": 156	,"w": 186,"h": 96},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar04",
+	"frame": {"x":628	,"y": 156	,"w": 185,"h": 88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar05",
+	"frame": {"x":810	,"y": 115	,"w": 183,"h": 142},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar06",
+	"frame": {"x":993	,"y": 146	,"w": 147,"h": 110},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar07",
+	"frame": {"x":1138	,"y": 142	,"w": 132,"h": 110},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar08",
+	"frame": {"x":4	,"y": 258	,"w": 116,"h": 98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar09",
+	"frame": {"x":120	,"y": 258	,"w": 142,"h": 98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+},
+{
+	"filename": "volar10",
+	"frame": {"x":266	,"y": 258	,"w": 122,"h": 98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"sourceSize": {"w": 80,"h": 102}
+}],
+"meta": {
+	"app": "a mano como dios manda",
+	"version": "intento°4",
+	"image": "grandragon.png",
+	"format": "RGBA8888",
+	"size": {"w":252,"h":256},
+	"scale": "2"
+}
+}
