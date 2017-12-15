@@ -117,7 +117,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 115,"h": 96}
 },
 {
 	"filename": "volar1",
@@ -125,7 +125,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 146,"h": 117}
 },
 {
 	"filename": "volar2",
@@ -133,7 +133,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 178,"h":96}
 },
 {
 	"filename": "volar3",
@@ -141,7 +141,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 186,"h": 96}
 },
 {
 	"filename": "volar4",
@@ -156,7 +156,7 @@
 	"frame": {"x":810	,"y": 115	,"w": 183,"h": 142},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":-20,"w": 80,"h": 102},
 	"sourceSize": {"w": 80,"h": 102}
 },
 {
@@ -164,7 +164,7 @@
 	"frame": {"x":993	,"y": 146	,"w": 147,"h": 110},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":-20,"w": 80,"h": 102},
 	"sourceSize": {"w": 80,"h": 102}
 },
 {
@@ -172,7 +172,7 @@
 	"frame": {"x":1138	,"y": 142	,"w": 132,"h": 110},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":-10,"w": 80,"h": 102},
 	"sourceSize": {"w": 80,"h": 102}
 },
 {
@@ -180,7 +180,7 @@
 	"frame": {"x":4	,"y": 258	,"w": 116,"h": 98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":10,"w": 80,"h": 102},
 	"sourceSize": {"w": 80,"h": 102}
 },
 {
@@ -188,7 +188,7 @@
 	"frame": {"x":120	,"y": 258	,"w": 142,"h": 98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":10,"w": 80,"h": 102},
 	"sourceSize": {"w": 80,"h": 102}
 },
 {
@@ -196,7 +196,7 @@
 	"frame": {"x":266	,"y": 258	,"w": 122,"h": 98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":10,"w": 80,"h": 102},
 	"sourceSize": {"w": 80,"h": 102}
 },
 
@@ -226,7 +226,7 @@
 },
 {
 	"filename": "muerte3",
-	"frame": {"x":14,"y": 612	,"w": 111,"h": 114},
+	"frame": {"x":1174,"y": 612	,"w": 111,"h": 114},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 111,"h": 114},
@@ -263,10 +263,59 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 100,"h": 38},
 	"sourceSize": {"w": 80,"h": 102}
-}],
+},
+{
+	"filename": "llamaarriba0",
+	"frame": {"x":6,"y": 354	,"w": 136,"h": 116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 136,"h": 100},
+	"sourceSize": {"w": 136,"h": 116}
+},
+{
+	"filename": "llamaarriba1",
+	"frame": {"x":148,"y": 354	,"w": 174, "h": 116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 174,"h": 100},
+	"sourceSize": {"w": 174,"h": 116}
+},
+{
+	"filename": "llamaarriba2",
+	"frame": {"x":320,"y": 354	,"w": 189,"h": 116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 189,"h": 100},
+	"sourceSize": {"w": 189,"h": 116}
+},
+{
+	"filename": "llamaarriba3",
+	"frame": {"x":510,"y": 354	,"w": 188, "h": 116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 188,"h": 116},
+	"sourceSize": {"w": 188,"h": 116}
+},
+{
+	"filename": "llamaarriba4",
+	"frame": {"x":697,"y": 352	,"w": 168,"h": 118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":-2,"w": 189,"h": 118},
+	"sourceSize": {"w": 168,"h": 118}
+},
+{
+	"filename": "llamaarriba5",
+	"frame": {"x":865,"y": 332	,"w": 212, "h": 138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w": 188,"h": 168},
+	"sourceSize": {"w": 188,"h": 168}
+}
+],
 "meta": {
 	"app": "a mano como dios manda",
-	"version": "intento°4",
+	"version": "intento°inf",
 	"image": "grandragon.png",
 	"format": "RGBA8888",
 	"size": {"w":252,"h":256},

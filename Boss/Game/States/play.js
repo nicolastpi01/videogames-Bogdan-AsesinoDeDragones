@@ -3,7 +3,6 @@ var play = {
     preload: function() {},
 
     create: function() {
-        
         //this.createMap();
         this.addMap('map1');
         this.createBogdan();
@@ -24,7 +23,7 @@ var play = {
     },
 
     update: function() {
-        game.bostezo.pause();
+        //game.bostezo.pause();
         //if(dragonvolador.life == 0 ||  dragonidle.life == 0 ){
             //game.bostezo.stop();      
         //}
@@ -36,8 +35,11 @@ var play = {
         if(boss != null){
             game.physics.arcade.collide(bogdan, boss.dragon, bogdan.bossCollition);
             game.physics.arcade.overlap(bogdan.weapon.bullets, boss.dragon, this.processHit);
+            game.physics.arcade.overlap(boss.weapon.bullets, bogdan, boss.processHit);
+
+            boss.update();
             if(boss.life == 0){
-                boss.destroy(true);
+                boss.dragon.destroy(true);
                 boss = null;
             }
         }
@@ -149,7 +151,6 @@ var play = {
             
 //            dragonatlas.animations.add('idle');
 //            dragonatlas.animations.add('volar');
-            boss.dragon.animations.play('muerte');
 
             //dragonatlas.animations.play('volar', 15, true);
             
@@ -202,7 +203,7 @@ var play = {
 
         layer = map.createLayer(1);
         layer.resizeWorld();
-        layer.debugSettings.forceFullRedraw = true;
+        //layer.debugSettings.forceFullRedraw = true;
 
         //map.createLayer(2);
     },

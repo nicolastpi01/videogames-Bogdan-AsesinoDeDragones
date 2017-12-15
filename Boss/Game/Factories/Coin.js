@@ -21,7 +21,7 @@ class Coin extends Phaser.Sprite{
 		this.body.collideWorldBounds = true;
 
 		this.body.velocity.y = -300;
-		//this.animations.play('spin');
+        this.animations.updateIfVisible = false;
 	}
 
 	update(){

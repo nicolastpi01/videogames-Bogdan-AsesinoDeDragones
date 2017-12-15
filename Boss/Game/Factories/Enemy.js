@@ -17,7 +17,7 @@ class Enemy extends Phaser.Sprite {
 
 		this.body.inmovable = true;
 		this.body.collideWorldBounds = true;
-
+        this.animations.updateIfVisible = true;
 
 		this.init();
 	}
@@ -25,6 +25,7 @@ class Enemy extends Phaser.Sprite {
 	update(){
 		game.physics.arcade.collide(this, layer);
 		if(this.inCamera){
+			//game.physics.arcade.collide(this.emitter, layer); Parece funcionar mejor
 			if(this.body.velocity.x == 0){ this.updateBodyVelocity(); }
 			game.physics.arcade.collide(this, walls);
 			this.processMovement();
@@ -123,7 +124,6 @@ class Zombie extends Enemy{
 		this.animations.add('walk-right', [18, 19, 20], 10, true);
 		
 		//this.animations.play('walk-left');
-
 		this.body.velocity.x = 0;
 		//this.body.velocity.x = -50;
 		this.body.setSize(20, 33, 5, 29);
