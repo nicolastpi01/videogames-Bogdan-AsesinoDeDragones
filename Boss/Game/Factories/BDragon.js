@@ -20,7 +20,7 @@ class Boss2{
         dragonatlas.animations.updateIfVisible = false;
         this.dragon = dragonatlas;
 
-        this.dragon.animations.play('llamaarriba');
+        this.dragon.animations.play('volar');
         game.bostezo.play();
         game.add.existing(dragonatlas);
     
@@ -123,7 +123,15 @@ class Boss2{
             this.dragon.body.velocity.x = -this.dragon.body.velocity.x;
             this.dragon.scale.set(2,2);
         }
-        
+        var sprite = this.dragon;
+        //sprite.body.velocity.x = 0;
+        //sprite.body.velocity.y = 0;
+        //sprite.body.angularVelocity = 0;
+
+        //game.physics.arcade.velocityFromAngle(sprite.angle, 300, sprite.body.velocity);
+        //game.physics.arcade.accelerationFromRotation(3.14/2, 200, sprite.body.acceleration);
+        if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
+            game.physics.arcade.velocityFromRotation(3.14/2, -400, sprite.body.velocity);
     }
 
     render(){
