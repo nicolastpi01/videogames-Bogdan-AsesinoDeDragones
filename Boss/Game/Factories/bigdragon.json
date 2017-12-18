@@ -112,15 +112,15 @@
 	"sourceSize": {"w": 80,"h": 102}
 },
 {
-	"filename": "volar0",
-	"frame": {"x":5	,"y": 155	,"w": 115,"h": 96},
+	"filename": "despegue0",
+	"frame": {"x":5	,"y": 136	,"w": 115,"h": 117},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
 	"sourceSize": {"w": 115,"h": 96}
 },
 {
-	"filename": "volar1",
+	"filename": "despegue1",
 	"frame": {"x":120	,"y": 136	,"w": 146,"h": 117},
 	"rotated": false,
 	"trimmed": true,
@@ -128,8 +128,8 @@
 	"sourceSize": {"w": 146,"h": 117}
 },
 {
-	"filename": "volar2",
-	"frame": {"x":265	,"y": 136	,"w": 178,"h":96 },
+	"filename": "despegue2",
+	"frame": {"x":265	,"y": 136	,"w": 178,"h":117 },
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
