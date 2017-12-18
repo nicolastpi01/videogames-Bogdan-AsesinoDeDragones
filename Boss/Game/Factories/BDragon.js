@@ -8,6 +8,13 @@ class Boss2{
             dragonatlas.animations.add('volar', Phaser.Animation.generateFrameNames('volar', 3,10), 4, true);
             dragonatlas.animations.add('muerte', Phaser.Animation.generateFrameNames('muerte', 0,7), 4, true);
             dragonatlas.animations.add('llamaarriba', Phaser.Animation.generateFrameNames('llamaarriba', 0,5), 4, true);
+            dragonatlas.events.onAnimationLoop.add(this.cambio, this);
+            /*
+            dragonatlas.animations.forEach(function(element){
+                var attribute = element.getAttribute('onLoop');
+                element.onclick = function(){
+                };
+            });*/
             //altura bajito 470 llamaarriba
         //dragonatlas.events.onAnimationLoop.add(update_vuelo,dragonatlas);
         game.physics.arcade.enable(dragonatlas);
@@ -43,9 +50,9 @@ class Boss2{
             this.emitter.start(false, 2000, 5, 100);
             //this.destroy(true);
         }else{
-            if(!this.dragon.animations.currentAnim.name == 'idle')
-                update_idle(this,this.dragon);
-            else(!this.dragon.animations.currentAnim.name == 'volar')
+            if(this.dragon.animations.currentAnim.name == 'idle')
+                this.update_idle();
+            else(this.dragon.animations.currentAnim.name == 'volar')
                 this.update_vuelo();
             this.weapon.fireAtSprite(bogdan);
         }
@@ -55,15 +62,21 @@ class Boss2{
         return  game.physics.arcade.distanceBetween(bogdan,this.dragon);
     }
 
-    cambio(){
-        if(this.dragon.animations.currentAnim.name == 'idle'){
+    cambio(a,b){
+        var animacion = this.dragon.animations.currentAnim;
+        if(animacion.loopCount == 0) return;
+
+        if( animacion.name == 'idle' && animacion.loopCount >= 3){
+            this.dragon.animations.play('despegue');
+            this.contador = 0;
+        } else if( animacion.name == 'despegue'){
             this.dragon.animations.play('volar');
-            //this.dragon.body.velocity.y= -80;
+            this.contador = 0;
+        }else if( animacion.name == 'volar' && animacion.loopCount >= 4){
+            this.dragon.animations.play('idle');
+            this.contador = 0;
         }
-        //else if(this.dragon.animations.currentAnim.name == 'volar'){
-        //   this.dragon.animations.play('idle');
-        //    this.contador++;
-        //    }
+
     }
 
     createEmitter(x, y){
@@ -104,6 +117,7 @@ class Boss2{
     }
 
     update_vuelo(){
+//        boss.dragon.animations.currentAnim.loopCount
         if (this.dragon.body.touching.right || this.dragon.body.blocked.right) {
             this.dragon.body.velocity.x = -this.dragon.body.velocity.x;
             this.dragon.scale.set(-2,2);
@@ -128,9 +142,8 @@ class Boss2{
     }
 
     update_idle(){
-    this.contador ++;
        if (this.dragon.x > bogdan.x){
-                this.weapon.fireAngle = Phaser.ANGLE_LEFT ;
+                this.weapon.fireAngle = Phaser.ANGLE_LEFT;
                 this.dragon.scale.set(-2,2);
             }
             else{
@@ -138,8 +151,7 @@ class Boss2{
                 this.dragon.scale.set(2,2);
             }
 
-        if(this.contador == 20) obj.cambio();
-        else if( this.animations.frame>=3 && this.animations.frame <=6)
+        if( this.dragon.animations.frame>=3 && this.dragon.animations.frame <=6)
             this.weapon.fireAtSprite(bogdan);
     }
 
