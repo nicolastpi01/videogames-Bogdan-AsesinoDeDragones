@@ -39,7 +39,7 @@ var play = {
 
             boss.update();
             if(boss.life == 0){
-                boss.dragon.destroy(true);
+//                boss.dragon.destroy(true);
                 boss = null;
             }
         }
@@ -52,8 +52,6 @@ var play = {
         //coins.forEach(function(c){game.debug.body(c);});
         //if(boss != null){ game.debug.body(boss); }
     },
-
-    //-----------------------------------------
 
     processHit: function(bullet, enemy){
         bogdan.processBossHit(bullet, enemy);
@@ -148,11 +146,6 @@ var play = {
             bogdan.life = l;
 
             boss = new Boss2(game, 1000, 500, 'BFuckingDragon');
-            
-//            dragonatlas.animations.add('idle');
-//            dragonatlas.animations.add('volar');
-
-            //dragonatlas.animations.play('volar', 15, true);
             
             game.camera.follow(bogdan, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
             text = game.add.text(1150, 1, bogdan.points, { font: "32px Courier", fill: "#ffffff" });

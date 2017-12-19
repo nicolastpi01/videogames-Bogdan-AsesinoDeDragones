@@ -25,11 +25,7 @@ var load = {
 		game.load.spritesheet('skeleton', 'Resources/zombie_n_skeleton2.png', 288/9, 256/4);
 		game.load.spritesheet('dragon', 'Resources/dragon96x64.png', 96, 64);
 		game.load.spritesheet('slime', 'Resources/slime.png', 320/10, 640/20);
-
-        game.load.spritesheet('BDragonI', 'Resources/granDragonIdle.png',81,108); //Funciona con 80 tambien
-        game.load.spritesheet('BDragonV', 'Resources/granDragonVolando.png',183,134);
-        //game.load.atlasJSONHash('BFuckingDragon', 'Resources/granDragon.png','Game/Factories/bigdragon.json');
-    	game.load.atlas('BFuckingDragon', 'Resources/granDragon.png','Game/Factories/bigdragon.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('BFuckingDragon', 'Resources/granDragon.png','Game/Factories/bigdragon.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
 		game.load.json('level_0', 'Game/Levels/enemies-level-0.json');
 		game.load.json('lifes', 'Game/Levels/lifes.json');
@@ -93,6 +89,9 @@ var load = {
 	    game.dragonrespirando.allowMultiple = false;
 	    //Se me ocurrio que en vez de loop, lo haga con criterio de IA. 
 
+		game.dragondolor = game.add.audio('dragondolor');
+	    //game.dragondolor.allowMultiple = false;
+	    
 	    game.lanzafuego = game.add.audio('lanzafuego');
 	    game.lanzafuego.allowMultiple = false;
 

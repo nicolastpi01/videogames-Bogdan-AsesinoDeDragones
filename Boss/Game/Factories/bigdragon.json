@@ -112,27 +112,27 @@
 	"sourceSize": {"w": 80,"h": 102}
 },
 {
-	"filename": "despegue0",
+	"filename": "volar0",
 	"frame": {"x":5	,"y": 136	,"w": 115,"h": 117},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":3,"w": 115,"h": 102},
 	"sourceSize": {"w": 115,"h": 96}
 },
 {
-	"filename": "despegue1",
+	"filename": "volar1",
 	"frame": {"x":120	,"y": 136	,"w": 146,"h": 117},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":3,"w": 146,"h": 102},
 	"sourceSize": {"w": 146,"h": 117}
 },
 {
-	"filename": "despegue2",
+	"filename": "volar2",
 	"frame": {"x":265	,"y": 136	,"w": 178,"h":117 },
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":3,"w": 178,"h": 102},
 	"sourceSize": {"w": 178,"h":96}
 },
 {
@@ -140,7 +140,7 @@
 	"frame": {"x":443	,"y": 156	,"w": 186,"h": 96},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":3,"w": 186,"h": 102},
 	"sourceSize": {"w": 186,"h": 96}
 },
 {
@@ -148,56 +148,56 @@
 	"frame": {"x":628	,"y": 156	,"w": 185,"h": 88},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"spriteSourceSize": {"x":0,"y":3,"w": 185,"h": 88},
+	"sourceSize": {"w": 185,"h": 88}
 },
 {
 	"filename": "volar5",
 	"frame": {"x":810	,"y": 115	,"w": 183,"h": 142},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":-20,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"spriteSourceSize": {"x":0,"y":-20,"w": 183,"h": 142},
+	"sourceSize": {"w": 183,"h": 142}
 },
 {
 	"filename": "volar6",
 	"frame": {"x":993	,"y": 146	,"w": 147,"h": 110},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":-20,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"spriteSourceSize": {"x":0,"y":-20,"w": 147,"h": 110},
+	"sourceSize": {"w": 147,"h": 110}
 },
 {
 	"filename": "volar7",
 	"frame": {"x":1138	,"y": 142	,"w": 132,"h": 110},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":-10,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"spriteSourceSize": {"x":0,"y":-10,"w": 132,"h": 102},
+	"sourceSize": {"w": 132,"h": 110}
 },
 {
 	"filename": "volar8",
 	"frame": {"x":4	,"y": 258	,"w": 116,"h": 98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":10,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"spriteSourceSize": {"x":0,"y":10,"w": 116,"h": 102},
+	"sourceSize": {"w": 116,"h": 98}
 },
 {
 	"filename": "volar9",
 	"frame": {"x":120	,"y": 258	,"w": 142,"h": 98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":10,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"spriteSourceSize": {"x":0,"y":10,"w": 142,"h": 102},
+	"sourceSize": {"w": 142,"h": 102}
 },
 {
 	"filename": "volar10",
 	"frame": {"x":266	,"y": 258	,"w": 122,"h": 98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":10,"w": 80,"h": 102},
-	"sourceSize": {"w": 80,"h": 102}
+	"spriteSourceSize": {"x":0,"y":10,"w": 122,"h": 102},
+	"sourceSize": {"w": 122,"h": 102}
 },
 
 {
@@ -205,7 +205,7 @@
 	"frame": {"x":780	,"y": 612	,"w": 148,"h": 100},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 80,"h": 102},
+	"spriteSourceSize": {"x":0,"y":3,"w": 148,"h": 102},
 	"sourceSize": {"w": 80,"h": 102}
 },
 {
@@ -214,7 +214,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 124,"h": 98},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 124,"h": 102}
 },
 {
 	"filename": "muerte2",
@@ -222,7 +222,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 126,"h": 98},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 126,"h": 102}
 },
 {
 	"filename": "muerte3",
@@ -230,7 +230,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 111,"h": 114},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 111,"h": 102}
 },
 {
 	"filename": "muerte4",
@@ -238,7 +238,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 123,"h": 125},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 123,"h": 125}
 },
 {
 	"filename": "muerte5",
@@ -254,7 +254,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 107,"h": 54},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 80,"h": 54}
 },
 {
 	"filename": "muerte7",
@@ -262,14 +262,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 100,"h": 38},
-	"sourceSize": {"w": 80,"h": 102}
+	"sourceSize": {"w": 80,"h": 38}
 },
 {
 	"filename": "llamaarriba0",
 	"frame": {"x":6,"y": 354	,"w": 136,"h": 116},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 136,"h": 100},
+	"spriteSourceSize": {"x":0,"y":3,"w": 136,"h": 116},
 	"sourceSize": {"w": 136,"h": 116}
 },
 {
