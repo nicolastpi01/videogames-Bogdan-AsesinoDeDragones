@@ -97,7 +97,6 @@ class Knight extends Phaser.Sprite {
 	}
 
 	addLife(){
-		//life.kill();
         if(this.life < 3){
             this.life += 1;
             var h = game.add.sprite(hearts.getAt(this.life-2).x + 35, 10, 'heart');
