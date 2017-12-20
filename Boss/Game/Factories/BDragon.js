@@ -38,22 +38,17 @@ class Boss2{
     update(){
         game.physics.arcade.collide(this.dragon, layer);       
         game.physics.arcade.collide(this.emitter, layer);
-        //game.bostezo.volume=1-Phaser.Math.smoothstep(this.distanciaABogdan(),0,2000);
+        game.bostezo.volume=1-Phaser.Math.smoothstep(this.distanciaABogdan(),0,2000);
 
         if(this.life == 0){
+            this.life--;
             this.emitter.start(false, 2000, 5, 100);
             this.dragon.animations.play('muerte');           
             this.prox = this.update_muerte;
             game.bostezo.stop();
             game.dragonrespirando.stop();
             game.dragondolor.play();
-        }else{ 
-            this.prox();/*
-            if(this.dragon.animations.currentAnim.name == 'idle')
-                this.update_idle();
-            else if (this.dragon.animations.currentAnim.name == 'volar')
-                this.update_vuelo();*/
-        }
+        }else this.prox();
     }
 
     distanciaABogdan(){
@@ -61,10 +56,6 @@ class Boss2{
     }
 
     cambio(nombre, opcion){
-        var animacion = this.dragon.animations.currentAnim;
-        //if(animacion.loopCount == 0) return;
-
-
         this.dragon.animations.play(nombre);
 
         if(opcion == 0){
@@ -85,32 +76,8 @@ class Boss2{
                 bogdan.bounceBack();
         }else if( opcion == 4){
             this.dragon.kill();
-            this.prox = function(){};
+            this.prox = this.update_nada;
         }
-        /*
-        if( animacion.name == 'idle' && animacion.loopCount >= 3){
-            this.prox = this.update_despegue;
-            this.dragon.animations.play('despegue');
-            this.dragon.body.velocity.x = 0;
-        } else if(animacion.name == 'despegue'){
-            this.prox = this.update_vuelo;
-            this.dragon.animations.play('volar');
-        }else if(animacion.name == 'volar' && animacion.loopCount >= 4){
-            this.dragon.animations.play('aterrizaje');
-            this.prox = this.update_aterrizaje;
-            var sprite = this.dragon;
-            this.contador = 0.0;
-            sprite.body.velocity.x = 0;
-            sprite.body.velocity.y = 0;
-            sprite.body.acceleration.y = this.gravedad;
-        }else if(animacion.name == 'aterrizaje'){
-            this.dragon.animations.play('idle');
-            this.prox = this.update_idle;
-            if(this.dragon.body.touching.down || this.dragon.body.blocked.down)
-                bogdan.bounceBack();
-        }else if(animacion.name == 'muerte'){
-            this.dragon.kill();
-        }*/
     }
 
     createEmitter(x, y){
@@ -124,7 +91,7 @@ class Boss2{
     }
 
     createWeapon(){
-        this.weapon = game.add.weapon(1, 'fire-attack');
+        this.weapon = game.add.weapon(3, 'fire-attack');
 
         this.weapon.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
         this.weapon.bulletKillDistance = 1000;
@@ -156,7 +123,7 @@ class Boss2{
         if( this.loops() >=4 ) this.cambio('aterrizaje',2);
         this.contador += 0.01;
         var sprite = this.dragon;
-        var ang = (this.weapon.fireAngle == Phaser.ANGLE_LEFT )? this.contador : -this.contador ;
+        var ang = Phaser.Math.angleBetweenPointsY(boss.dragon.body,bogdan.body);//(this.weapon.fireAngle == Phaser.ANGLE_LEFT )? this.contador : -this.contador ;
         //        boss.dragon.animations.currentAnim.loopCount
         if (this.dragon.body.touching.right || this.dragon.body.blocked.right) {
             this.dragon.body.velocity.x = -this.dragon.body.velocity.x;
@@ -166,8 +133,8 @@ class Boss2{
             this.dragon.body.velocity.x = -this.dragon.body.velocity.x;
             this.dragon.scale.set(2,2);
         }
-
-        game.physics.arcade.velocityFromRotation(ang*3.14/7, -100, sprite.body.velocity);
+//*3.14/7
+        game.physics.arcade.velocityFromRotation(ang, 100, sprite.body.velocity);
     }
 
     update_idle(){
@@ -180,7 +147,7 @@ class Boss2{
                 this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
                 this.dragon.scale.set(2,2);
             }
-        if( this.dragon.animations.frame>=3 && this.dragon.animations.frame <=6){
+        if( this.dragon.animations.frame>=3 && this.dragon.animations.frame <=4){
             game.lanzafuego.play();
             this.weapon.fireAtSprite(bogdan);
         }
@@ -188,4 +155,20 @@ class Boss2{
     update_despegue(){ if(this.loops() == 1) this.cambio('volar',1);}
     update_aterrizaje(){ if(this.loops() == 1) this.cambio('idle',3);}
     update_muerte(){ if(this.loops() == 1) this.cambio('muerte',4);}
+    update_nada(){}
+    update_llamaarriba(){
+        if(this.dragon.x > bogdan.x){
+                this.weapon.fireAngle = Phaser.ANGLE_LEFT;
+                this.dragon.scale.set(-2,2);
+            }
+            else{
+                this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
+                this.dragon.scale.set(2,2);
+            }
+        if( false){
+            game.lanzafuego.play();
+            this.weapon.fireAtSprite(bogdan);
+        }
+    }
+
 }

@@ -39,14 +39,17 @@ class Knight extends Phaser.Sprite {
 		this.animations.add('attack', [4, 6, 4], 25, false);
 
 		this.stateHandler = new StateHandler();
+		this.processInput(cursors, jumpButton, attackButton);
 
 		this.createWeapon();
 
 	}
 
 	update(){
-		this.processInput(cursors, jumpButton, attackButton);
-
+		//Iba en ProcessInput
+		if(this.cursorsOrCtrlIsUp(cursors, attackButton) && !this.cursorsOrCtrlIsDown(cursors, attackButton)){
+			this.changeStateToIdle();
+		}
 
 		game.physics.arcade.collide(this, layer);
 
@@ -112,10 +115,6 @@ class Knight extends Phaser.Sprite {
 		jumpButton.onDown.add(this.changeStateToJump, this);
 
 		attackButton.onDown.add(this.changeStateToAttack, this);
-
-		if(this.cursorsOrCtrlIsUp(cursors, attackButton) && !this.cursorsOrCtrlIsDown(cursors, attackButton)){
-			this.changeStateToIdle();
-		}
 	}
 
 	cursorsOrCtrlIsUp(cursors, ctrl){

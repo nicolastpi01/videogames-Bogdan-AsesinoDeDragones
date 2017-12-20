@@ -38,8 +38,7 @@ var play = {
             game.physics.arcade.overlap(boss.weapon.bullets, bogdan, boss.processHit);
 
             boss.update();
-            if(boss.life == 0){
-//                boss.dragon.destroy(true);
+            if(boss.dragon.isDead){
                 boss = null;
             }
         }
