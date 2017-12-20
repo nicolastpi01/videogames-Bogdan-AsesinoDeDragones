@@ -222,27 +222,27 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 126,"h": 98},
-	"sourceSize": {"w": 126,"h": 102}
+	"sourceSize": {"w": 126,"h": 98}
 },
 {
 	"filename": "muerte3",
 	"frame": {"x":1174,"y": 612	,"w": 111,"h": 114},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 111,"h": 114},
-	"sourceSize": {"w": 111,"h": 102}
+	"spriteSourceSize": {"x":0,"y":3,"w": 111,"h": 98},
+	"sourceSize": {"w": 111,"h": 98}
 },
 {
 	"filename": "muerte4",
 	"frame": {"x":127,"y": 746	,"w": 123,"h": 125},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w": 123,"h": 125},
-	"sourceSize": {"w": 123,"h": 125}
+	"spriteSourceSize": {"x":0,"y":3,"w": 123,"h": 98},
+	"sourceSize": {"w": 123,"h": 98}
 },
 {
 	"filename": "muerte5",
-	"frame": {"x":246,"y": 736	,"w": 121,"h": 105},
+	"frame": {"x":246,"y": 746	,"w": 121,"h": 95},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 121,"h": 105},
@@ -254,7 +254,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 107,"h": 54},
-	"sourceSize": {"w": 80,"h": 54}
+	"sourceSize": {"w": 80,"h": 34}
 },
 {
 	"filename": "muerte7",
@@ -262,7 +262,7 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w": 100,"h": 38},
-	"sourceSize": {"w": 80,"h": 38}
+	"sourceSize": {"w": 80,"h": 18}
 },
 {
 	"filename": "llamaarriba0",
